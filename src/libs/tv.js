@@ -32,3 +32,37 @@ export const inputVariants = tv({
        },
     ]
 })
+
+
+export const buttonVariant = tv({
+    base:"flex transform py-[0.2rem] items-center px-2 translate-x-auto",
+    variants:{
+        variant:{
+        primary:"bg-primary text-white ",
+        secondary:"",
+        ghost:"",
+        active:"bg-[#F9F5FF] text-primary rounded-[1rem] ",
+        inactive:""
+        },
+        size:{
+         default:"w-auto",
+         lg:"",
+         md:"",
+         sm:"",
+        }   
+    },
+    defaultVariants:{
+        variant:"primary",
+        size:"default"
+    },
+    compoundVariants:[
+        {
+            variant:"primary",
+            class:""
+        },
+        {
+            variant:"secondary",
+            class:"bg-gray-200"
+        }
+    ]
+})

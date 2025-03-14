@@ -1,13 +1,21 @@
-import { lists, employeeRender } from "../../data/list";
+import { sidebarLists, employeeRender } from "../../data/list";
 import { useList } from "../../store/useListStore";
+
 const Sidebar = () => {
   const { active, setActive, employeeList, setEmployeeList, hide, setHide } =
     useList();
 
+  const handleItemClick = (id, e) => {
+    if (!e.target.closest("button")) {
+      setActive(id);
+    }
+  };
+
   const showEmployeeDropdown = (e) => {
     e.stopPropagation();
-    setHide(!hide);
+    setHide();
   };
+
   return (
     <aside className="w-[14.5rem] block p-6 border-r min-h-dvh border-border">
       <img
@@ -16,8 +24,8 @@ const Sidebar = () => {
         alt="Logo"
       />
       <ul className="space-y-3">
-        {lists.map((list) => (
-          <li onClick={() => setActive(list.id)} key={list.id}>
+        {sidebarLists.map((list) => (
+          <li onClick={(e) => handleItemClick(list.id, e)} key={list.id}>
             <div
               className={` ${
                 active === list.id ? "bg-primary text-white" : "bg-white"
@@ -27,7 +35,7 @@ const Sidebar = () => {
               <p className="flex-1">{list.value}</p>
               {list.subIcon && (
                 <button
-                  onClick={(e) => showEmployeeDropdown(e)}
+                  onClick={showEmployeeDropdown}
                   disabled={!(active === "employees")}
                   className=" hover:bg-secondary pointer-events-auto p-1 rounded-full hover:bg-opacity-55"
                 >
@@ -42,39 +50,36 @@ const Sidebar = () => {
                 </button>
               )}
             </div>
-            {hide ? (
-              <div className="">
-                {active === "employees" && list.value === "Employees" && (
-                  <ul className="space-y-2 relative mt-3 left-8">
-                    {employeeRender.map((employee) => (
-                      <li
-                        onClick={() => setEmployeeList(employee.id)}
-                        className={`${
-                          employee.id === employeeList
-                            ? "text-primary"
-                            : "text-subText"
-                        } flex gap-2 items-center text-[.75rem] `}
-                      >
-                        <input
-                          type="radio"
-                          name="employee"
-                          className="appearance-none "
-                          value={employee.value}
-                        />
-                        <div
-                          className={`${
-                            employee.id === employeeList
-                              ? "bg-primary"
-                              : "bg-subText"
-                          } size-2 rounded-full`}
-                        />
-                        <label className="">{employee.value}</label>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ) : null}
+            {hide && active === "employees" && list.value === "Employees" && (
+              <ul className="space-y-2 relative mt-3 left-8">
+                {employeeRender.map((employee) => (
+                  <li
+                    onClick={() => setEmployeeList(employee.id)}
+                    key={employee.id}
+                    className={`${
+                      employee.id === employeeList
+                        ? "text-primary"
+                        : "text-subText"
+                    } flex gap-2 items-center text-[.75rem] `}
+                  >
+                    <input
+                      type="radio"
+                      name="employee"
+                      className="appearance-none "
+                      value={employee.value}
+                    />
+                    <div
+                      className={`${
+                        employee.id === employeeList
+                          ? "bg-primary"
+                          : "bg-subText"
+                      } size-2 rounded-full`}
+                    />
+                    <label className="">{employee.value}</label>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>

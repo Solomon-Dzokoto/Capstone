@@ -1,13 +1,19 @@
-import  {create} from "zustand"
-import { devtools,persist } from "zustand/middleware"
-
+import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
 
 export const useList = create(
-    devtools(persist((set)=>({
-        active:"dashboard",
-        hide:false,
-        employeeList:"all",
-        setActive:(value)=>set({active:value}),
-        setEmployeeList:(value)=>set({active:value}),
-        setHide:()=>set(state=>({hide:!state.hide}))    
-}))))
+	persist(
+		devtools((set) => ({
+			active: "dashboard",
+			hide: false,
+			employeeList: "all",
+			setActive: (value) => set(() => ({ active: value }), false, "SET-ACTIVE"),
+			setEmployeeList: (value) =>
+				set(() => ({ employeeList: value }), false, "SET-EMPLOYEE"),
+			setHide: () => set((state) => ({ hide: !state.hide }), false, "SET-HIDE"),
+		})),
+		{
+			name: "list",
+		}
+	)
+);
