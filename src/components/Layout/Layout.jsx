@@ -3,9 +3,11 @@ import Sidebar from "../shared/Sidebar";
 import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
-    <div>
-      <Header />
-      <Sidebar />
+    <div className="">
+      <div className="flex items-start">
+        <Sidebar />
+        <Header />
+      </div>
       <main>
         <Outlet />
       </main>

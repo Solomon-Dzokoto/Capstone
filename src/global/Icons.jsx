@@ -97,7 +97,7 @@ export const User = ({ color = "#667085", className }) => {
       />
       <path
         d="M4.1297 12.727C3.73095 12.7545 3.3345 12.811 2.94415 12.8989C2.40179 13.005 1.74943 13.2273 1.51797 13.7139C1.36901 14.0256 1.36901 14.3884 1.51797 14.7009C1.74866 15.1875 2.40179 15.409 2.94415 15.5205"
-        stroke="#F5F6F7"
+        stroke={color}
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -106,7 +106,7 @@ export const User = ({ color = "#667085", className }) => {
         fill-rule="evenodd"
         clip-rule="evenodd"
         d="M9.94789 13.2477C12.6536 13.2477 14.9651 13.6571 14.9651 15.2957C14.9651 16.9334 12.6689 17.3582 9.94789 17.3582C7.24143 17.3582 4.93066 16.9487 4.93066 15.3102C4.93066 13.6716 7.22691 13.2477 9.94789 13.2477Z"
-        stroke="#F5F6F7"
+        stroke={color}
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"

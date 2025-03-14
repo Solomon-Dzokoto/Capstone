@@ -13,6 +13,7 @@ export default {
         danger:"#F15046",
         subText:"#6B788E",
         text:"#091E42",
+        border:"#EFF1F4",
         dark:"#101828",
       }
     },
