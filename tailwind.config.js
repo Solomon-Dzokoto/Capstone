@@ -11,6 +11,7 @@ export default {
         secondary:"#6A1039",
         success:"#027A48",
         danger:"#F15046",
+        brown:"#93312B",
         subText:"#6B788E",
         text:"#091E42",
         border:"#EFF1F4",

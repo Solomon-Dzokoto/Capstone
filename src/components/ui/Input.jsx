@@ -3,8 +3,8 @@ import { inputVariants } from "@/libs/tv";
 
 const Input = ({
   size,
-  choice = "prime",
-  fullWidth,
+  variant = "prime",
+  fullWidth = true,
   className,
   children,
   ...props
@@ -15,7 +15,7 @@ const Input = ({
       <input
         {...props}
         type="text"
-        className={cn(inputVariants({ size, choice, fullWidth }), className)}
+        className={cn(inputVariants({ size, variant, fullWidth }), className)}
       />
     </div>
   );
