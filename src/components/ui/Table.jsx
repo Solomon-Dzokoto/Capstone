@@ -56,7 +56,7 @@ const Table = ({ headList, dataList }) => {
         <thead>
           <tr className="bg-[#FAFBFB] border-b border-gray-200">
             <th className="w-[40px] px-4 py-3 text-left whitespace-nowrap tracking-wider text-[.85rem] font-[500]">
-              <input type="checkbox" className="rounded" />
+              <input type="checkbox" className="rounded accent-primary" />
             </th>
             {headList.map((list) => (
               <th
@@ -79,7 +79,7 @@ const Table = ({ headList, dataList }) => {
               className="border-b relative  border-gray-100 hover:bg-gray-50 transition-colors"
             >
               <td className="w-[40px] px-4 py-3">
-                <input type="checkbox" className="rounded" />
+                <input type="checkbox" className="rounded  accent-primary" />
               </td>
               <td className="px-4 py-3">
                 <div className="flex items-center gap-3">

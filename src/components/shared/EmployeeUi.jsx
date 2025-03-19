@@ -12,6 +12,7 @@ import { useState } from "react";
 import Input from "@components/ui/Input";
 import { employees } from "../../data/list";
 import Table from "@components/ui/Table";
+import Tooltip from "../ui/Tooltip";
 
 const data = [
   { id: "employee", value: "All Employees" },
@@ -22,6 +23,7 @@ const data = [
 const dataHead = ["Name", "Employee ID", "Role", "Status", "Team"];
 const EmployeeUi = () => {
   const [active, setActive] = useState("employees");
+  const [hover, setHover] = useState(false);
 
   return (
     <main>
@@ -30,10 +32,22 @@ const EmployeeUi = () => {
           <h2 className="font-bold font-[Space]  text-[1.5rem] leading-6 ">
             Employees
           </h2>
-          <Details />
+          <span
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            className="relative"
+          >
+            <Details />
+            {hover && (
+              <Tooltip>
+                <p>Manage employees activities or permission</p>
+              </Tooltip>
+            )}
+          </span>
+
           <Button
             variant="design"
-            className="text-[.7rem] bg-border "
+            className="text-[.7rem]  bg-border "
             size="sm"
           >
             100
