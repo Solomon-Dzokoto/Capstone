@@ -19,6 +19,7 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/store'),
       '@api': path.resolve(__dirname, './src/api'),
       '@global': path.resolve(__dirname, './src/global'),
+      '@pages': path.resolve(__dirname, './src/pages'),
   }
   }
 })

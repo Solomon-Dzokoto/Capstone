@@ -1,13 +1,19 @@
 import { sidebarLists, employeeRender } from "../../data/list";
 import { useList } from "../../store/useListStore";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const { active, setActive, employeeList, setEmployeeList, hide, setHide } =
     useList();
+  const navigate = useNavigate();
 
   const handleItemClick = (id, e) => {
     if (!e.target.closest("button")) {
-      setActive(id);
+      const element = sidebarLists.find((list) => list.id === id);
+      if (element.path) {
+        setActive(id);
+        navigate(element?.path);
+      }
     }
   };
 

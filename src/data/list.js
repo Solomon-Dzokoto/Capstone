@@ -8,18 +8,19 @@ import {
   ArrowDown
 } from "@/global/Icons";
 
+
 export const sidebarLists = [
-  { id: "dashboard", value: "Dashboard", icon: Home },
-  { id: "roles", value: "Roles", icon: Briefcase },
-  { id: "employees", value: "Employees", icon: User, subIcon: ArrowDown },
-  { id: "payroll", value: "Payroll", icon: Receipt },
-  { id: "report", value: "Report", icon: ChartPie },
-  { id: "setting", value: "Settings", icon: Settings },
+  { id: "dashboard", path:"/",value: "Dashboard", icon: Home },
+  { id: "roles", path:"roles",value: "Roles", icon: Briefcase },
+  { id: "employees", path:"employees",value: "Employees", icon: User, subIcon: ArrowDown },
+  { id: "payroll", path:"payroll",value: "Payroll", icon: Receipt },
+  { id: "report", path:"report",value: "Report", icon: ChartPie },
+  { id: "setting", path:"setting",value: "Settings", icon: Settings },
 ];
 
 export const employeeRender = [
-  { id: "all", value: "All Employee" },
-  { id: "recent", value: "Recent Hires" },
+  { id: "all", path:"all",value: "All Employee" },
+  { id: "recent", path:"recent",value: "Recent Hires" },
 ];
 
 
