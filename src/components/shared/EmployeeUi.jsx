@@ -24,14 +24,20 @@ const EmployeeUi = () => {
   const [active, setActive] = useState("employees");
 
   return (
-    <main className="p-8">
+    <main>
       <div className="flex justify-between">
         <div className="flex items-center gap-2">
           <h2 className="font-bold font-[Space]  text-[1.5rem] leading-6 ">
             Employees
           </h2>
           <Details />
-          <Button variant="active">100</Button>
+          <Button
+            variant="design"
+            className="text-[.7rem] bg-border "
+            size="sm"
+          >
+            100
+          </Button>
         </div>
         <div className="flex gap-4">
           <Button variant="ghost" size="md">
@@ -59,7 +65,7 @@ const EmployeeUi = () => {
           </li>
         ))}
       </ul>
-      <div className="py-1 px-4 mt-2 rounded-[7px] flex justify-between border border-border ">
+      <div className="py-1 px-4 mt-2 rounded-[7px] flex justify-between border border-border">
         <Input
           className="w-[20rem]"
           placeholder="Search Employee by name,role, ID or any related keywords"
@@ -71,15 +77,15 @@ const EmployeeUi = () => {
             <Filter />
             <p>Filter</p>
           </Button>
-          <Button className="bg-[#EFEFEF] " size="md" variant="ghost">
+          <Button className="bg-[#EFEFEF] " size="sm" variant="ghost">
             <Edit />
           </Button>
-          <Button size="md" className="py-4" variant="ghost">
+          <Button size="sm" className="py-2" variant="ghost">
             <MoreLike />
           </Button>
         </div>
       </div>
-      <div className="">
+      <div className="flex-1 min-h-0">
         <Table headList={dataHead} dataList={employees} />
       </div>
     </main>

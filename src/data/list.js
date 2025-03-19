@@ -34,6 +34,7 @@ export const employees = [
     status: "Active",
     workType: "Full time",
     teams: ["Marketing", "Design", "+1"],
+     icon: true,
   },
   {
     id: 2,
@@ -44,6 +45,8 @@ export const employees = [
     status: "Active",
     workType: "Contract",
     teams: ["Product", "Design", "+1"],
+     icon: true,
+  
   },
   {
     id: 3,
@@ -54,6 +57,8 @@ export const employees = [
     status: "Inactive",
     workType: "Associate",
     teams: ["Product"],
+     icon: true,
+
   },
   {
     id: 4,
@@ -64,6 +69,8 @@ export const employees = [
     status: "Inactive",
     workType: "Full time",
     teams: ["Engineering", "Design"],
+     icon: true,
+   
   },
   {
     id: 5,
@@ -75,6 +82,7 @@ export const employees = [
     status: "Inactive",
     workType: "Part time",
     teams: ["Product", "Design", "+3"],
+     icon: true,
   },
   {
     id: 6,
@@ -86,6 +94,7 @@ export const employees = [
         image:"/assets/profile.jpeg",
     workType: "Part time",
     teams: ["Engineering", "Design"],
+     icon: true,
   },
   {
     id: 7,
@@ -96,6 +105,7 @@ export const employees = [
     status: "Active",
     workType: "Part time",
     teams: ["Product", "Design", "+6"],
+     icon: true,
   },
   {
     id: 8,
@@ -106,6 +116,7 @@ export const employees = [
     status: "Inactive",
     workType: "Part time",
     teams: ["Product", "Design", "+4"],
+     icon: true,
   },
 ];
 

@@ -3,11 +3,13 @@ import Sidebar from "../shared/Sidebar";
 import { Outlet } from "react-router-dom";
 const Layout = () => {
   return (
-    <div className="flex items-start ">
+    <div className="flex h-screen overflow-hidden  items-start ">
       <Sidebar />
-      <main className="flex-1">
+      <main className="">
         <Header />
-        <Outlet />
+        <div className="h-[calc(100vh-68px)] flex flex-col p-8 overflow-y-auto">
+          <Outlet />
+        </div>
       </main>
     </div>
   );

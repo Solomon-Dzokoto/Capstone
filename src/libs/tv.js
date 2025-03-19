@@ -40,8 +40,10 @@ export const buttonVariant = tv({
         primary:"bg-primary text-white rounded-[.5rem]",
         secondary:"bg-secondary text-white rounded-[.5rem] ",
         ghost:"bg-white border-[#E6E7EC] border rounded-[.5rem]",
-        active:"bg-[#F9F5FF] text-success rounded-[1rem] ",
-        inactive:""
+        active:"bg-[#ECFDF3]  w-fit  px-6 text-success rounded-[1rem] ",
+        inactive:"bg-[#FFF2EA] w-fit px-6 text-danger rounded-[1rem] ",
+        design:"bg-[#F7E8EF] text-[#6A1039] rounded-[1rem] ",
+        outline:"bg-border  rounded-[1rem] px-3 text-darker"
         },
         size:{
          default:"w-auto ",

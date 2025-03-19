@@ -3,7 +3,7 @@ import { Search, Setting, Bell } from "@global/icons.jsx";
 
 const Header = () => {
   return (
-    <header className="flex border-b border-b-border flex-1 items-center justify-between py-3 px-8">
+    <header className="flex border-b border-b-border w-[95%] mx-auto flex-1 items-center justify-between py-3 px-8">
       <Input placeholder="Search for anything here">
         <Search />
       </Input>

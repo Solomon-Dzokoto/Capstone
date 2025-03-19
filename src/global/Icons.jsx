@@ -1,3 +1,4 @@
+import { cn } from "../libs/cn";
 export const Search = ({ className, color = "#667085" }) => {
   return (
     <svg
@@ -277,11 +278,14 @@ export const More = ({ color = "#667085", className }) => {
     </svg>
   );
 };
-export const Spinner = () => {
+export const Spinner = ({ className }) => {
   return (
     <svg
       aria-hidden="true"
-      className="w-6 h-6 animate-spin dark:text-primary fill-black"
+      className={cn(
+        "w-6 h-6 animate-spin dark:text-primary fill-black",
+        className
+      )}
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -310,6 +314,137 @@ export const Mark = ({ color = "#667085", className }) => {
       <path
         d="M1 4.89286C1 4.89286 2 5.54466 2.5 6.5C2.5 6.5 4 2.75 6 1.5"
         stroke={color}
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+export const Dropdown = ({ className }) => {
+  return (
+    <svg
+      width="20"
+      height="20"
+      className={className}
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.0001 10.8333C10.4603 10.8333 10.8334 10.4602 10.8334 9.99998C10.8334 9.53974 10.4603 9.16665 10.0001 9.16665C9.53984 9.16665 9.16675 9.53974 9.16675 9.99998C9.16675 10.4602 9.53984 10.8333 10.0001 10.8333Z"
+        stroke="currentColor"
+        stroke-width="1.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.0001 4.99998C10.4603 4.99998 10.8334 4.62688 10.8334 4.16665C10.8334 3.70641 10.4603 3.33331 10.0001 3.33331C9.53984 3.33331 9.16675 3.70641 9.16675 4.16665C9.16675 4.62688 9.53984 4.99998 10.0001 4.99998Z"
+        stroke="currentColor"
+        stroke-width="1.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.0001 16.6666C10.4603 16.6666 10.8334 16.2935 10.8334 15.8333C10.8334 15.3731 10.4603 15 10.0001 15C9.53984 15 9.16675 15.3731 9.16675 15.8333C9.16675 16.2935 9.53984 16.6666 10.0001 16.6666Z"
+        stroke="currentColor"
+        stroke-width="1.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+export const AddToTeam = ({ className }) => {
+  return (
+    <svg
+      width="16"
+      height="14"
+      className={className}
+      viewBox="0 0 16 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        id="Icon"
+        d="M11.3334 13V11.6667C11.3334 10.9594 11.0525 10.2811 10.5524 9.78105C10.0523 9.28095 9.37399 9 8.66675 9H3.33341C2.62617 9 1.94789 9.28095 1.4478 9.78105C0.9477 10.2811 0.666748 10.9594 0.666748 11.6667V13M15.3334 13V11.6667C15.333 11.0758 15.1363 10.5018 14.7743 10.0349C14.4123 9.56791 13.9055 9.23438 13.3334 9.08667M10.6667 1.08667C11.2404 1.23353 11.7488 1.56713 12.1118 2.03487C12.4749 2.50261 12.672 3.07789 12.672 3.67C12.672 4.26211 12.4749 4.83739 12.1118 5.30513C11.7488 5.77287 11.2404 6.10647 10.6667 6.25333M8.66675 3.66667C8.66675 5.13943 7.47284 6.33333 6.00008 6.33333C4.52732 6.33333 3.33341 5.13943 3.33341 3.66667C3.33341 2.19391 4.52732 1 6.00008 1C7.47284 1 8.66675 2.19391 8.66675 3.66667Z"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+export const ViewProfile = ({ className }) => {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M12.3334 13V11.6667C12.3334 10.9594 12.0525 10.2811 11.5524 9.78105C11.0523 9.28095 10.374 9 9.66675 9H4.33341C3.62617 9 2.94789 9.28095 2.4478 9.78105C1.9477 10.2811 1.66675 10.9594 1.66675 11.6667V13M9.66675 3.66667C9.66675 5.13943 8.47284 6.33333 7.00008 6.33333C5.52732 6.33333 4.33341 5.13943 4.33341 3.66667C4.33341 2.19391 5.52732 1 7.00008 1C8.47284 1 9.66675 2.19391 9.66675 3.66667Z"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
+export const EditUser = ({ className }) => {
+  return (
+    <svg
+      width="21"
+      height="20"
+      viewBox="0 0 21 20"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11.55 3L4.70829 10.2417C4.44996 10.5167 4.19996 11.0583 4.14996 11.4333L3.84162 14.1333C3.73329 15.1083 4.43329 15.775 5.39996 15.6083L8.08329 15.15C8.45829 15.0833 8.98329 14.8083 9.24162 14.525L16.0833 7.28334C17.2666 6.03334 17.8 4.60834 15.9583 2.86667C14.125 1.14167 12.7333 1.75 11.55 3Z"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M10.4084 4.20833C10.7668 6.50833 12.6334 8.26666 14.9501 8.49999"
+        stroke="currentColor"
+        stroke-width="1.5"
+        stroke-miterlimit="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M3 18.3333H18"
+        stroke="#D0D5DD"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-dasharray="1 3"
+      />
+    </svg>
+  );
+};
+export const Assign = ({ className }) => {
+  return (
+    <svg
+      width="16"
+      height="14"
+      viewBox="0 0 16 14"
+      className={className}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.6667 13V11.6667C10.6667 10.9594 10.3858 10.2811 9.8857 9.78105C9.3856 9.28095 8.70732 9 8.00008 9H3.33341C2.62617 9 1.94789 9.28095 1.4478 9.78105C0.9477 10.2811 0.666748 10.9594 0.666748 11.6667V13M13.3334 4.33333V8.33333M15.3334 6.33333H11.3334M8.33341 3.66667C8.33341 5.13943 7.13951 6.33333 5.66675 6.33333C4.19399 6.33333 3.00008 5.13943 3.00008 3.66667C3.00008 2.19391 4.19399 1 5.66675 1C7.13951 1 8.33341 2.19391 8.33341 3.66667Z"
+        stroke="currentColor"
         stroke-width="1.5"
         stroke-linecap="round"
         stroke-linejoin="round"
@@ -567,7 +702,7 @@ export const Avatar = ({ color = "#667085", className }) => {
     </svg>
   );
 };
-export const Filter = ({ color = "#344054", className }) => {
+export const Filter = ({ color = "currentColor", className }) => {
   return (
     <svg
       width="20"
