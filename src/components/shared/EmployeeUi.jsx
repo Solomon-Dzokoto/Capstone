@@ -81,7 +81,7 @@ const EmployeeUi = () => {
       </ul>
       <div className="py-1 px-4 mt-2 rounded-[7px] flex justify-between border border-border">
         <Input
-          className="w-[20rem]"
+          className="w-[20rem] placeholder:text-[#333333] text-[#333333] "
           placeholder="Search Employee by name,role, ID or any related keywords"
         >
           <Search />

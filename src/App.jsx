@@ -9,6 +9,7 @@ import { lazy, Suspense } from "react";
 import { Spinner } from "@/global/Icons";
 
 const Role = lazy(() => import("@components/shared/Role"));
+const RoleView = lazy(() => import("@components/shared/RoleView"));
 const NotFound = lazy(() => import("@components/pages/NotFound"));
 const App = () => {
   return (
@@ -24,7 +25,7 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<EmployeeUi />} />
             <Route path="employees" element={<EmployeeUi />} />
-            <Route path="roles" element={<Role />} />
+            <Route path="roles" element={<RoleView />} />
             <Route path="payroll" element={<Role />} />
             <Route path="report" element={<Role />} />
             <Route path="setting" element={<Role />} />
