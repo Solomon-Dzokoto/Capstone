@@ -12,11 +12,11 @@ const Role = lazy(() => import("@components/shared/Role"));
 const NotFound = lazy(() => import("@components/pages/NotFound"));
 const App = () => {
   return (
-    <div className="">
+    <div className="w-screen h-screen">
       <Suspense
         fallback={
           <div className="flex items-center justify-center h-screen">
-            <Spinner className="w-[30rem] h-[30rem] " />
+            <Spinner className="w-[20rem] h-[20rem] " />
           </div>
         }
       >
