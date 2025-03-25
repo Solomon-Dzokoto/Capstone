@@ -82,7 +82,6 @@ const Role = () => {
         ))}
       </ul>
       <div className="bg-white flex gap-8 p-8 rounded-lg border-border shadow-lg ">
-        {/* Header Section */}
         <div className=" w-auto border border-border p-4 rounded-xl min-w-[19rem] max-w-[25rem] ">
           <div className="border-b space-y-4 pb-6">
             <div className="flex items-center gap-4">
@@ -124,7 +123,6 @@ const Role = () => {
             </ul>
           </div>
 
-          {/* Contact and Role Section */}
           <div className="mt-6 space-y-4">
             <div>
               <p className="text-subText text-sm font-medium">Email</p>
@@ -161,7 +159,6 @@ const Role = () => {
           </div>
         </div>
 
-        {/* Other Detail s Section */}
         <div className=" flex-1 flex justify-between  gap-8 ">
           <div className=" space-y-4 min-w-[19.35rem]  ">
             <div className="p-4 rounded-xl border border-border">
@@ -176,7 +173,7 @@ const Role = () => {
                 <span className="font-normal text-[#091E42] ">Female</span>
               </p>
             </div>
-            {/* Teams Section */}
+
             <div className="p-4 rounded-xl  border border-border">
               <div className=" border-b border-border pb-4">
                 <h2 className="text-sm text-subText ">Teams:</h2>
@@ -190,7 +187,6 @@ const Role = () => {
                 </div>
               </div>
 
-              {/* Team Members Section */}
               <section>
                 <div className="flex items-center justify-between">
                   <h2 className="text-sm font-medium  text-[#47586E]">

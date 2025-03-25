@@ -10,14 +10,15 @@ import { Spinner } from "@/global/Icons";
 
 const Role = lazy(() => import("@components/shared/Role"));
 const RoleView = lazy(() => import("@components/shared/RoleView"));
+const RolePage = lazy(() => import("@components/shared/RolePage"));
 const NotFound = lazy(() => import("@components/pages/NotFound"));
 const App = () => {
   return (
-    <div className="w-screen h-screen">
+    <div className="">
       <Suspense
         fallback={
           <div className="flex items-center justify-center h-screen">
-            <Spinner className="w-[20rem] h-[20rem] " />
+            <Spinner className="w-[15rem] h-[15rem] " />
           </div>
         }
       >
@@ -27,7 +28,7 @@ const App = () => {
             <Route path="employees" element={<EmployeeUi />} />
             <Route path="roles" element={<RoleView />} />
             <Route path="payroll" element={<Role />} />
-            <Route path="report" element={<Role />} />
+            <Route path="report" element={<RolePage />} />
             <Route path="setting" element={<Role />} />
           </Route>
           <Route path="/auth" element={<AuthLayout />}>

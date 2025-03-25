@@ -1,35 +1,29 @@
 import React, { useState } from "react";
-import {
-  Details,
-  Download,
-  Avatar,
-  Search,
-  Filter,
-  MoreLike,
-  Edit,
-} from "@global/Icons";
+import { Details, Avatar } from "@global/Icons";
 import Button from "@components/ui/Button";
 import Tooltip from "@components/ui/Tooltip";
-import SearchFilterAndCo from "./SearchFilterAndCo";
 import PosCard from "./PosCard";
+import AllRoles from "./AllRoles";
 
 const category = [
   { id: "all", name: "All roles" },
   { id: "permission", name: "Permission" },
 ];
 
-const rolePositios = [
-  { id: "all", name: "All" },
-  { id: "product", name: "Product" },
-  { id: "engineering", name: "Engineering" },
-  { id: "recruitment", name: "Recruitment" },
-  { id: "sales", name: "Sales" },
-  { id: "customer", name: "Customer Service" },
-];
 const RoleView = () => {
   const [active, setActive] = useState("all");
-  const [activePosition, setActivePosition] = useState("general");
   const [hover, setHover] = useState(false);
+
+  const renderCurrentPage = () => {
+    switch (active) {
+      case "all":
+        return <AllRoles />;
+      case "permission":
+        return <PosCard />;
+      default:
+        return <PosCard />;
+    }
+  };
   return (
     <section>
       <div className="flex justify-between">
@@ -49,7 +43,6 @@ const RoleView = () => {
               </Tooltip>
             )}
           </span>
-
           <Button
             variant="design"
             className="text-[.7rem]  bg-border "
@@ -65,7 +58,7 @@ const RoleView = () => {
           </Button>
           <Button variant="secondary" size="md">
             <Avatar className="text-white" />
-            <p>New Employee</p>
+            <p>New Role</p>
           </Button>
         </div>
       </div>
@@ -84,32 +77,7 @@ const RoleView = () => {
           </li>
         ))}
       </ul>
-      <SearchFilterAndCo
-        inputProps={{
-          placeholder: "Search Roles by Title, Teams or any related keywords",
-        }}
-      />
-      <ul className="border-b   flex  border-border mt-4">
-        {rolePositios.map((item) => (
-          <li
-            key={item.id}
-            onClick={() => setActivePosition(item.id)}
-            className={`flex ${
-              activePosition === item.id
-                ? "text-primary  border-b-2 border-b-primary"
-                : "text-subText"
-            } items-center justify-between px-3 transition-all duration-200 cursor-pointer text-sm  py-2`}
-          >
-            <p>{item.name}</p>
-          </li>
-        ))}
-      </ul>
-      <div className="grid gap-6 mt-5 grid-cols-2">
-        <PosCard />
-        <PosCard />
-        <PosCard />
-        <PosCard />
-      </div>
+      <div className="">{renderCurrentPage()}</div>
     </section>
   );
 };
