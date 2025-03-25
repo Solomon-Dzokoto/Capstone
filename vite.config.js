@@ -20,6 +20,8 @@ export default defineConfig({
       '@api': path.resolve(__dirname, './src/api'),
       '@global': path.resolve(__dirname, './src/global'),
       '@pages': path.resolve(__dirname, './src/pages'),
+      '@data': path.resolve(__dirname, './src/data'),
+      '@contexts': path.resolve(__dirname, './src/contexts'),
   }
   }
 })

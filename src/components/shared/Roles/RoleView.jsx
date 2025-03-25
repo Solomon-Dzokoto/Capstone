@@ -4,7 +4,7 @@ import Button from "@components/ui/Button";
 import Tooltip from "@components/ui/Tooltip";
 import PosCard from "./PosCard";
 import AllRoles from "./AllRoles";
-
+import RolePermissions from "./Role-Permissions";
 const category = [
   { id: "all", name: "All roles" },
   { id: "permission", name: "Permission" },
@@ -19,7 +19,7 @@ const RoleView = () => {
       case "all":
         return <AllRoles />;
       case "permission":
-        return <PosCard />;
+        return <RolePermissions />;
       default:
         return <PosCard />;
     }

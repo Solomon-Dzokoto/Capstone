@@ -19,7 +19,7 @@ const TeamMember = ({ image, name, role }) => {
         </div>
       </div>
       <img
-        src="https://cdn.builder.io/api/v1/image/assets/329617be39ef4f628fbb3570cc8cdb15/cad233f38a7fc5dd68c3481577cda96ce2c754c7?placeholderIfAbsent=true"
+        src="/assets/pp2.png"
         alt="Divider"
         className="object-contain z-10 w-full aspect-[250] max-md:mr-2 max-md:max-w-full"
       />

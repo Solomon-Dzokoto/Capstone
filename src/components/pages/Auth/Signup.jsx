@@ -7,7 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Link } from "react-router-dom";
 import { registerUser } from "@api/auth";
 import { toast } from "sonner";
-import { Spinner } from "@/global/Icons";
+import { Spinner } from "@global/Icons";
 const Signup = () => {
   const [isChecked, setIsChecked] = useState(false);
 

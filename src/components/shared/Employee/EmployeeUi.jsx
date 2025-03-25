@@ -6,13 +6,13 @@ import {
   Filter,
   MoreLike,
   Edit,
-} from "@/global/Icons";
+} from "@global/Icons";
 import Button from "@components/ui/Button";
 import { useState } from "react";
 import Input from "@components/ui/Input";
-import { employees } from "../../data/list";
+import { employees } from "@data/list";
 import Table from "@components/ui/Table";
-import Tooltip from "../ui/Tooltip";
+import Tooltip from "@components/ui/Tooltip";
 
 const data = [
   { id: "employee", value: "All Employees" },

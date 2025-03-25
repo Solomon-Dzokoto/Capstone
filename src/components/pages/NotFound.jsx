@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
-// import Navbar from "@/components/error-page/Navbar";
 import { GhostIcon } from "@global/Icons";
 
 const notFoundPage = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* <Navbar /> */}
       <main className="relative flex flex-1 flex-col items-center justify-center px-6 py-6 text-center">
         <GhostIcon />
         <h1 className="mb-6 text-4xl font-bold">Page not found</h1>

@@ -1,7 +1,7 @@
 import Header from "../shared/Header";
 import Sidebar from "../shared/Sidebar";
 import { Outlet } from "react-router-dom";
-import { PermissionsProvider } from "../../contexts/PermissionContext";
+import { PermissionsProvider } from "@contexts/PermissionContext";
 
 const Layout = () => {
   return (

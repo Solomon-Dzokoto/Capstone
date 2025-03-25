@@ -1,5 +1,4 @@
 import Layout from "@components/Layout/Layout.jsx";
-import EmployeeUi from "@/components/shared/EmployeeUi";
 import { Routes, Route } from "react-router-dom";
 import AuthLayout from "@/components/Layout/AuthLayout";
 import Login from "@/components/pages/Auth/Login";
@@ -8,10 +7,16 @@ import { Toaster } from "sonner";
 import { lazy, Suspense } from "react";
 import { Spinner } from "@/global/Icons";
 
-const Role = lazy(() => import("@components/shared/Role"));
-const RoleView = lazy(() => import("@components/shared/RoleView"));
-const RolePage = lazy(() => import("@components/shared/RolePage"));
-const NotFound = lazy(() => import("@components/pages/NotFound"));
+const EmployeeUi = lazy(() =>
+  import("@/components/shared/Employee/EmployeeUi")
+);
+const Role = lazy(() => import("@/components/shared/Roles/Role"));
+const RoleView = lazy(() => import("@/components/shared/Roles/RoleView"));
+const RolePage = lazy(() => import("@/components/shared/Roles/RolePage"));
+const NotFound = lazy(() => import("@/components/pages/NotFound"));
+const DashboardPage = lazy(() =>
+  import("@components/shared/Dashboard/DashboardPage")
+);
 const App = () => {
   return (
     <div className="">
@@ -24,7 +29,7 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<EmployeeUi />} />
+            <Route index element={<DashboardPage />} />
             <Route path="employees" element={<EmployeeUi />} />
             <Route path="roles" element={<RoleView />} />
             <Route path="payroll" element={<Role />} />

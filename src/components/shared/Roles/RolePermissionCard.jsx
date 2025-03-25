@@ -1,6 +1,6 @@
 import React from "react";
-import ToggleSwitch from "../ui/ToggleSwitch";
-import usePermissions from "../../contexts/PermissionContext";
+import ToggleSwitch from "@components/ui/ToggleSwitch";
+import usePermissions from "@contexts/PermissionContext";
 
 const RolePermissionsCard = () => {
   const { permissions, togglePermission } = usePermissions();

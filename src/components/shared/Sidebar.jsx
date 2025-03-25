@@ -1,5 +1,5 @@
-import { sidebarLists, employeeRender } from "../../data/list";
-import { useList } from "../../store/useListStore";
+import { sidebarLists, employeeRender } from "@data/list";
+import { useList } from "@store/useListStore";
 import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
