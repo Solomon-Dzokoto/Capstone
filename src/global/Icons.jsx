@@ -244,6 +244,22 @@ export const Briefcase = ({ className }) => {
     </svg>
   );
 };
+
+export const StatusDot = ({ className }) => {
+  return (
+    <svg
+      width="8"
+      height="9"
+      className={className}
+      viewBox="0 0 8 9"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="4" cy="4.5" r="3" fill="#12B76A" />
+    </svg>
+  );
+};
+
 export const More = ({ className }) => {
   return (
     <svg
