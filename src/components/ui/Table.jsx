@@ -122,98 +122,107 @@ const Table = ({
   };
 
   return (
-    <div className="w-full mt-4 overflow-x-auto rounded-lg shadow-sm border border-gray-200">
-      <p>
-        {" "}
-        {(selectedRows && selectedRows?.length) || 0} of {data?.length} selected{" "}
-      </p>
-      <table className={cn("w-full min-w-[800px] border-collapse", className)}>
-        <thead>
-          <tr className="bg-[#FAFBFB] border-b border-gray-200">
-            {isCheck && (
-              <th className="w-[40px] px-4 py-3 text-left whitespace-nowrap tracking-wider text-[.85rem] font-[500]">
-                <input
-                  checked={
-                    selectedRows.length === data?.length && data?.length > 0
-                  }
-                  onChange={selectAll}
-                  type="checkbox"
-                  className="rounded accent-primary"
-                />
-              </th>
-            )}
-            {columns.map((column) => (
-              <th
-                className={cn(
-                  "px-4 py-3 text-left whitespace-nowrap tracking-wider text-[.85rem] font-[500] text-gray-700",
-                  column.sortable && "cursor-pointer"
-                )}
-                key={column.field}
-              >
-                <div className="flex items-center gap-1">{column.title}</div>
-              </th>
-            ))}
-            {actions.length > 0 && <th></th>}
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr
-              key={item.id}
-              className="border-b relative border-gray-100 hover:bg-gray-50 transition-colors"
-            >
+    <>
+      {isCheck && (
+        <p className="text-xs mt-4 text-text ">
+          {" "}
+          {(selectedRows && selectedRows?.length) || 0} of {data?.length}{" "}
+          selected{" "}
+        </p>
+      )}
+      <div className="w-full mt-2 overflow-x-auto rounded-lg shadow-sm border border-gray-200">
+        <table
+          className={cn("w-full min-w-[800px] border-collapse", className)}
+        >
+          <thead>
+            <tr className="bg-[#FAFBFB] border-b border-gray-200">
               {isCheck && (
-                <td className="w-[40px] px-4 py-3">
+                <th className="w-[40px] px-4 py-3 text-left whitespace-nowrap tracking-wider text-[.85rem] font-[500]">
                   <input
-                    checked={selectedRows?.includes(item.id)}
-                    onChange={() => onRowClick(item.id)}
+                    checked={
+                      selectedRows.length === data?.length && data?.length > 0
+                    }
+                    onChange={selectAll}
                     type="checkbox"
                     className="rounded accent-primary"
                   />
-                </td>
+                </th>
               )}
               {columns.map((column) => (
-                <td key={column.field} className="px-4 whitespace-nowrap py-3">
-                  {renderCell(column, item)}
-                </td>
-              ))}
-              {actions.length > 0 && (
-                <td
-                  className="relative cursor-pointer"
-                  onClick={() => {
-                    setActiveSelect(item.id);
-                    setIsOpen((prev) => activeSelect !== item.id || !prev);
-                  }}
-                >
-                  <Dropdown />
-                  {activeSelect === item.id && isOpen && (
-                    <div className="absolute top-12 right-8 w-fit rounded-md min-w-[8rem] z-10 bg-white shadow-lg p-2">
-                      <ul>
-                        {actions.map((action) => (
-                          <li
-                            key={action.id}
-                            className="flex py-2 text-[.7rem] cursor-pointer hover:bg-gray-200 items-center"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              action.onClick(item);
-                            }}
-                          >
-                            {action.icon && (
-                              <action.icon className="w-4 h-4 text-subText mr-2" />
-                            )}
-                            <span className="text-dark">{action.name}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <th
+                  className={cn(
+                    "px-4 py-3 text-left whitespace-nowrap tracking-wider text-[.85rem] font-[500] text-gray-700"
                   )}
-                </td>
-              )}
+                  key={column.field}
+                >
+                  <div className="flex items-center gap-1">{column.title}</div>
+                </th>
+              ))}
+              {actions.length > 0 && <th></th>}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {data.map((item) => (
+              <tr
+                key={item.id}
+                className="border-b relative border-gray-100 hover:bg-gray-50 transition-colors"
+              >
+                {isCheck && (
+                  <td className="w-[40px] px-4 py-3">
+                    <input
+                      checked={selectedRows?.includes(item.id)}
+                      onChange={() => onRowClick(item.id)}
+                      type="checkbox"
+                      className="rounded accent-primary"
+                    />
+                  </td>
+                )}
+                {columns.map((column) => (
+                  <td
+                    key={column.field}
+                    className="px-3 whitespace-nowrap py-3"
+                  >
+                    {renderCell(column, item)}
+                  </td>
+                ))}
+                {actions.length > 0 && (
+                  <td
+                    className="relative cursor-pointer"
+                    onClick={() => {
+                      setActiveSelect(item.id);
+                      setIsOpen((prev) => activeSelect !== item.id || !prev);
+                    }}
+                  >
+                    <Dropdown />
+                    {activeSelect === item.id && isOpen && (
+                      <div className="absolute top-12 right-8 w-fit rounded-md min-w-[8rem] z-10 bg-white shadow-lg p-2">
+                        <ul>
+                          {actions.map((action) => (
+                            <li
+                              key={action.id}
+                              className="flex py-2 text-[.7rem] cursor-pointer hover:bg-gray-200 items-center"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                action.onClick(item);
+                              }}
+                            >
+                              {action.icon && (
+                                <action.icon className="w-4 h-4 text-subText mr-2" />
+                              )}
+                              <span className="text-dark">{action.name}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </td>
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

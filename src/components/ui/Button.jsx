@@ -7,7 +7,7 @@ const Button = ({
   children,
   variant = "primary",
   size = "default",
-  asChild = false,
+  asChild,
   className,
   ...props
 }) => {

@@ -5,6 +5,9 @@ import Tooltip from "@components/ui/Tooltip";
 import PosCard from "./PosCard";
 import AllRoles from "./AllRoles";
 import RolePermissions from "./Role-Permissions";
+import { useNavigate } from "react-router-dom";
+import { useModal } from "../../../store/useModal";
+import Modal from "../../ui/Modal";
 const category = [
   { id: "all", name: "All roles" },
   { id: "permission", name: "Permission" },
@@ -13,6 +16,11 @@ const category = [
 const RoleView = () => {
   const [active, setActive] = useState("all");
   const [hover, setHover] = useState(false);
+  const { updateModal, modal } = useModal();
+
+  console.log(modal);
+
+  const navigate = useNavigate();
 
   const renderCurrentPage = () => {
     switch (active) {
@@ -24,6 +32,11 @@ const RoleView = () => {
         return <PosCard />;
     }
   };
+
+  const createRole = () => {
+    navigate("create-role");
+  };
+
   return (
     <section>
       <div className="flex justify-between">
@@ -52,11 +65,18 @@ const RoleView = () => {
           </Button>
         </div>
         <div className="flex gap-4">
-          <Button variant="ghost" size="md" className=" text-dark ">
+          <Button
+            onClick={() =>
+              updateModal({ modalState: "open", modalType: "assign-role" })
+            }
+            variant="ghost"
+            size="md"
+            className=" text-dark "
+          >
             <Avatar className="text-gray-500" />
             <p>Assign</p>
           </Button>
-          <Button variant="secondary" size="md">
+          <Button onClick={createRole} variant="secondary" size="md">
             <Avatar className="text-white" />
             <p>New Role</p>
           </Button>
@@ -78,6 +98,9 @@ const RoleView = () => {
         ))}
       </ul>
       <div className="">{renderCurrentPage()}</div>
+      {modal &&
+        modal?.modalState === "open" &&
+        modal?.modalType === "assign-role" && <Modal />}
     </section>
   );
 };

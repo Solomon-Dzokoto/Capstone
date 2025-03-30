@@ -22,7 +22,7 @@ const DashboardPage = lazy(() =>
 );
 const App = () => {
   return (
-    <div className="">
+    <div className="relative">
       <Suspense
         fallback={
           <div className="flex items-center justify-center h-screen">
@@ -34,7 +34,10 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<DashboardPage />} />
             <Route path="employees" element={<EmployeeUi />} />
-            <Route path="roles" element={<RoleView />} />
+            <Route path="roles">
+              <Route index element={<RoleView />} />
+              <Route path="create-role" element={<CreateNewRole />} />
+            </Route>
             <Route path="payroll" element={<Role />} />
             <Route path="report" element={<RolePage />} />
             <Route path="setting" element={<CreateNewRole />} />

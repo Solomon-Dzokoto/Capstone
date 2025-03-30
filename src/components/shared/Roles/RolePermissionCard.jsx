@@ -6,7 +6,7 @@ const RolePermissionsCard = () => {
   const { permissions, togglePermission } = usePermissions();
 
   return (
-    <article className="ml-5  max-md:ml-0 max-md:w-full">
+    <article className="ml-5  max-md:ml-0 md:w-1/2 ">
       <div className="h-[714px] max-md:mt-8 max-md:max-w-full">
         <div className="px-9 pt-9 max-w-full rounded-2xl border border-solid border-border w-auto max-md:pl-5">
           <h2 className="max-w-full text-xl font-black min-h-[34px] text-subText w-[216px]">

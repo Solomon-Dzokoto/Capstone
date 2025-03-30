@@ -5,8 +5,8 @@ import Button from "@components/ui/Button";
 
 const RoleDetailsCard = () => {
   return (
-    <article className="max-md:ml-0 max-w-[50%] max-md:w-auto">
-      <div className="flex flex-col gap-y-6 px-5 pt-6 w-auto rounded-2xl border border-solid border-border max-w-[538px] max-md:pl-5 max-md:max-w-auto">
+    <article className="max-md:ml-0 w-full md:max-w-1/2 max-md:w-auto">
+      <div className="flex flex-col gap-y-6 px-5 pt-6 w-auto rounded-2xl max-w-[538px] max-md:pl-5 max-md:max-w-auto">
         <div className="flex flex-wrap gap-10 max-md:mr-2 max-md:max-w-auto">
           <h2 className="flex-1 self-start mt-3.5 text-xl font-black min-h-[34px] text-dark">
             Role Details
