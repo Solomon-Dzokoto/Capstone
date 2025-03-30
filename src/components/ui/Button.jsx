@@ -1,22 +1,24 @@
 import { buttonVariant } from "@/libs/tv";
 import { cn } from "../../libs/cn";
-
+import { Slot } from "@radix-ui/react-slot";
 import React from "react";
 
 const Button = ({
   children,
   variant = "primary",
   size = "default",
+  asChild = false,
   className,
   ...props
 }) => {
+  const Comp = asChild ? Slot : "button";
   return (
-    <button
+    <Comp
       {...props}
       className={cn(buttonVariant({ variant, size }), className)}
     >
       {children}
-    </button>
+    </Comp>
   );
 };
 

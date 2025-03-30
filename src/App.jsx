@@ -13,6 +13,9 @@ const EmployeeUi = lazy(() =>
 const Role = lazy(() => import("@/components/shared/Roles/Role"));
 const RoleView = lazy(() => import("@/components/shared/Roles/RoleView"));
 const RolePage = lazy(() => import("@/components/shared/Roles/RolePage"));
+const CreateNewRole = lazy(() =>
+  import("@/components/shared/Roles/CreateNewRole")
+);
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
 const DashboardPage = lazy(() =>
   import("@components/shared/Dashboard/DashboardPage")
@@ -34,7 +37,7 @@ const App = () => {
             <Route path="roles" element={<RoleView />} />
             <Route path="payroll" element={<Role />} />
             <Route path="report" element={<RolePage />} />
-            <Route path="setting" element={<Role />} />
+            <Route path="setting" element={<CreateNewRole />} />
           </Route>
           <Route path="/auth" element={<AuthLayout />}>
             <Route path="login" element={<Login />} />

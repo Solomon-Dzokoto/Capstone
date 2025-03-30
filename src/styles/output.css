@@ -1337,6 +1337,14 @@ video {
   min-width: 48rem;
 }
 
+.min-w-\[600px\] {
+  min-width: 600px;
+}
+
+.min-w-full {
+  min-width: 100%;
+}
+
 .max-w-\[200px\] {
   max-width: 200px;
 }
@@ -1383,6 +1391,14 @@ video {
 
 .max-w-\[52\.9rem\] {
   max-width: 52.9rem;
+}
+
+.max-w-\[600px\] {
+  max-width: 600px;
+}
+
+.max-w-\[724px\] {
+  max-width: 724px;
 }
 
 .flex-1 {

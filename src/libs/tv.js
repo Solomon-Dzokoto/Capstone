@@ -67,3 +67,24 @@ export const buttonVariant = tv({
         }
     ]
 })
+
+
+export const SelectVariants = tv({
+  base: "z-40 px-2 flex items-center gap-2 justify-between rounded-[.5rem] border border-general-border hover:border-primary bg-white text-[.75rem] transition-colors",
+  variants: {
+    variant: {
+      default: " w-auto",
+    },
+    size: {
+      lg: " min-w-[13rem] h-[2.5rem]",
+      md: " min-w-[5rem] h-[2.1rem]",
+      sm: "w-[3.8rem] h-[2rem]",
+      xl: "min-w-[15.7rem] text-[1rem]  h-[2.7rem]",
+      custom: "",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+    size: "xl",
+  },
+});
