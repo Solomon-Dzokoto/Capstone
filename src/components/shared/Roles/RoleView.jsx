@@ -7,7 +7,6 @@ import AllRoles from "./AllRoles";
 import RolePermissions from "./Role-Permissions";
 import { useNavigate } from "react-router-dom";
 import { useModal } from "../../../store/useModal";
-import Modal from "../../ui/Modal";
 const category = [
   { id: "all", name: "All roles" },
   { id: "permission", name: "Permission" },
@@ -67,7 +66,7 @@ const RoleView = () => {
         <div className="flex gap-4">
           <Button
             onClick={() =>
-              updateModal({ modalState: "open", modalType: "assign-role" })
+              updateModal({ modalState: "open", modalType: "assign-new-role" })
             }
             variant="ghost"
             size="md"
@@ -98,9 +97,6 @@ const RoleView = () => {
         ))}
       </ul>
       <div className="">{renderCurrentPage()}</div>
-      {modal &&
-        modal?.modalState === "open" &&
-        modal?.modalType === "assign-role" && <Modal />}
     </section>
   );
 };

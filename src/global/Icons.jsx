@@ -69,6 +69,26 @@ export const Search = ({ className }) => {
     </svg>
   );
 };
+export const MarkIcon = ({ className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="10"
+      className={className}
+      height="10"
+      viewBox="0 0 10 10"
+      fill="none"
+    >
+      <path
+        d="M8.33332 2.5L3.74999 7.08333L1.66666 5"
+        stroke="currentColor"
+        stroke-width="1.66667"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+  );
+};
 
 export const Setting = ({ className }) => {
   return (

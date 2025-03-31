@@ -4,33 +4,27 @@ import LeaveBalance from "./LeaveBalance";
 import AttendanceSummary from "./AttendanceSummary";
 
 const DashboardSideComp = () => {
-  return (
-    <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-        rel="stylesheet"
-      />
-      <main className="w-[346px] max-sm:w-full">
-        <section>
-          <header className="flex justify-between items-center px-3.5 py-8">
-            <h1 className="text-base font-bold text-black">Schedule</h1>
-            <button className="text-sm text-zinc-500">View all</button>
-          </header>
-          <div className="flex flex-col gap-3.5 px-3.5 py-0">
-            <ScheduleCard />
-            <ScheduleCard />
-          </div>
-        </section>
+	return (
+		<div className="space-y-6">
+			<section>
+				<header className="flex justify-between items-center px-4 py-6">
+					<h2 className="text-base font-bold text-dark">Schedule</h2>
+					<button className="text-sm text-subText hover:text-dark transition-colors">
+						View all
+					</button>
+				</header>
+				<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+					<ScheduleCard />
+					<ScheduleCard />
+				</div>
+			</section>
 
-        <LeaveBalance />
-        <AttendanceSummary />
-
-        <section className="px-5 py-6 pb-8 mt-8 text-base font-bold text-black rounded-xl border border-solid border-zinc-100">
-          <h2>Last Payslip</h2>
-        </section>
-      </main>
-    </>
-  );
+			<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
+				<LeaveBalance />
+				<AttendanceSummary />
+			</div>
+		</div>
+	);
 };
 
 export default DashboardSideComp;

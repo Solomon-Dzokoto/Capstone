@@ -1,25 +1,29 @@
 import { More } from "@global/Icons";
 
 const ScheduleCard = () => {
-  return (
-    <article className="flex flex-col px-6 pt-3 pb-6 rounded-lg border border-gray-200 border-solid bg-zinc-50">
-      <header className="flex justify-between items-center mb-3">
-        <time className="text-xs text-zinc-500">Tomorrow</time>
-        <button aria-label="More options">
-          <More />
-        </button>
-      </header>
-      <div className="flex flex-col gap-3">
-        <time className="text-base font-bold text-black">
-          08:00 AM - 04:00 PM
-        </time>
-        <div className="flex gap-2 items-center">
-          <div className="bg-blue-50 rounded-3xl h-[21px] w-[21px]" />
-          <span className="text-xs text-zinc-400">HEAD OFFICE</span>
-        </div>
-      </div>
-    </article>
-  );
+	return (
+		<div className="bg-white p-4 md:p-6 rounded-lg border border-border hover:shadow-sm transition-shadow">
+			<header className="flex justify-between items-center mb-4">
+				<time className="text-xs text-subText">Tomorrow</time>
+				<button
+					className="p-1 hover:bg-gray-100 rounded-full transition-colors"
+					aria-label="More options"
+				>
+					<More className="w-4 h-4" />
+				</button>
+			</header>
+
+			<div className="space-y-4">
+				<time className="block text-base font-bold text-dark">
+					08:00 AM - 04:00 PM
+				</time>
+				<div className="flex items-center gap-2">
+					<div className="w-5 h-5 rounded-full bg-blue-50" />
+					<span className="text-xs text-subText">HEAD OFFICE</span>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default ScheduleCard;

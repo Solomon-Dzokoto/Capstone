@@ -1,23 +1,42 @@
-import Input from "@components/ui/Input.jsx";
-import { Search, Setting, Bell } from "@global/icons.jsx";
+import { Search, Search as Menu } from "@global/Icons";
+import Input from "../ui/Input";
+import { useUserDetail } from "../../store/useUserDetails";
 
-const Header = () => {
-  return (
-    <header className="flex border-b border-b-border px-4 mx-auto  items-center justify-between py-3">
-      <Input placeholder="Search for anything here">
-        <Search />
-      </Input>
-      <div className="flex items-center  gap-4">
-        <Setting />
-        <Bell />
-        <img
-          className="size-8 rounded-full"
-          src="/assets/profile.jpeg"
-          alt="profile pic"
-        />
-      </div>
-    </header>
-  );
+const Header = ({ onMenuClick }) => {
+	const user = useUserDetail((state) => state?.user);
+
+	return (
+		<header className="flex items-center justify-between px-4 md:px-6 py-4 bg-white border-b border-border h-[68px]">
+			<div className="flex items-center gap-4">
+				<button
+					onClick={onMenuClick}
+					className="p-2 hover:bg-gray-100 rounded-lg block"
+				>
+					<Menu className="w-6 h-6" />
+				</button>
+				<div className="hidden md:block">
+					<Input
+						className="w-[20rem] placeholder:text-[#333333] text-[#333333]"
+						placeholder="Search for anything..."
+					>
+						<Search />
+					</Input>
+				</div>
+			</div>
+
+			<div className="flex items-center gap-3">
+				<div className="flex flex-col items-end">
+					<p className="text-dark font-medium text-sm">James Campion</p>
+					<p className="text-subText text-xs">Admin</p>
+				</div>
+				<img
+					src="/assets/profile.jpeg"
+					alt="profile"
+					className="w-10 h-10 rounded-full object-cover"
+				/>
+			</div>
+		</header>
+	);
 };
 
 export default Header;

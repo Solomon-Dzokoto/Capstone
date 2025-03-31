@@ -1,96 +1,89 @@
-import { sidebarLists, employeeRender } from "@data/list";
-import { useList } from "@store/useListStore";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import {
+	Avatar,
+	Dashboard,
+	Employee,
+	RoleIcon,
+	Payroll,
+	Report,
+	Setting,
+	Menu,
+} from "@global/Icons";
 
-const Sidebar = () => {
-  const { active, setActive, employeeList, setEmployeeList, hide, setHide } =
-    useList();
-  const navigate = useNavigate();
+const navigation = [
+	{ name: "Dashboard", to: "/", Icon: Dashboard },
+	{ name: "Employee", to: "/employees", Icon: Employee },
+	{ name: "Roles", to: "/roles", Icon: RoleIcon },
+	{ name: "Payroll", to: "/payroll", Icon: Payroll },
+	{ name: "Report", to: "/report", Icon: Report },
+	{ name: "Settings", to: "/setting", Icon: Setting },
+];
 
-  const handleItemClick = (id, e) => {
-    if (!e.target.closest("button")) {
-      const element = sidebarLists.find((list) => list.id === id);
-      if (element.path) {
-        setActive(id);
-        navigate(element?.path);
-      }
-    }
-  };
+const Sidebar = ({ isOpen, onToggle }) => {
+	const { pathname } = useLocation();
 
-  const showEmployeeDropdown = (e) => {
-    e.stopPropagation();
-    setHide();
-  };
-
-  return (
-    <aside className="w-[14.5rem] block p-6 border-r min-h-dvh border-border">
-      <img
-        className="w-auto min-w-[11.5rem] mb-8"
-        src="/assets/Logo (1).png"
-        alt="Logo"
-      />
-      <ul className="space-y-3">
-        {sidebarLists.map((list) => (
-          <li onClick={(e) => handleItemClick(list.id, e)} key={list.id}>
-            <div
-              className={` ${
-                active === list.id ? "bg-primary text-white" : "bg-white"
-              } flex py-2 px-4 rounded-[2rem] cursor-pointer items-center gap-3 text-text`}
-            >
-              <list.icon color={active === list.id ? "white" : "#091E42"} />
-              <p className="flex-1">{list.value}</p>
-              {list.subIcon && (
-                <button
-                  onClick={showEmployeeDropdown}
-                  disabled={!(active === "employees")}
-                  className=" hover:bg-secondary pointer-events-auto p-1 rounded-full hover:bg-opacity-55"
-                >
-                  <list.subIcon
-                    className={
-                      hide
-                        ? "transition-rotate duration-200 "
-                        : "transition-rotate -rotate-90 duration-200"
-                    }
-                    color={active === list.id ? "white" : "#091E42"}
-                  />
-                </button>
-              )}
-            </div>
-            {hide && active === "employees" && list.value === "Employees" && (
-              <ul className="space-y-2 relative mt-3 left-8">
-                {employeeRender.map((employee) => (
-                  <li
-                    onClick={() => setEmployeeList(employee.id)}
-                    key={employee.id}
-                    className={`${
-                      employee.id === employeeList
-                        ? "text-primary"
-                        : "text-subText"
-                    } flex gap-2 items-center text-[.75rem] `}
-                  >
-                    <input
-                      type="radio"
-                      name="employee"
-                      className="appearance-none "
-                      value={employee.value}
-                    />
-                    <div
-                      className={`${
-                        employee.id === employeeList
-                          ? "bg-primary"
-                          : "bg-subText"
-                      } size-2 rounded-full`}
-                    />
-                    <label className="">{employee.value}</label>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </li>
-        ))}
-      </ul>
-    </aside>
-  );
+	return (
+		<aside
+			className={`fixed md:relative h-screen bg-white border-r border-border transition-all duration-300 z-50 ${
+				isOpen ? "w-60" : "w-0 md:w-20"
+			}`}
+		>
+			<div className="flex items-center justify-between p-4">
+				<div
+					className={`flex items-center gap-2 ${
+						!isOpen && "md:justify-center"
+					}`}
+				>
+					<img
+						src="/assets/Logo (1).png"
+						alt="logo"
+						className="w-8 h-8 object-contain"
+					/>
+					<h1
+						className={`text-lg font-bold transition-opacity duration-200 ${
+							!isOpen ? "opacity-0 hidden md:hidden" : "opacity-100"
+						}`}
+					>
+						Afrima
+					</h1>
+				</div>
+				<button
+					onClick={onToggle}
+					className="p-2 hover:bg-gray-100 rounded-lg md:hidden"
+				>
+					<Menu className="w-6 h-6" />
+				</button>
+			</div>
+			<nav className="mt-8">
+				<ul className="space-y-2 px-3">
+					{navigation.map(({ name, to }) => (
+						<li key={name}>
+							<Link
+								to={to}
+								className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
+									pathname === to
+										? "bg-primary/10 text-primary"
+										: "text-subText hover:bg-gray-50"
+								}`}
+							>
+								<Icon
+									className={`w-5 h-5 ${pathname === to ? "text-primary" : ""}`}
+								/>
+								<span
+									className={`transition-opacity duration-200 ${
+										!isOpen ? "opacity-0 hidden md:hidden" : "opacity-100"
+									}`}
+								>
+									{name}
+								</span>
+							</Link>
+						</li>
+					))}
+				</ul>
+			</nav>
+		</aside>
+	);
 };
 
 export default Sidebar;

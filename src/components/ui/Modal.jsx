@@ -20,11 +20,10 @@ const data = [
   { id: 7, name: "Quality Assurance" },
 ];
 
-const Modal = () => {
+const Modal = ({ user = {} }) => {
   const [search, setSearch] = useState("");
   const [roles, setRoles] = useState([]);
   const [addedRoles, setAddedRoles] = useState([]);
-  //   const divRef = useRef(null);
 
   const updateModal = useModal((state) => state.updateModal);
 
@@ -59,12 +58,10 @@ const Modal = () => {
   const removeBadge = (name) => {
     setAddedRoles((prevRoles) => prevRoles.filter((role) => role !== name));
   };
+
   return (
-    <div className=" fixed inset-0 grid place-content-center backdrop-blur-sm bg-black/60 ">
-      <div
-        // ref={divRef}
-        className="px-10  py-6 rounded-2xl relative  space-y-8 bg-white w-full md:w-[30rem] "
-      >
+    <div className="fixed inset-0 grid place-content-center z-30 backdrop-blur-sm bg-black/60">
+      <div className="px-10 py-6 rounded-2xl relative space-y-8 bg-white w-full md:w-[30rem]">
         <button
           onClick={(e) => {
             e.stopPropagation();
@@ -79,7 +76,12 @@ const Modal = () => {
         </span>
         <div className=" relative ">
           <h2 className="text-xl mb-4 font-semibold ">Assign a role</h2>
-          <p className="text-subText mb-4 ">Select a role to assign to </p>
+          <p className="text-subText flex mb-4 items-center gap-1 ">
+            Select a role to assign to{" "}
+            {user && (
+              <Badge key={user?.name} name={user?.name} onRemove={() => {}} />
+            )}
+          </p>
           <div className=" relative border border-border p-2 rounded-2xl ">
             <div className="justify-between text-gray flex items-center">
               <Search className="text-gray-500" />
@@ -99,7 +101,7 @@ const Modal = () => {
                   <Badge
                     key={name}
                     name={name}
-                    onClick={() => removeBadge(name)}
+                    onRemove={() => removeBadge(name)}
                   />
                 ))}
             </div>
