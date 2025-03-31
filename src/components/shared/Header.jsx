@@ -1,18 +1,18 @@
-import { Search, Search as Menu } from "@global/Icons";
+import { Search, ToggleIcon } from "@global/Icons";
 import Input from "../ui/Input";
-import { useUserDetail } from "../../store/useUserDetails";
+// import { useUserDetail } from "../../store/useUserDetails";
 
 const Header = ({ onMenuClick }) => {
-	const user = useUserDetail((state) => state?.user);
+	// const user = useUserDetail((state) => state?.user);
 
 	return (
-		<header className="flex items-center justify-between px-4 md:px-6 py-4 bg-white border-b border-border h-[68px]">
+		<header className="flex items-center justify-between w-auto  px-4 md:px-6 py-4 bg-white border-b border-border h-[68px]">
 			<div className="flex items-center gap-4">
 				<button
 					onClick={onMenuClick}
-					className="p-2 hover:bg-gray-100 rounded-lg block"
+					className="p-2 hidden md:block hover:bg-gray-100 rounded-lg"
 				>
-					<Menu className="w-6 h-6" />
+					<ToggleIcon className="size-4" />
 				</button>
 				<div className="hidden md:block">
 					<Input

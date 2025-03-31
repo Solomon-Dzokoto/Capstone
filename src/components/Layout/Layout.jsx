@@ -14,7 +14,7 @@ const Layout = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
 	return (
-		<div className="flex h-screen w-screen relative items-start">
+		<div className="flex h-screen overflow-hidden">
 			{modal?.modalState === "open" && modal?.modalType === "assign-role" && (
 				<Modal user={user} />
 			)}
@@ -22,7 +22,7 @@ const Layout = () => {
 				modal?.modalType === "assign-new-role" && <AssignNewRoleModal />}
 			<PermissionsProvider>
 				<div
-					className={`transition-all duration-300 ${
+					className={`flex-shrink-0 transition-all duration-300 ${
 						isSidebarOpen ? "w-60" : "w-0 md:w-20"
 					}`}
 				>
@@ -31,13 +31,9 @@ const Layout = () => {
 						onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
 					/>
 				</div>
-				<main
-					className={`flex-1 transition-all duration-300 ${
-						isSidebarOpen ? "md:ml-0" : "md:ml-0"
-					}`}
-				>
+				<main className="flex-1 flex flex-col min-w-0">
 					<Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
-					<div className="h-[calc(100vh-68px)] flex flex-col px-4 md:px-6 py-4 overflow-y-auto">
+					<div className="flex-1 overflow-y-auto">
 						<Outlet />
 					</div>
 				</main>

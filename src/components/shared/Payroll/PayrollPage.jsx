@@ -5,6 +5,7 @@ import Input from "@components/ui/Input";
 import Table from "@components/ui/Table";
 import Tooltip from "@components/ui/Tooltip";
 import { payrollData } from "@/data/payrollData";
+import { useNavigate } from "react-router-dom";
 
 const columns = [
 	{
@@ -56,9 +57,10 @@ const payrollCategories = [
 ];
 
 const PayrollPage = () => {
+	const navigate = useNavigate();
 	const [active, setActive] = useState("all");
 	const [hover, setHover] = useState(false);
-	const [searchQuery, setSearchQuery] = useState("");
+	const [search, setSearch] = useState("");
 
 	const filteredData = payrollData.filter((employee) => {
 		if (active === "pending") {
@@ -67,11 +69,11 @@ const PayrollPage = () => {
 		if (active === "processed") {
 			return employee.status.toLowerCase() === "active";
 		}
-		if (searchQuery) {
+		if (search) {
 			return (
-				employee.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				employee.employeeId.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				employee.email.toLowerCase().includes(searchQuery.toLowerCase())
+				employee.name.toLowerCase().includes(search.toLowerCase()) ||
+				employee.employeeId.toLowerCase().includes(search.toLowerCase()) ||
+				employee.email.toLowerCase().includes(search.toLowerCase())
 			);
 		}
 		return true;
@@ -119,7 +121,7 @@ const PayrollPage = () => {
 								item.id === active
 									? "border-b-2 px-1 pb-4 text-primary border-b-primary"
 									: "text-text"
-							} cursor-pointer font-mono font-medium text-[.9rem] tracking-wider whitespace-nowrap`}
+							} cursor-pointer  font-medium text-[.9rem] tracking-wider whitespace-nowrap`}
 						>
 							{item.value}
 						</li>
@@ -131,8 +133,8 @@ const PayrollPage = () => {
 				<Input
 					className="w-full sm:w-[20rem] placeholder:text-[#333333] text-[#333333]"
 					placeholder="Search payroll by employee name, ID or any related keywords"
-					value={searchQuery}
-					onChange={(e) => setSearchQuery(e.target.value)}
+					value={search}
+					onChange={(e) => setSearch(e.target.value)}
 				>
 					<Search />
 				</Input>
@@ -153,16 +155,15 @@ const PayrollPage = () => {
 							{
 								id: 1,
 								name: "View Details",
-								onClick: (employee) => console.log("View Details:", employee),
+								onClick: (employee) => navigate(`${employee.id}`),
 							},
 							{
 								id: 2,
 								name: "Process Payment",
-								onClick: (employee) =>
-									console.log("Process Payment:", employee),
+								onClick: (employee) => navigate(`${employee.id}/process`),
 							},
 						]}
-						onRowClick={(payroll) => console.log("Row clicked:", payroll)}
+						onRowClick={(payroll) => navigate(`${payroll.id}`)}
 					/>
 				</div>
 			</div>

@@ -1,4 +1,10 @@
-import { ArrowLeft, Details, Edit, MoreLike } from "@global/Icons";
+import {
+	ArrowLeft,
+	Details,
+	Edit,
+	MoreLike,
+	ProfileAvatar,
+} from "@global/Icons";
 import Button from "@components/ui/Button";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
@@ -63,10 +69,9 @@ const EmployeeDetailsPage = () => {
 					</span>
 				</div>
 				<div className="flex items-center gap-2">
-					<Button variant="ghost" className="py-2 text-sm rounded-lg">
-						<Edit className="text-subText" />
-						Sales specialist
-						<Details className="text-subText" />
+					<Button variant="ghost" className="flex items-center gap-2">
+						<ProfileAvatar className="w-4 h-4" />
+						<span>Profile</span>
 					</Button>
 					<Button
 						variant="ghost"
