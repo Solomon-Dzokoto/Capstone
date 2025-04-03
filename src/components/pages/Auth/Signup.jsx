@@ -37,23 +37,23 @@ const Signup = () => {
 
 	const signupUser = async (data) => {
 		console.log("FormData", data);
-		const { fullName, password, username, confirmPassword, email } = data;
+		const { fullName, password, username, email } = data;
 		const capitilize = fullName
 			.split(" ")
 			.map((name) => name.charAt(0).toUpperCase() + name.slice(1))
 			.join(" ")
 			.split(" ");
 		const firstName = capitilize[0];
-		const lastName = capitilize[2];
+		const lastName = capitilize[1];
 		const req = {
-			firstName,
-			lastName,
-			email,
-			password,
-			confirmPassword,
 			username,
+			password,
+			email,
+			first_name: firstName,
+			last_name: lastName,
 		};
 		console.log(capitilize);
+		console.log(req);
 		// await new Promise((resolve) => setTimeout(resolve, 5000));
 		await registerUser(req);
 		reset();

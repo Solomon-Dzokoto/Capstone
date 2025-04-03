@@ -8,13 +8,12 @@ import { Link } from "react-router-dom";
 import { loginUser } from "@api/auth";
 import { toast } from "sonner";
 import Spinner from "@components/ui/Spinner";
-import { resolve } from "path";
 
 const Login = () => {
 	const [isChecked, setIsChecked] = useState(false);
 
 	const schema = yup.object().shape({
-		userName: yup.string().required("Username is required"),
+		username: yup.string().required("Username is required"),
 		password: yup
 			.string()
 			.min(6, "Password must be minimum of 6")
@@ -28,14 +27,15 @@ const Login = () => {
 		formState: { errors, isSubmitting },
 	} = useForm({
 		resolver: yupResolver(schema),
-		mode: "onBlur",
+		mode: "onChange",
 	});
 	console.log(errors);
 
 	const onSubmit = async (data) => {
 		console.log("FormData", data);
-		await Promise((resolve) => setTimeout(resolve, 5000));
-		await loginUser(data);
+
+		const data1 = await loginUser(data);
+		console.log("Res fro the backend", data1);
 		reset();
 		toast.success("Login Successfully");
 	};
@@ -50,9 +50,9 @@ const Login = () => {
 				</h1>
 				<InputWithLabel
 					placeholder="eg. MaaHMooD"
-					label="UserName"
-					{...register("userName")}
-					name="userName"
+					label="Username"
+					{...register("username")}
+					name="username"
 					type="text"
 				/>
 				{errors && (

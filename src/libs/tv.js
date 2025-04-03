@@ -1,11 +1,14 @@
 import { tv } from "tailwind-variants";
 
 export const inputVariants = tv({
-	base: "px-2 rounded-md focus:outline-none placeholder:text-[inherit] placeholder:w-full",
+	base: "px-2 rounded-md focus:outline-none focus:outline-none placeholder:text-[inherit] placeholder:w-full",
 	variants: {
 		variant: {
-			prime: "w-full focus:border-transparent",
-			sub: "border-red-500",
+			prime:
+				"w-full focus:border-transparent placeholder:text-subText dark:placeholder:text-dark-subtext",
+			sub: "border-red-500 w-full  text-sm border rounded-lg  focus:border-primary dark:focus:border-dark-primary",
+			ghost:
+				"bg-white dark:bg-dark-surface text-text dark:text-dark-text border-border dark:border-dark-borde",
 		},
 		size: {
 			sm: "text-sm py-1",
@@ -34,17 +37,25 @@ export const inputVariants = tv({
 });
 
 export const buttonVariant = tv({
-	base: "flex transform py-[0.2rem] gap-2 items-center px-2 item-center cursor-pointer justify-center translate-x-auto",
+	base: "flex transform py-[0.2rem] gap-2 items-center px-2 item-center cursor-pointer justify-center rounded-lg translate-x-auto",
 	variants: {
 		variant: {
-			primary: "bg-primary text-white rounded-[.5rem]",
-			secondary: "bg-secondary text-white rounded-[.5rem] ",
-			ghost: "bg-white border-[#E6E7EC] border rounded-[.5rem]",
-			active: "bg-[#ECFDF3]  w-fit  px-6 text-success rounded-[1rem] ",
-			pending: "bg-yellow-500/10  w-fit  px-6 text-yellow-500 rounded-[1rem] ",
-			inactive: "bg-[#FFF2EA] w-fit px-6 text-danger rounded-[1rem] ",
-			design: "bg-[#F7E8EF] text-[#6A1039] rounded-[1rem] ",
-			outline: "bg-border  rounded-[1rem] px-3 text-darker",
+			primary:
+				"bg-primary text-white dark:bg-dark-primary dark:text-dark-text hover:bg-primary/90 dark:hover:bg-dark-primary/90",
+			secondary:
+				"bg-secondary text-white dark:bg-dark-secondary dark:text-dark-text hover:bg-secondary/90 dark:hover:bg-dark-secondary/90",
+			outline:
+				"border border-border dark:border-dark-border text-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-hover",
+			ghost:
+				"text-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-hover",
+			active:
+				"bg-success/10 rounded-2xl text-success dark:bg-dark-success/10 dark:text-dark-success",
+			inactive:
+				"bg-danger/10 rounded-2xl text-danger dark:bg-dark-danger/10 dark:text-dark-danger",
+			pending:
+				"bg-secondary/10 rounded-2xl text-secondary dark:bg-dark-secondary/10 dark:text-dark-secondary",
+			design:
+				"bg-tertiary/10 rounded-2xl text-tertiary dark:bg-dark-accent/10 dark:text-dark-accent",
 		},
 		size: {
 			default: "w-auto ",
@@ -70,7 +81,7 @@ export const buttonVariant = tv({
 });
 
 export const SelectVariants = tv({
-	base: "z-40 px-2 flex items-center gap-2 justify-between rounded-[.5rem] border border-general-border hover:border-primary bg-white text-[.75rem] transition-colors",
+	base: "z-40 px-2 flex items-center dark:bg-dark-surface gap-2 justify-between rounded-[.5rem] border border-general-border hover:border-primary bg-white text-[.75rem] transition-colors",
 	variants: {
 		variant: {
 			default: " w-auto",

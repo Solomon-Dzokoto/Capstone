@@ -49,7 +49,7 @@ const RolePermissions = () => {
 				</p>
 			</div>
 			<hr className="text-subText my-4 sm:my-6" />
-			<div className="border border-border rounded-2xl">
+			<div className="border dark:border-dark-border dark:bg-dark-hover border-border rounded-2xl">
 				<h2 className="text-base sm:text-lg p-3 sm:p-4 font-semibold text-text">
 					Set permissions
 				</h2>
@@ -72,7 +72,7 @@ const RolePermissions = () => {
 						</li>
 					))}
 				</ul>
-				<article className="py-4 sm:py-7 px-3 sm:px-5 m-3 sm:m-6 border border-border rounded-2xl">
+				<article className="py-4 sm:py-7 dark:border-dark-border dark:bg-dark-surface px-3 sm:px-5 m-3 sm:m-6 border border-border rounded-2xl">
 					<div className="flex flex-wrap justify-between gap-4">
 						<h2 className="text-sm sm:text-base">Manager Access</h2>
 						<div className="flex gap-2">
@@ -124,7 +124,7 @@ const RolePermissions = () => {
 						/>
 					</div>
 				</article>
-				<article className="py-4 sm:py-7 px-3 sm:px-5 m-3 sm:m-6 border border-border rounded-2xl">
+				<article className="py-4 sm:py-7 dark:border-dark-border dark:bg-dark-surface  px-3 sm:px-5 m-3 sm:m-6 border border-border rounded-2xl">
 					<div className="flex flex-wrap justify-between gap-4">
 						<h2 className="text-sm sm:text-base">Employee Access</h2>
 						<div className="flex gap-2">
@@ -149,7 +149,7 @@ const RolePermissions = () => {
 						</div>
 					</div>
 
-					<div className="grid gap-x-2 gap-y-4 grid-cols-1 md:grid-cols-2 mt-4">
+					<div className="grid gap-x-2  gap-y-4 grid-cols-1 md:grid-cols-2 mt-4">
 						<ToggleSwitch
 							enabled={toggles["employee-create-job"]}
 							onToggle={() => toggle("employee-create-job")}

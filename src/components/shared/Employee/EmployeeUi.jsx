@@ -173,7 +173,7 @@ const EmployeeUi = () => {
 						className={` ${
 							item.id === active
 								? "border-b-2 px-1 pb-4 text-primary border-b-primary"
-								: "text-text"
+								: "text-text dark:text-gray-500"
 						} cursor-pointer  font-medium text-[.9rem] tracking-wider `}
 						key={item?.id}
 					>
@@ -181,7 +181,7 @@ const EmployeeUi = () => {
 					</li>
 				))}
 			</ul>
-			<div className="py-1 px-4 mt-2 rounded-[7px] flex justify-between border border-border">
+			<div className="py-1 px-4 mt-2 rounded-[7px] flex justify-between border mb-8 dark:bg-dark-surface dark:border-dark-border border-border">
 				<Input
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}

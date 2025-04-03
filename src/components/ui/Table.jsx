@@ -79,25 +79,30 @@ const Table = ({
 	};
 
 	return (
-		<div className={cn("w-full bg-white overflow-hidden", className)}>
+		<div
+			className={cn(
+				"w-full bg-white dark:bg-dark-surface rounded-lg overflow-hidden",
+				className
+			)}
+		>
 			<div className="w-full overflow-x-auto">
 				<table className="w-full border-collapse">
 					<thead>
-						<tr className="border-b border-border">
+						<tr className="border-b border-border dark:border-dark-border">
 							{isCheck && (
 								<th className="pl-4 pr-2 py-3">
 									<input
 										type="checkbox"
 										checked={selectedRows.length === data?.length}
 										onChange={selectAll}
-										className="accent-primary"
+										className="accent-primary dark:accent-dark-primary"
 									/>
 								</th>
 							)}
 							{columns.map((column) => (
 								<th
 									key={column.field}
-									className="px-3 py-3 text-left text-xs font-medium text-subText"
+									className="px-3 py-3 text-left text-xs font-medium text-subText dark:text-dark-subtext"
 								>
 									{column.title}
 								</th>
@@ -109,7 +114,7 @@ const Table = ({
 						{data?.map((item) => (
 							<tr
 								key={item.id}
-								className="border-b border-border hover:bg-gray-50"
+								className="border-b border-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-dark-hover"
 							>
 								{isCheck && (
 									<td className="pl-4 pr-2 py-3">
@@ -117,14 +122,14 @@ const Table = ({
 											type="checkbox"
 											checked={selectedRows.includes(item.id)}
 											onChange={() => onRowClick(item.id)}
-											className="accent-primary"
+											className="accent-primary dark:accent-dark-primary"
 										/>
 									</td>
 								)}
 								{columns.map((column) => (
 									<td
 										key={column.field}
-										className="px-3 whitespace-nowrap py-3 text-sm"
+										className="px-3 whitespace-nowrap py-3 text-sm dark:text-dark-text"
 									>
 										{renderCell(column, item)}
 									</td>
@@ -137,14 +142,14 @@ const Table = ({
 											setIsOpen((prev) => activeSelect !== item.id || !prev);
 										}}
 									>
-										<Dropdown className="mx-2" />
+										<Dropdown className="mx-2 dark:text-dark-text" />
 										{activeSelect === item.id && isOpen && (
-											<div className="absolute top-12 right-0 w-fit rounded-md min-w-[8rem] z-10 bg-white shadow-lg p-2">
+											<div className="absolute top-12 right-0 w-fit rounded-md min-w-[8rem] z-10 bg-white dark:bg-dark-surface shadow-lg p-2">
 												<ul>
 													{actions.map((action) => (
 														<li
 															key={action.id}
-															className="flex py-2 text-[.7rem] cursor-pointer hover:bg-gray-200 items-center px-2 rounded"
+															className="flex py-2 text-[.7rem] cursor-pointer hover:bg-gray-200 dark:hover:bg-dark-hover dark:text-dark-text items-center px-2 rounded"
 															onClick={(e) => {
 																e.stopPropagation();
 																action.onClick(item);
@@ -152,7 +157,7 @@ const Table = ({
 															}}
 														>
 															{action.icon && (
-																<action.icon className="w-4 h-4 text-subText mr-2" />
+																<action.icon className="w-4 h-4 text-subText dark:text-dark-subtext mr-2" />
 															)}
 															{action.name}
 														</li>

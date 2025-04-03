@@ -65,7 +65,7 @@ export const CheckboxInput = ({ checked, label, ...props }) => {
 export const TextareaField = ({ label, className, ...prop }) => {
 	return (
 		<div
-			className={`flex  flex-col justify-center px-3.5 py-1 w-full bg-white rounded-md border max-w-[20rem] h-[15rem] border-solid border-[#C2C7D0] ${className}`}
+			className={`flex dark:bg-dark-surface  flex-col justify-center px-3.5 py-1 w-full bg-white rounded-md border max-w-[20rem] h-[15rem] border-solid border-[#C2C7D0] ${className}`}
 		>
 			{label && (
 				<div className="text-xs flex justify-between  font-medium leading-loose text-gray-400">
@@ -84,7 +84,7 @@ export const TextareaField = ({ label, className, ...prop }) => {
 export const InputField = ({ label, className, ...prop }) => {
 	return (
 		<div
-			className={`flex  flex-col justify-center px-3 py-2 w-auto max-w-[20rem] bg-white rounded-md border border-solid border-[#C2C7D0] ${className}`}
+			className={`flex  flex-col dark:bg-dark-surface justify-center px-3 py-2 w-auto max-w-[20rem] dark:text-gray-400  bg-white rounded-md border border-solid border-[#C2C7D0] ${className}`}
 		>
 			{label && (
 				<div className="text-xs flex justify-between  font-medium leading-loose text-gray-400">

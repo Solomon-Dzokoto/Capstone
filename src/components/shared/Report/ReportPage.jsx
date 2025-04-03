@@ -74,10 +74,11 @@ const ReportPage = () => {
 	const [hover, setHover] = useState(false);
 
 	return (
-		<main className="p-3 sm:p-4 md:p-6">
-			<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 md:gap-4 mb-4 md:mb-6">
-				<div className="flex items-center gap-2">
-					<h2 className="font-bold font-[Space] text-lg sm:text-xl md:text-2xl leading-6">
+		<main className="p-6 sm:p-8 md:p-10 bg-white dark:bg-dark-bg text-dark dark:text-light">
+			{/* Header Section */}
+			<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
+				<div className="flex items-center gap-3">
+					<h2 className="font-bold text-xl sm:text-2xl md:text-3xl leading-7 text-dark dark:text-light">
 						Reports & Analytics
 					</h2>
 					<span
@@ -97,13 +98,16 @@ const ReportPage = () => {
 					</span>
 				</div>
 
-				<div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-					<div className="flex items-center gap-2 border border-border rounded-lg px-3 py-2 w-full sm:w-auto">
-						<span className="text-xs sm:text-sm text-subText">Period:</span>
+				<div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+					{/* Date Range Picker */}
+					<div className="flex items-center gap-3 border border-border dark:border-dark-border rounded-lg px-4 py-3 w-full sm:w-auto">
+						<span className="text-sm text-subText dark:text-dark-subText">
+							Period:
+						</span>
 						<select
 							value={dateRange}
 							onChange={(e) => setDateRange(e.target.value)}
-							className="text-sm border-none bg-transparent outline-none flex-1"
+							className="text-sm border-none bg-transparent outline-none flex-1 dark:text-light"
 						>
 							<option>This Month</option>
 							<option>Last Month</option>
@@ -111,10 +115,11 @@ const ReportPage = () => {
 							<option>This Year</option>
 						</select>
 					</div>
+					{/* Export Report Button */}
 					<Button
 						variant="ghost"
 						size="md"
-						className="w-full sm:w-auto justify-center"
+						className="w-full sm:w-auto justify-center flex items-center gap-2"
 					>
 						<Download />
 						<p>Export Report</p>
@@ -122,19 +127,22 @@ const ReportPage = () => {
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+			{/* Stats Cards */}
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
 				{statsCards.map((stat) => (
 					<div
 						key={stat.title}
-						className="bg-white p-4 md:p-6 rounded-xl border border-border"
+						className="bg-white dark:bg-dark-surface p-5 md:p-6 rounded-xl border border-border dark:border-dark-border shadow-md"
 					>
-						<h3 className="text-sm text-subText mb-2">{stat.title}</h3>
+						<h3 className="text-sm text-subText dark:text-dark-subText mb-3">
+							{stat.title}
+						</h3>
 						<div className="flex items-end justify-between">
-							<p className="text-xl md:text-2xl font-bold text-dark">
+							<p className="text-2xl md:text-3xl font-bold text-dark dark:text-light">
 								{stat.value}
 							</p>
 							<span
-								className={`text-sm ${
+								className={`text-sm font-medium ${
 									stat.isPositive ? "text-green-600" : "text-red-600"
 								}`}
 							>
@@ -145,16 +153,17 @@ const ReportPage = () => {
 				))}
 			</div>
 
-			<div className="flex gap-2 md:gap-4 border-b border-border mb-4 md:mb-6 overflow-x-auto pb-1">
+			{/* Report Categories */}
+			<div className="flex gap-3 md:gap-5 border-b border-border dark:border-dark-border mb-6 pb-2 overflow-x-auto">
 				{reportCategories.map((category) => (
 					<button
 						key={category.id}
 						onClick={() => setActiveTab(category.id)}
-						className={`px-3 md:px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors relative
-              ${
+						className={`px-4 py-2 text-sm font-medium whitespace-nowrap transition-colors relative
+							${
 								activeTab === category.id
 									? "text-primary border-b-2 border-primary"
-									: "text-subText hover:text-dark"
+									: "text-subText dark:text-dark-subText hover:text-dark dark:hover:text-light"
 							}`}
 					>
 						{category.name}
@@ -162,10 +171,12 @@ const ReportPage = () => {
 				))}
 			</div>
 
-			<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
-				<div className="lg:col-span-2 bg-white p-3 sm:p-4 md:p-6 rounded-xl border border-border">
-					<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
-						<h3 className="text-lg font-semibold text-dark">
+			{/* Main Content Section */}
+			<div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
+				{/* Graphs/Charts */}
+				<div className="lg:col-span-2 bg-white dark:bg-dark-surface p-5 md:p-6 rounded-xl border border-border dark:border-dark-border shadow-md">
+					<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+						<h3 className="text-lg font-semibold text-dark dark:text-light">
 							{activeTab === "overview"
 								? "Employee Statistics"
 								: activeTab === "attendance"
@@ -181,7 +192,7 @@ const ReportPage = () => {
 							<p>Filter</p>
 						</Button>
 					</div>
-					<div className="h-[250px] sm:h-[300px] md:h-[400px] w-full flex items-center justify-center">
+					<div className="h-[300px] sm:h-[400px] w-full flex items-center justify-center">
 						{activeTab === "overview" && <EmployeeCard />}
 						{activeTab === "attendance" && <AttendanceChart />}
 						{activeTab === "payroll" && <PayrollChart />}
@@ -190,23 +201,26 @@ const ReportPage = () => {
 					</div>
 				</div>
 
-				<div className="bg-white p-3 sm:p-4 md:p-6 rounded-xl border border-border">
-					<h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6 text-dark">
+				{/* Insights Section */}
+				<div className="bg-white dark:bg-dark-surface p-5 md:p-6 rounded-xl border border-border dark:border-dark-border shadow-md">
+					<h3 className="text-base md:text-lg font-semibold mb-5 text-dark dark:text-light">
 						Key Insights
 					</h3>
-					<div className="space-y-3 md:space-y-4">
+					<div className="space-y-4">
 						{insights.map((insight) => (
 							<div
 								key={insight.id}
-								className="p-4 rounded-lg border border-border"
+								className="p-4 rounded-lg border border-border dark:border-dark-border bg-white dark:bg-dark-surface shadow-sm"
 							>
-								<div className="flex items-center gap-2 mb-2">
-									<div className="w-2 h-2 rounded-full bg-primary"></div>
-									<h4 className="text-sm font-medium text-dark">
+								<div className="flex items-center gap-3 mb-3">
+									<div className="w-3 h-3 rounded-full bg-primary"></div>
+									<h4 className="text-sm font-medium text-dark dark:text-light">
 										{insight.title}
 									</h4>
 								</div>
-								<p className="text-sm text-subText">{insight.message}</p>
+								<p className="text-sm text-subText dark:text-dark-subText">
+									{insight.message}
+								</p>
 							</div>
 						))}
 					</div>

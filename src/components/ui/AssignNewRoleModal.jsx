@@ -62,40 +62,42 @@ const AssignNewRoleModal = () => {
 	};
 
 	return (
-		<div className="fixed !inset-0 grid place-content-center z-30 backdrop-blur-sm bg-black/60">
+		<div className="fixed !inset-0 grid place-content-center z-30 backdrop-blur-sm bg-black/60 dark:bg-dark-overlay">
 			<button
 				onClick={(e) => {
 					e.stopPropagation();
 					updateModal({ modalState: "close", modalType: "assign-new-role" });
 				}}
-				className="absolute  p-2 rounded-full bg-white  z-40 top-16  right-[25%] "
+				className="absolute p-2 rounded-full bg-white dark:bg-dark-surface z-40 top-16 right-[25%]"
 			>
 				<Close />
 			</button>
-			<div className="px-10 py-6 max-h-full overflow-y-auto rounded-2xl relative space-y-8 bg-white w-full md:w-[30rem]">
-				<span className="bg-primary/20 inline-block py-3 px-3 rounded-full  ">
+			<div className="px-10 py-6 max-h-full overflow-y-auto rounded-2xl relative space-y-8 bg-white dark:bg-dark-surface w-full md:w-[30rem]">
+				<span className="bg-primary/20 dark:bg-dark-primary/20 inline-block py-3 px-3 rounded-full">
 					<ModalIcon />
 				</span>
-				<div className=" relative ">
-					<h2 className="text-xl mb-4 font-semibold ">Assign a role</h2>
-					<p className="text-subText mb-4 items-center ">
+				<div className="relative">
+					<h2 className="text-xl mb-4 font-semibold text-gray-900 dark:text-dark-text">
+						Assign a role
+					</h2>
+					<p className="text-subText dark:text-dark-subText mb-4 items-center">
 						Select one or multiple employees to assign to this role
-						<span className="text-secondary inline-block font-semibold">
+						<span className="text-secondary dark:text-dark-secondary inline-block font-semibold">
 							"Senior Design Lead"
 						</span>
 					</p>
-					<div className=" relative border border-border p-2 rounded-2xl ">
+					<div className="relative border border-border dark:border-dark-border p-2 rounded-2xl">
 						<div className="justify-between text-gray flex items-center">
-							<Search className="text-gray-500" />
-							<div className="text-gray-700  flex-1">
+							<Search className="text-gray-500 dark:text-dark-subText" />
+							<div className="text-gray-700 dark:text-dark-text flex-1">
 								<Input
 									value={search}
 									onChange={(e) => setSearch(e.target.value)}
-									className="placeholder:text-gray-500 "
+									className="placeholder:text-gray-500 dark:placeholder:text-dark-subText"
 									placeHolder="Search for an individual or team"
 								/>
 							</div>
-							<Details className="text-gray-500" />
+							<Details className="text-gray-500 dark:text-dark-subText" />
 						</div>
 						<div className="flex gap-1 flex-wrap">
 							{teamMembers &&
@@ -108,15 +110,17 @@ const AssignNewRoleModal = () => {
 								))}
 						</div>
 					</div>
-					<div className="max-h-60 overflow-y-auto border border-border rounded-xl bg-white">
-						<ul className="absolute px-3 py-1 z-30 rounded-xl bg-white  border-border w-full ">
+					<div className="max-h-60 overflow-y-auto border border-border dark:border-dark-border rounded-xl bg-white dark:bg-dark-surface">
+						<ul className="absolute px-3 py-1 z-30 rounded-xl bg-white dark:bg-dark-surface border-border dark:border-dark-border w-full">
 							{search.trim() !== "" &&
 								roles &&
 								roles.map((item) => (
 									<li
-										className={`p-4 gap-2 border border-border rounded-md  flex items-start justify-between text-xs text-subText cursor-pointer ${
-											checked[item?.name] ? "bg-primary/30" : ""
-										} hover:bg-border/50 `}
+										className={`p-4 gap-2 border border-border dark:border-dark-border rounded-md flex items-start justify-between text-xs text-subText dark:text-dark-subText cursor-pointer ${
+											checked[item?.name]
+												? "bg-primary/30 dark:bg-dark-primary/30"
+												: ""
+										} hover:bg-border/50 dark:hover:bg-dark-border/50`}
 										key={item?.id}
 									>
 										{item.image ? (
@@ -126,13 +130,15 @@ const AssignNewRoleModal = () => {
 												alt={item?.name}
 											/>
 										) : (
-											<span className="rounded-full size-6 text-[.6rem] flex items-center justify-center text-brown font-700 bg-[#d9e1fb]">
+											<span className="rounded-full size-6 text-[.6rem] flex items-center justify-center text-brown font-700 bg-[#d9e1fb] dark:bg-dark-avatar">
 												{getFirstLetters(item?.name)}
 											</span>
 										)}
-										<div className="flex-1 ">
-											<p className="text-sm font-bold">{item?.name}</p>
-											<span className="text-xs text-secondary ">
+										<div className="flex-1">
+											<p className="text-sm font-bold text-gray-900 dark:text-dark-text">
+												{item?.name}
+											</p>
+											<span className="text-xs text-secondary dark:text-dark-secondary">
 												{item?.role}
 											</span>
 										</div>
@@ -144,24 +150,26 @@ const AssignNewRoleModal = () => {
 												onChange={() => addBadges(item?.name)}
 											/>
 											<div
-												className={`w-4 h-4 border-2 border-secondary rounded-full flex items-center justify-center transition-all ${
+												className={`w-4 h-4 border-2 border-secondary dark:border-dark-secondary rounded-full flex items-center justify-center transition-all ${
 													checked[item?.name]
-														? "bg-secondary border-secondary"
+														? "bg-secondary dark:bg-dark-secondary border-secondary dark:border-dark-secondary"
 														: "bg-transparent"
 												}`}
 											>
-												{checked && <MarkIcon className="text-white " />}
+												{checked && <MarkIcon className="text-white" />}
 											</div>
 										</label>
 									</li>
 								))}
 						</ul>
 					</div>
-					<Button className=" w-full py-2 mt-12">Assign</Button>
+					<Button className="w-full py-2 mt-12 dark:bg-dark-button dark:text-dark-button-text">
+						Assign
+					</Button>
 					<Button
 						variant="ghost"
 						asChild
-						className="bg-white w-fit text-gray-600 rounded-[2rem] border-border border py-2 px-4 mt-4"
+						className="bg-white dark:bg-dark-surface w-fit text-gray-600 dark:text-dark-subText rounded-[2rem] border-border dark:border-dark-border border py-2 px-4 mt-4"
 					>
 						<span>
 							<AddPerson />

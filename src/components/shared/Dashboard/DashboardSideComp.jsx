@@ -8,8 +8,10 @@ const DashboardSideComp = () => {
 		<div className="space-y-6">
 			<section>
 				<header className="flex justify-between items-center px-4 py-6">
-					<h2 className="text-base font-bold text-dark">Schedule</h2>
-					<button className="text-sm text-subText hover:text-dark transition-colors">
+					<h2 className="text-base font-bold text-dark dark:text-dark-text">
+						Schedule
+					</h2>
+					<button className="text-sm text-subText hover:text-dark dark:hover:text-dark-text transition-colors">
 						View all
 					</button>
 				</header>

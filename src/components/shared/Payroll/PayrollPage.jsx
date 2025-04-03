@@ -120,7 +120,7 @@ const PayrollPage = () => {
 							className={`${
 								item.id === active
 									? "border-b-2 px-1 pb-4 text-primary border-b-primary"
-									: "text-text"
+									: "text-text dark:text-gray-500"
 							} cursor-pointer  font-medium text-[.9rem] tracking-wider whitespace-nowrap`}
 						>
 							{item.value}
@@ -129,9 +129,9 @@ const PayrollPage = () => {
 				</ul>
 			</div>
 
-			<div className="py-1 px-4 mt-4 rounded-[7px] flex flex-col sm:flex-row justify-between gap-4 border border-border">
+			<div className="py-1 px-4 mt-4 rounded-[7px] bg-white dark:bg-dark-surface  flex flex-col sm:flex-row justify-between gap-4 border border-border">
 				<Input
-					className="w-full sm:w-[20rem] placeholder:text-[#333333] text-[#333333]"
+					className="w-full sm:w-[20rem]  placeholder:text-[#333333] text-[#333333]"
 					placeholder="Search payroll by employee name, ID or any related keywords"
 					value={search}
 					onChange={(e) => setSearch(e.target.value)}

@@ -63,7 +63,7 @@ const data = [
 
 const EmployeeCard = () => {
 	return (
-		<div className="w-full p-3 sm:p-4 md:p-6 bg-white rounded-xl shadow-sm">
+		<div className="w-full p-3 sm:p-4 md:p-6 bg-white dark:bg-dark-surface text-dark dark:text-light rounded-xl shadow-sm">
 			<h3 className="text-base md:text-lg font-semibold mb-3 md:mb-6 text-dark">
 				Employee Distribution Trends
 			</h3>

@@ -105,7 +105,7 @@ const CustomSelect = ({
 							: size === "md"
 							? "w-[5rem]"
 							: "min-w-fit"
-					} z-10 mt-1 w-full max-w-[95vw] rounded-md bg-white shadow-lg border border-[#E9EAEC]`}
+					} z-10 mt-1 w-full max-w-[95vw] dark:bg-dark-surface rounded-md bg-white shadow-lg border border-[#E9EAEC]`}
 					role="listbox"
 				>
 					<div className="p-2 border-b border-[#E9EAEC]">
@@ -122,17 +122,17 @@ const CustomSelect = ({
 						</div>
 					</div>
 					<ul
-						className="max-h-[40vh] w-full overflow-auto rounded-md py-1"
+						className="max-h-[40vh] dark:bg-dark-surface dark:text-gray-200 w-full overflow-auto rounded-md py-1"
 						role="presentation"
 					>
 						{filteredOptions.map((option) => (
 							<li
 								key={option.value}
 								onClick={() => onSelect(option)}
-								className={`px-3 flex items-center gap-2 py-2 cursor-pointer text-[.75rem] ${
+								className={`px-3 flex items-center  gap-2 py-2 cursor-pointer text-[.75rem] ${
 									selectedOption.value === option.value
 										? "bg-primary text-white"
-										: "hover:bg-[rgb(219,234,254)] text-black"
+										: "hover:bg-[rgb(219,234,254)] dark:hover:bg-gray-600 text-black"
 								}`}
 								role="option"
 								aria-selected={selectedOption.value === option.value}
@@ -144,7 +144,9 @@ const CustomSelect = ({
 										className="w-4 h-4 flex-shrink-0"
 									/>
 								)}
-								<span className="truncate">{option?.label}</span>
+								<span className="truncate dark:text-gray-200">
+									{option?.label}
+								</span>
 							</li>
 						))}
 					</ul>

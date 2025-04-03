@@ -1,38 +1,81 @@
 @tailwind base;
-@tailwind utilities;
 @tailwind components;
+@tailwind utilities;
 
 @font-face {
-  font-family: "Space";
-  src: url("/font/SpaceGrotesk-Bold.otf") format("opentype");
-  font-weight: 700;
-  font-style: normal;
+	font-family: "Space";
+	src: url("/font/SpaceGrotesk-Bold.otf") format("opentype");
+	font-weight: 700;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Space";
-  src: url("/font/SpaceGrotesk-Light.otf") format("opentype");
-  font-weight: 300;
-  font-style: normal;
+	font-family: "Space";
+	src: url("/font/SpaceGrotesk-Light.otf") format("opentype");
+	font-weight: 300;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Space";
-  src: url("/font/SpaceGrotesk-Medium.otf") format("opentype");
-  font-weight: 500;
-  font-style: normal;
+	font-family: "Space";
+	src: url("/font/SpaceGrotesk-Medium.otf") format("opentype");
+	font-weight: 500;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Space";
-  src: url("/font/SpaceGrotesk-SemiBold.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;
+	font-family: "Space";
+	src: url("/font/SpaceGrotesk-SemiBold.otf") format("opentype");
+	font-weight: 600;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: "Space";
-  src: url("/font/SpaceGrotesk-Regular.otf") format("opentype");
-  font-weight: 400;
-  font-style: normal;
+	font-family: "Space";
+	src: url("/font/SpaceGrotesk-Regular.otf") format("opentype");
+	font-weight: 400;
+	font-style: normal;
+}
+
+@layer base {
+	body {
+		@apply transition-colors duration-200 ease-in-out;
+	}
+
+	.dark {
+		@apply bg-dark-bg text-dark-text;
+	}
+
+	.dark ::selection {
+		@apply bg-dark-accent/30 text-dark-text;
+	}
+
+	.dark ::-webkit-scrollbar-track {
+		@apply bg-dark-surface;
+	}
+
+	.dark ::-webkit-scrollbar-thumb {
+		@apply bg-dark-border hover:bg-dark-hover;
+	}
+
+	/* Improved card styles for dark mode */
+	.dark .card {
+		@apply bg-dark-surface border-dark-border shadow-lg shadow-dark-bg/5;
+	}
+
+	/* Input styles for dark mode */
+	.dark input,
+	.dark select,
+	.dark textarea {
+		@apply bg-dark-surface border-dark-border text-dark-text placeholder:text-dark-subtext;
+	}
+
+	/* Button hover effects in dark mode */
+	.dark .btn-primary:hover {
+		@apply bg-dark-primary/90;
+	}
+
+	.dark .btn-secondary:hover {
+		@apply bg-dark-secondary/90;
+	}
 }

@@ -3,6 +3,7 @@ import { Details, Edit } from "@/global/Icons";
 import Button from "@components/ui/Button";
 import { InputWithLabel } from "@components/ui/Input";
 import ToggleSwitch from "@components/ui/ToggleSwitch";
+import { useTheme } from "@hooks/useTheme";
 
 const settingsCategories = [
 	{ id: "general", name: "General Settings" },
@@ -20,6 +21,7 @@ const SettingsPage = () => {
 		twoFactorAuth: true,
 		autoPayroll: false,
 	});
+	const { isDark, toggleTheme } = useTheme();
 
 	const toggleSetting = (key) => {
 		setSettings((prev) => ({
@@ -60,6 +62,12 @@ const SettingsPage = () => {
 								onToggle={() => toggleSetting("emailNotifications")}
 								title="Email Notifications"
 								description="Receive email notifications for important updates"
+							/>
+							<ToggleSwitch
+								enabled={isDark}
+								onToggle={toggleTheme}
+								title="Theme Mode"
+								description="Switch between light and dark mode"
 							/>
 						</div>
 					</div>
@@ -167,7 +175,7 @@ const SettingsPage = () => {
 	};
 
 	return (
-		<main className="p-6">
+		<main className="p-6 bg-white dark:bg-dark-bg text-dark dark:text-light">
 			<div className="flex justify-between items-center mb-6">
 				<h2 className="font-bold font-[Space] text-[1.5rem] leading-6">
 					Settings
@@ -184,7 +192,7 @@ const SettingsPage = () => {
 								className={`px-4 py-2 rounded-lg cursor-pointer transition-colors ${
 									active === category.id
 										? "bg-primary/10 text-primary"
-										: "text-subText hover:bg-gray-50"
+										: "text-subText hover:bg-gray-50 dark:hover:bg-gray-800 "
 								}`}
 							>
 								{category.name}
@@ -193,7 +201,7 @@ const SettingsPage = () => {
 					</ul>
 				</aside>
 
-				<div className="flex-1 bg-white rounded-xl border border-border p-6">
+				<div className="flex-1 bg-white dark:bg-dark-surface  rounded-xl border border-border p-6">
 					{renderSettingsContent()}
 				</div>
 			</div>

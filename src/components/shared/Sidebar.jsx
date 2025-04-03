@@ -27,7 +27,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
 
 	return (
 		<aside
-			className={`fixed md:relative md:p-6 h-screen bg-white border-r border-border transition-all duration-300 z-30 md:z-0 ${
+			className={`fixed md:relative md:p-6 h-screen bg-white  dark:bg-dark-bg  border-r border-border dark:border-dark-border transition-all duration-300 z-30 md:z-0 ${
 				isOpen ? "w-[15.5rem]" : "w-0 md:w-20"
 			}`}
 		>
@@ -40,7 +40,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
 					<img
 						src="/assets/Logo (1).png"
 						alt="logo"
-						className="w-8 h-8 object-contain"
+						className="w-8 h-8  dark:invert object-contain"
 					/>
 					<h1
 						className={`text-lg font-bold transition-opacity duration-200 ${
@@ -62,7 +62,9 @@ const Sidebar = ({ isOpen, onToggle }) => {
 					<li onClick={(e) => handleItemClick(list.id, e)} key={list.id}>
 						<div
 							className={` ${
-								active === list.id ? "bg-primary text-white" : "bg-white"
+								active === list.id
+									? "bg-primary  text-white"
+									: "bg-white dark:text-white hover:bg-gray-100 transition-all duration-200 dark:hover:bg-gray-800 dark:bg-dark-hover"
 							} flex py-2 px-4 ${
 								!isOpen ? "px-5" : ""
 							}   rounded-[2rem] cursor-pointer items-center gap-3 text-text`}

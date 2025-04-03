@@ -15,9 +15,7 @@ const category = [
 const RoleView = () => {
 	const [active, setActive] = useState("all");
 	const [hover, setHover] = useState(false);
-	const { updateModal, modal } = useModal();
-
-	console.log(modal);
+	const { updateModal } = useModal();
 
 	const navigate = useNavigate();
 
@@ -37,10 +35,10 @@ const RoleView = () => {
 	};
 
 	return (
-		<section className="p-4 md:p-6">
+		<section className="p-4 md:p-6 dark:bg-dark-background">
 			<div className="flex justify-between">
 				<div className="flex items-center gap-2">
-					<h2 className="font-bold font-[Space]  text-[1.5rem] leading-6 ">
+					<h2 className="font-bold font-[Space] text-[1.5rem] leading-6 dark:text-dark-text">
 						Roles
 					</h2>
 					<span
@@ -48,16 +46,18 @@ const RoleView = () => {
 						onMouseLeave={() => setHover(false)}
 						className="relative"
 					>
-						<Details />
+						<Details className="dark:text-dark-subText" />
 						{hover && (
 							<Tooltip>
-								<p>Manage employees activities or permission</p>
+								<p className="dark:text-dark-text">
+									Manage employees activities or permission
+								</p>
 							</Tooltip>
 						)}
 					</span>
 					<Button
 						variant="design"
-						className="text-[.7rem]  bg-border "
+						className="text-[.7rem] bg-border dark:bg-dark-surface dark:text-dark-subText"
 						size="sm"
 					>
 						123
@@ -70,9 +70,9 @@ const RoleView = () => {
 						}
 						variant="ghost"
 						size="md"
-						className=" text-dark "
+						className="text-dark dark:text-dark-text"
 					>
-						<ProfileAvatar className="text-gray-500" />
+						<ProfileAvatar className="text-gray-500 dark:text-dark-subText" />
 						<p>Assign</p>
 					</Button>
 					<Button onClick={createRole} variant="secondary" size="md">
@@ -81,22 +81,22 @@ const RoleView = () => {
 					</Button>
 				</div>
 			</div>
-			<ul className="border-b   flex  border-border mt-4">
+			<ul className="border-b flex border-border dark:border-dark-border mt-4">
 				{category.map((item) => (
 					<li
 						key={item.id}
 						onClick={() => setActive(item.id)}
 						className={`flex ${
 							active === item.id
-								? "text-primary  border-b-2 border-primary"
-								: "text-subText"
-						} items-center justify-between px-3 transition-all duration-200 cursor-pointer text-sm  py-2`}
+								? "text-primary border-b-2 border-primary"
+								: "text-subText dark:text-dark-subText"
+						} items-center justify-between px-3 transition-all duration-200 cursor-pointer text-sm py-2`}
 					>
 						<p>{item.name}</p>
 					</li>
 				))}
 			</ul>
-			<div className="">{renderCurrentPage()}</div>
+			<div className="dark:bg-dark-background">{renderCurrentPage()}</div>
 		</section>
 	);
 };
