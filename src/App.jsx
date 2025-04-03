@@ -5,7 +5,7 @@ import Login from "@/components/pages/Auth/Login";
 import Signup from "@/components/pages/Auth/Signup";
 import { Toaster } from "sonner";
 import { lazy, Suspense } from "react";
-import { Spinner } from "@/global/Icons";
+import Spinner from "./components/ui/Spinner";
 
 const EmployeeUi = lazy(() =>
 	import("@/components/shared/Employee/EmployeeUi")
@@ -41,7 +41,7 @@ const App = () => {
 			<Suspense
 				fallback={
 					<div className="flex items-center justify-center h-screen">
-						<Spinner className="w-[15rem] h-[15rem] " />
+						<Spinner />
 					</div>
 				}
 			>

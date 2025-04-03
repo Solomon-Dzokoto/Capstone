@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Details, Download, Filter, ChartPie } from "@/global/Icons";
+import { Details, Download, Filter } from "@/global/Icons";
 import Button from "@components/ui/Button";
-import Input from "@components/ui/Input";
 import Tooltip from "@components/ui/Tooltip";
 import { employees } from "@/data/list";
 import { payrollData } from "@/data/payrollData";
+import EmployeeCard from "./EmployeeCard";
+import AttendanceChart from "./AttendanceChart";
+import PayrollChart from "./PayrollChart";
+import PerformanceChart from "./PerformanceChart";
+import RecruitmentChart from "./RecruitmentChart";
 
 const reportCategories = [
 	{ id: "overview", name: "Overview" },
@@ -173,14 +177,12 @@ const ReportPage = () => {
 							<p>Filter</p>
 						</Button>
 					</div>
-					<div className="h-[300px] md:h-[400px] flex items-center justify-center border-2 border-dashed border-border rounded-lg">
-						<div className="text-center text-subText">
-							<ChartPie className="w-12 h-12 mx-auto mb-2" />
-							<p>Chart Visualization Area</p>
-							<p className="text-sm">
-								Data visualization will be rendered here
-							</p>
-						</div>
+					<div className="h-[300px] md:h-[400px] w-full flex items-center justify-center">
+						{activeTab === "overview" && <EmployeeCard />}
+						{activeTab === "attendance" && <AttendanceChart />}
+						{activeTab === "payroll" && <PayrollChart />}
+						{activeTab === "performance" && <PerformanceChart />}
+						{activeTab === "recruitment" && <RecruitmentChart />}
 					</div>
 				</div>
 
