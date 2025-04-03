@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ArrowLeft, Details, Download } from "@/global/Icons";
+import { ArrowLeft, Details, Download } from "@global/Icons";
 import Button from "@components/ui/Button";
 import { useNavigate } from "react-router-dom";
 import Tooltip from "@components/ui/Tooltip";
