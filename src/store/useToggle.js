@@ -1,40 +1,49 @@
-import {create} from "zustand"
-import { produce } from "immer";
+import { create } from "zustand";
 
+const useToggle = create((set) => ({
+	toggles: {
+		"manager-general-access": false,
+		"manager-create-job": false,
+		"manager-employee": false,
+		"manager-edit-role": false,
+		"manager-delete": false,
+		"employee-general-access": false,
+		"employee-create-job": false,
+		"employee-employee": false,
+		"employee-edit-role": false,
+		"employee-delete": false,
+	},
+	enableAll: {
+		manager: false,
+		employee: false,
+	},
+	toggle: (type) =>
+		set((state) => ({
+			toggles: {
+				...state.toggles,
+				[type]: !state.toggles[type],
+			},
+		})),
+	updateEnableAll: (type) =>
+		set((state) => {
+			const currentValue = state.enableAll[type];
+			const newValue = !currentValue;
 
-console.log(produce)
-const useToggle = create(
-    produce((set) => ({
-    toggles: {
-        "manager-general-access": false,
-        "manager-create-job": false,
-        "manager-employee": false,
-        "manager-edit-role": false,
-        "manager-delete": false,
-        "employee-general-access": false,
-        "employee-create-job": false,
-        "employee-employee": false,
-        "employee-edit-role": false,
-        "employee-delete": false
-    },
-    enableAll: {
-        manager: false,
-        employee: false
-    },
-    toggle: (type) => set((state) => {
-        state.toggles[type] = !state.toggles[type];
-    }),
-    updateEnableAll: (type) => set((state) => {
-        const newValue = !state.enableAll[type];
-        state.enableAll[type] = newValue;
-        
-        // Update all toggles that match the type prefix
-        for (const key in state.toggles) {
-            if (key.startsWith(type)) {
-                state.toggles[key] = newValue;
-            }
-        }
-    })
-})))
+			const updatedToggles = { ...state.toggles };
+			for (const key in state.toggles) {
+				if (key.startsWith(type)) {
+					updatedToggles[key] = newValue;
+				}
+			}
 
-export default useToggle
+			return {
+				toggles: updatedToggles,
+				enableAll: {
+					...state.enableAll,
+					[type]: newValue,
+				},
+			};
+		}),
+}));
+
+export default useToggle;

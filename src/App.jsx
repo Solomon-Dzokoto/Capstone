@@ -1,5 +1,5 @@
 import Layout from "@components/Layout/Layout.jsx";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import AuthLayout from "@/components/Layout/AuthLayout";
 import Login from "@/components/pages/Auth/Login";
 import Signup from "@/components/pages/Auth/Signup";
@@ -65,6 +65,7 @@ const App = () => {
 						<Route path="setting" element={<SettingsPage />} />
 					</Route>
 					<Route path="/auth" element={<AuthLayout />}>
+						<Route index element={<Navigate to="login" replace />} />
 						<Route path="login" element={<Login />} />
 						<Route path="signup" element={<Signup />} />
 					</Route>
