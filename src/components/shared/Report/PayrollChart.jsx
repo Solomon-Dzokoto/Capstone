@@ -25,11 +25,11 @@ const data = [
 
 const PayrollChart = () => {
 	return (
-		<div className="w-full p-6 bg-white rounded-xl shadow-sm">
-			<h3 className="text-lg font-semibold mb-6 text-dark">
+		<div className="w-full p-3 sm:p-4 md:p-6 bg-white rounded-xl shadow-sm">
+			<h3 className="text-base md:text-lg font-semibold mb-3 md:mb-6 text-dark">
 				Department Payroll Distribution
 			</h3>
-			<div className="w-full h-[400px]">
+			<div className="w-full h-[250px] sm:h-[300px] md:h-[400px] overflow-x-auto">
 				<ResponsiveContainer width="100%" height="100%">
 					<BarChart
 						data={data}

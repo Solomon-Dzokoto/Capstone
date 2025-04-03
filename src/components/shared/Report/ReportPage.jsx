@@ -74,10 +74,10 @@ const ReportPage = () => {
 	const [hover, setHover] = useState(false);
 
 	return (
-		<main className="p-4 md:p-6">
-			<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+		<main className="p-3 sm:p-4 md:p-6">
+			<div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 md:gap-4 mb-4 md:mb-6">
 				<div className="flex items-center gap-2">
-					<h2 className="font-bold font-[Space] text-[1.25rem] md:text-[1.5rem] leading-6">
+					<h2 className="font-bold font-[Space] text-lg sm:text-xl md:text-2xl leading-6">
 						Reports & Analytics
 					</h2>
 					<span
@@ -97,9 +97,9 @@ const ReportPage = () => {
 					</span>
 				</div>
 
-				<div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-					<div className="flex items-center gap-2 border border-border rounded-lg px-4 py-2 w-full sm:w-auto">
-						<span className="text-sm text-subText">Period:</span>
+				<div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
+					<div className="flex items-center gap-2 border border-border rounded-lg px-3 py-2 w-full sm:w-auto">
+						<span className="text-xs sm:text-sm text-subText">Period:</span>
 						<select
 							value={dateRange}
 							onChange={(e) => setDateRange(e.target.value)}
@@ -111,14 +111,18 @@ const ReportPage = () => {
 							<option>This Year</option>
 						</select>
 					</div>
-					<Button variant="ghost" size="md" className="w-full sm:w-auto">
+					<Button
+						variant="ghost"
+						size="md"
+						className="w-full sm:w-auto justify-center"
+					>
 						<Download />
 						<p>Export Report</p>
 					</Button>
 				</div>
 			</div>
 
-			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+			<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
 				{statsCards.map((stat) => (
 					<div
 						key={stat.title}
@@ -141,7 +145,7 @@ const ReportPage = () => {
 				))}
 			</div>
 
-			<div className="flex gap-2 md:gap-4 border-b border-border mb-6 overflow-x-auto">
+			<div className="flex gap-2 md:gap-4 border-b border-border mb-4 md:mb-6 overflow-x-auto pb-1">
 				{reportCategories.map((category) => (
 					<button
 						key={category.id}
@@ -158,9 +162,9 @@ const ReportPage = () => {
 				))}
 			</div>
 
-			<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-				<div className="lg:col-span-2 bg-white p-4 md:p-6 rounded-xl border border-border">
-					<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+			<div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
+				<div className="lg:col-span-2 bg-white p-3 sm:p-4 md:p-6 rounded-xl border border-border">
+					<div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4 md:mb-6">
 						<h3 className="text-lg font-semibold text-dark">
 							{activeTab === "overview"
 								? "Employee Statistics"
@@ -177,7 +181,7 @@ const ReportPage = () => {
 							<p>Filter</p>
 						</Button>
 					</div>
-					<div className="h-[300px] md:h-[400px] w-full flex items-center justify-center">
+					<div className="h-[250px] sm:h-[300px] md:h-[400px] w-full flex items-center justify-center">
 						{activeTab === "overview" && <EmployeeCard />}
 						{activeTab === "attendance" && <AttendanceChart />}
 						{activeTab === "payroll" && <PayrollChart />}
@@ -186,9 +190,11 @@ const ReportPage = () => {
 					</div>
 				</div>
 
-				<div className="bg-white p-4 md:p-6 rounded-xl border border-border">
-					<h3 className="text-lg font-semibold text-dark mb-6">Key Insights</h3>
-					<div className="space-y-4">
+				<div className="bg-white p-3 sm:p-4 md:p-6 rounded-xl border border-border">
+					<h3 className="text-base md:text-lg font-semibold mb-4 md:mb-6 text-dark">
+						Key Insights
+					</h3>
+					<div className="space-y-3 md:space-y-4">
 						{insights.map((insight) => (
 							<div
 								key={insight.id}
