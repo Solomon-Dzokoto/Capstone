@@ -28,6 +28,12 @@ const NotFound = lazy(() => import("@/components/pages/NotFound"));
 const DashboardPage = lazy(() =>
 	import("@components/shared/Dashboard/DashboardPage")
 );
+const PayrollDetails = lazy(() =>
+	import("@/components/shared/Payroll/PayrollDetails")
+);
+const ProcessPayment = lazy(() =>
+	import("@/components/shared/Payroll/ProcessPayment")
+);
 
 const App = () => {
 	return (
@@ -50,7 +56,11 @@ const App = () => {
 							<Route index element={<RoleView />} />
 							<Route path="create-role" element={<CreateNewRole />} />
 						</Route>
-						<Route path="payroll" element={<PayrollPage />} />
+						<Route path="payroll">
+							<Route index element={<PayrollPage />} />
+							<Route path=":id" element={<PayrollDetails />} />
+							<Route path=":id/process" element={<ProcessPayment />} />
+						</Route>
 						<Route path="report" element={<ReportPage />} />
 						<Route path="setting" element={<SettingsPage />} />
 					</Route>
@@ -60,8 +70,8 @@ const App = () => {
 					</Route>
 					<Route path="*" element={<NotFound />} />
 				</Routes>
-				<Toaster richColors />
 			</Suspense>
+			<Toaster />
 		</div>
 	);
 };

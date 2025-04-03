@@ -14,7 +14,7 @@ const Layout = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
 	return (
-		<div className="flex h-screen overflow-hidden">
+		<div className="flex h-screen relative overflow-hidden">
 			{modal?.modalState === "open" && modal?.modalType === "assign-role" && (
 				<Modal user={user} />
 			)}

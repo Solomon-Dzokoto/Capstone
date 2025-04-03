@@ -50,7 +50,7 @@ const Modal = ({ user = {} }) => {
 	};
 
 	return (
-		<div className="fixed inset-0 grid place-content-center z-50 backdrop-blur-sm bg-black/60">
+		<div className="fixed !inset-0 grid place-content-center z-50 backdrop-blur-sm bg-black/60">
 			<div className="px-10 py-6 rounded-2xl relative space-y-8 bg-white w-full md:w-[30rem]">
 				<button
 					onClick={(e) => {

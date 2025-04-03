@@ -67,7 +67,8 @@ const columns = [
 ];
 
 const EmployeeUi = () => {
-	const [active, setActive] = useState("employees");
+	const [active, setActive] = useState("employee");
+	const [search, setSearch] = useState("");
 	const [hover, setHover] = useState(false);
 	const updateModal = useModal((state) => state?.updateModal);
 	const setUser = useUserDetail((state) => state?.setUser);
@@ -107,6 +108,24 @@ const EmployeeUi = () => {
 			},
 		},
 	];
+
+	const filteredEmployees = employees.filter((employee) => {
+		if (search) {
+			return (
+				employee?.name.toLowerCase().includes(search.toLowerCase()) ||
+				employee?.employeeId.toLowerCase().includes(search.toLowerCase()) ||
+				employee?.role.toLowerCase().includes(search.toLowerCase()) ||
+				employee?.email.toLowerCase().includes(search.toLowerCase())
+			);
+		}
+		if (active === "teams") {
+			return employee?.teams?.length > 0;
+		}
+		if (active === "role") {
+			return employee?.role?.trim() !== "";
+		}
+		return employee;
+	});
 
 	return (
 		<main className="p-6">
@@ -164,6 +183,8 @@ const EmployeeUi = () => {
 			</ul>
 			<div className="py-1 px-4 mt-2 rounded-[7px] flex justify-between border border-border">
 				<Input
+					value={search}
+					onChange={(e) => setSearch(e.target.value)}
 					className="w-[20rem] placeholder:text-[#333333] text-[#333333] "
 					placeholder="Search Employee by name,role, ID or any related keywords"
 				>
@@ -185,7 +206,7 @@ const EmployeeUi = () => {
 			<div className="flex-1 min-h-0">
 				<Table
 					columns={columns}
-					data={employees}
+					data={filteredEmployees}
 					actions={actions}
 					onRowClick={(employee) => console.log("Row clicked:", employee)}
 				/>

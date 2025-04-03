@@ -62,7 +62,7 @@ const AssignNewRoleModal = () => {
 	};
 
 	return (
-		<div className="fixed inset-0 grid place-content-center z-30 backdrop-blur-sm bg-black/60">
+		<div className="fixed !inset-0 grid place-content-center z-30 backdrop-blur-sm bg-black/60">
 			<button
 				onClick={(e) => {
 					e.stopPropagation();

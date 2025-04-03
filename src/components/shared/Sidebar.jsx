@@ -27,7 +27,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
 
 	return (
 		<aside
-			className={`fixed md:relative md:p-6 h-screen bg-white border-r border-border transition-all duration-300 z-30 ${
+			className={`fixed md:relative md:p-6 h-screen bg-white border-r border-border transition-all duration-300 z-30 md:z-0 ${
 				isOpen ? "w-[15.5rem]" : "w-0 md:w-20"
 			}`}
 		>
