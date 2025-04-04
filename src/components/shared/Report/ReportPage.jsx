@@ -88,7 +88,7 @@ const ReportPage = () => {
 					>
 						<Details />
 						{hover && (
-							<Tooltip>
+							<Tooltip className="w-[15rem] whitespace-normal ">
 								<p>
 									View and analyze employee data, attendance, payroll, and
 									performance metrics
@@ -154,7 +154,7 @@ const ReportPage = () => {
 			</div>
 
 			{/* Report Categories */}
-			<div className="flex gap-3 md:gap-5 border-b border-border dark:border-dark-border mb-6 pb-2 overflow-x-auto">
+			<div className="flex flex-wrap gap-3 md:gap-5 border-b border-border dark:border-dark-border mb-6 pb-2 overflow-x-auto">
 				{reportCategories.map((category) => (
 					<button
 						key={category.id}
@@ -163,7 +163,7 @@ const ReportPage = () => {
 							${
 								activeTab === category.id
 									? "text-primary border-b-2 border-primary"
-									: "text-subText dark:text-dark-subText hover:text-dark dark:hover:text-light"
+									: "text-subText dark:text-dark-subText text-xs md:text-base hover:text-dark dark:hover:text-light"
 							}`}
 					>
 						{category.name}

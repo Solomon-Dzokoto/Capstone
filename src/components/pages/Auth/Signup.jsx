@@ -1,6 +1,6 @@
 import { InputWithLabel, CheckboxInput } from "@components/ui/Input";
 import Button from "@components/ui/Button";
-import { useState } from "react";
+// import { useState } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,9 +8,11 @@ import { Link } from "react-router-dom";
 import { registerUser } from "@api/auth";
 import { toast } from "sonner";
 import { Spinner } from "@global/Icons";
-const Signup = () => {
-	const [isChecked, setIsChecked] = useState(false);
+import { useNavigate } from "react-router-dom";
+import useUser from "@store/useUser";
 
+const Signup = () => {
+	const navigate = useNavigate();
 	const schema = yup.object().shape({
 		fullName: yup.string().required("Full Name is required"),
 		username: yup.string().required("Username is required"),
@@ -24,6 +26,7 @@ const Signup = () => {
 			.oneOf([yup.ref("password")], "Passwords do not match")
 			.required("Confirm Password is required"),
 	});
+	const setUser = useUser((state) => state.setUser);
 
 	const {
 		register,
@@ -32,6 +35,7 @@ const Signup = () => {
 		formState: { errors, isSubmitting },
 	} = useForm({
 		resolver: yupResolver(schema),
+		mode: "onChange",
 	});
 	console.log(errors);
 
@@ -52,12 +56,15 @@ const Signup = () => {
 			first_name: firstName,
 			last_name: lastName,
 		};
-		console.log(capitilize);
-		console.log(req);
-		// await new Promise((resolve) => setTimeout(resolve, 5000));
-		await registerUser(req);
-		reset();
-		toast.success("User Registered Successfully");
+		try {
+			const value = await registerUser(req);
+			reset();
+			setUser(value);
+			toast.success("User Registered Successfully");
+			navigate("/auth/login");
+		} catch (error) {
+			console.log(error, "Opps something went wrong");
+		}
 	};
 	return (
 		<main className="absolute  md:static md:left-0 md:top-0 md:translate-x-0  z-30 w-full left-1/2 transform top-[45%] -translate-x-1/2  flex items-center justify-center  ">
@@ -102,12 +109,14 @@ const Signup = () => {
 				{errors && (
 					<p className="text-danger text-[.7rem]">{errors?.email?.message}</p>
 				)}
+
 				<InputWithLabel
 					placeholder="Password"
 					label="Password"
 					{...register("password")}
 					name="password"
 					type="password"
+					Icon
 				/>
 				{errors && (
 					<p className="text-danger text-[.7rem]">
@@ -119,6 +128,7 @@ const Signup = () => {
 					label="Confirm Password"
 					{...register("confirmPassword")}
 					name="confirmPassword"
+					Icon
 					type="password"
 				/>
 				{errors && (
@@ -126,11 +136,6 @@ const Signup = () => {
 						{errors?.confirmPassword?.message}
 					</p>
 				)}
-				<CheckboxInput
-					onChange={() => setIsChecked(!isChecked)}
-					checked={isChecked}
-					label="Remember me"
-				/>
 				<Button
 					type="submit"
 					className="w-[95%] text-[.7rem] md:text-[1rem] mx-auto py-2 justify-center flex "

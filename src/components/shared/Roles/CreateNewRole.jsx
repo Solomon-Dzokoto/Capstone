@@ -42,10 +42,10 @@ const CreateNewRole = () => {
 		<section className="flex flex-col p-3 sm:p-6">
 			<button
 				onClick={() => navigate(-1)}
-				className="flex gap-1 sm:gap-2 items-center self-start text-sm sm:text-base tracking-tight leading-none whitespace-nowrap text-slate-500"
+				className="flex gap-1 sm:gap-2 dark:text-gray-300 items-center self-start text-sm sm:text-base tracking-tight leading-none whitespace-nowrap text-slate-500"
 			>
 				<ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4" />
-				<span className="self-stretch my-auto">Roles</span>
+				<span className=" my-auto">Roles</span>
 			</button>
 			<div className="flex flex-wrap gap-3 sm:gap-5 justify-between mt-4 sm:mt-6 w-full">
 				<div className="flex flex-col justify-center w-full sm:w-auto">

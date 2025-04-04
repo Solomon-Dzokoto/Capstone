@@ -6,6 +6,7 @@ import Signup from "@/components/pages/Auth/Signup";
 import { Toaster } from "sonner";
 import { lazy, Suspense } from "react";
 import Spinner from "./components/ui/Spinner";
+import ProtectedRoute from "./components/Layout/ProtectedRoute";
 
 const EmployeeUi = lazy(() =>
 	import("@/components/shared/Employee/EmployeeUi")
@@ -46,33 +47,37 @@ const App = () => {
 				}
 			>
 				<Routes>
-					<Route path="/" element={<Layout />}>
-						<Route index element={<DashboardPage />} />
-						<Route path="employees">
-							<Route index element={<EmployeeUi />} />
-							<Route path=":id" element={<EmployeeDetailsPage />} />
-						</Route>
-						<Route path="roles">
-							<Route index element={<RoleView />} />
-							<Route path="create-role" element={<CreateNewRole />} />
-						</Route>
-						<Route path="payroll">
-							<Route index element={<PayrollPage />} />
-							<Route path=":id" element={<PayrollDetails />} />
-							<Route path=":id/process" element={<ProcessPayment />} />
-						</Route>
-						<Route path="report" element={<ReportPage />} />
-						<Route path="setting" element={<SettingsPage />} />
-					</Route>
 					<Route path="/auth" element={<AuthLayout />}>
 						<Route index element={<Navigate to="login" replace />} />
 						<Route path="login" element={<Login />} />
 						<Route path="signup" element={<Signup />} />
 					</Route>
+
+					<Route path="/" element={<ProtectedRoute />}>
+						<Route element={<Layout />}>
+							<Route index element={<DashboardPage />} />
+							<Route path="employees">
+								<Route index element={<EmployeeUi />} />
+								<Route path=":id" element={<EmployeeDetailsPage />} />
+							</Route>
+							<Route path="roles">
+								<Route index element={<RoleView />} />
+								<Route path="create-role" element={<CreateNewRole />} />
+							</Route>
+							<Route path="payroll">
+								<Route index element={<PayrollPage />} />
+								<Route path=":id" element={<PayrollDetails />} />
+								<Route path=":id/process" element={<ProcessPayment />} />
+							</Route>
+							<Route path="report" element={<ReportPage />} />
+							<Route path="setting" element={<SettingsPage />} />
+						</Route>
+					</Route>
+
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Suspense>
-			<Toaster />
+			<Toaster richColors />
 		</div>
 	);
 };

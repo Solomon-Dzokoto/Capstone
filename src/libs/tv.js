@@ -84,7 +84,7 @@ export const SelectVariants = tv({
 	base: "z-40 px-2 flex items-center dark:bg-dark-surface gap-2 justify-between rounded-[.5rem] border border-general-border hover:border-primary bg-white text-[.75rem] transition-colors",
 	variants: {
 		variant: {
-			default: " w-auto",
+			default: "w-auto min-w-full ",
 		},
 		size: {
 			lg: " min-w-[13rem] h-[2.5rem]",

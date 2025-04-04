@@ -227,16 +227,16 @@ export const ArrowDown = ({ className }) => {
 	return (
 		<svg
 			width="12"
-			height="12"
-			viewBox="0 0 12 12"
 			className={className}
+			height="8"
+			viewBox="0 0 12 8"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path
-				d="M6.00016 1.32306V10.6564M6.00016 10.6564L10.6668 5.98973M6.00016 10.6564L1.3335 5.98973"
-				stroke="currentColor"
-				stroke-width="1.33333"
+				d="M1 1.5L6 6.5L11 1.5"
+				stroke="#667085"
+				stroke-width="1.66667"
 				stroke-linecap="round"
 				stroke-linejoin="round"
 			/>
@@ -524,6 +524,7 @@ export const ViewProfile = ({ className }) => {
 		</svg>
 	);
 };
+
 export const EditUser = ({ className }) => {
 	return (
 		<svg
@@ -552,6 +553,42 @@ export const EditUser = ({ className }) => {
 			/>
 			<path
 				d="M3 18.3333H18"
+				stroke="#D0D5DD"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-dasharray="1 3"
+			/>
+		</svg>
+	);
+};
+export const EditPen = ({ className }) => {
+	return (
+		<svg
+			width="24"
+			className={className}
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M13.26 3.60022L5.04997 12.2902C4.73997 12.6202 4.43997 13.2702 4.37997 13.7202L4.00997 16.9602C3.87997 18.1302 4.71997 18.9302 5.87997 18.7302L9.09997 18.1802C9.54997 18.1002 10.18 17.7702 10.49 17.4302L18.7 8.74022C20.12 7.24022 20.76 5.53022 18.55 3.44022C16.35 1.37022 14.68 2.10022 13.26 3.60022Z"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-miterlimit="10"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+			<path
+				d="M11.89 5.0498C12.32 7.8098 14.56 9.9198 17.34 10.1998"
+				stroke="currentColor"
+				stroke-width="1.5"
+				stroke-miterlimit="10"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+			<path
+				d="M3 22H21"
 				stroke="#D0D5DD"
 				stroke-linecap="round"
 				stroke-linejoin="round"
@@ -1150,19 +1187,19 @@ export const Report = ({ className }) => {
 export const Filter = ({ className }) => {
 	return (
 		<svg
-			width="16"
-			height="16"
-			viewBox="0 0 16 16"
-			fill="none"
+			width="20"
 			className={className}
+			height="20"
+			viewBox="0 0 20 20"
+			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path
-				d="M10 10C12.3012 10 14.1667 8.13452 14.1667 5.83333C14.1667 3.53215 12.3012 1.66667 10 1.66667C7.69881 1.66667 5.83333 3.53215 5.83333 5.83333C5.83333 8.13452 7.69881 10 10 10Z"
+				d="M5 10H15M2.5 5H17.5M7.5 15H12.5"
 				stroke="currentColor"
-				strokeWidth="1.2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
+				stroke-width="1.67"
+				stroke-linecap="round"
+				stroke-linejoin="round"
 			/>
 		</svg>
 	);

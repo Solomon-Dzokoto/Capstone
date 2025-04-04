@@ -23,7 +23,7 @@ const RolePermissions = () => {
 		<section className="p-2 sm:p-4">
 			<div className="space-y-2">
 				<div className="flex flex-wrap gap-3 py-2 sm:py-4 items-center">
-					<h2 className="font-bold text-subText inline-block font-[Space] text-[1.2rem] sm:text-[1.5rem] leading-6">
+					<h2 className="font-bold text-subText dark:text-slate-400 inline-block font-[Space] text-[1.2rem] sm:text-[1.5rem] leading-6">
 						Owner (Admin)
 					</h2>
 					<span
@@ -48,9 +48,9 @@ const RolePermissions = () => {
 					be changed
 				</p>
 			</div>
-			<hr className="text-subText my-4 sm:my-6" />
+			<hr className="text-subText my-4 dark:text-dark-border sm:my-6" />
 			<div className="border dark:border-dark-border dark:bg-dark-hover border-border rounded-2xl">
-				<h2 className="text-base sm:text-lg p-3 sm:p-4 font-semibold text-text">
+				<h2 className="text-base sm:text-lg p-3 sm:p-4 dark:text-gray-200 font-semibold text-text">
 					Set permissions
 				</h2>
 				<p className="text-xs sm:text-sm p-3 sm:p-4 text-subText">

@@ -29,13 +29,13 @@ const AllRoles = () => {
 							activePosition === item.id
 								? "text-primary  border-b-2 border-b-primary"
 								: "text-subText"
-						} items-center justify-between px-3 transition-all duration-200 cursor-pointer text-sm  py-2`}
+						} items-center justify-between text-xs  flex-wrap px-3 transition-all duration-200 cursor-pointer md:text-sm  py-2`}
 					>
 						<p>{item.name}</p>
 					</li>
 				))}
 			</ul>
-			<div className="grid gap-6 mt-5 grid-cols-2">
+			<div className="grid gap-6 grid-cols-1  mt-5 lg:grid-cols-2">
 				<PosCard />
 				<PosCard />
 				<PosCard />

@@ -85,9 +85,11 @@ const SettingsPage = () => {
 									Update your company details
 								</p>
 							</div>
-							<Button variant="ghost" size="sm">
-								<Edit className="text-subText" />
-								Edit
+							<Button asChild variant="ghost" className="" size="sm">
+								<div className="text-subText dark:text-gray-400">
+									<Edit className="text-subText dark:text-gray-400 " />
+									Edit
+								</div>
 							</Button>
 						</div>
 
@@ -149,10 +151,10 @@ const SettingsPage = () => {
 					<div className="space-y-6">
 						<div className="flex justify-between items-center">
 							<div>
-								<h3 className="text-lg font-semibold text-dark">
+								<h3 className="text-sm md:text-lg  font-semibold text-dark">
 									External Integrations
 								</h3>
-								<p className="text-sm text-subText">
+								<p className=" text-xs md:text-sm text-subText">
 									Connect with other services
 								</p>
 							</div>
@@ -175,14 +177,14 @@ const SettingsPage = () => {
 	};
 
 	return (
-		<main className="p-6 bg-white dark:bg-dark-bg text-dark dark:text-light">
-			<div className="flex justify-between items-center mb-6">
+		<main className="p-3 md:p-6 mx-auto md:bg-white dark:bg-dark-bg text-dark dark:text-light">
+			<div className="flex justify-between  items-center mb-6">
 				<h2 className="font-bold font-[Space] text-[1.5rem] leading-6">
 					Settings
 				</h2>
 			</div>
 
-			<div className="flex gap-8">
+			<div className="flex flex-col md:flex-row gap-8">
 				<aside className="w-64 shrink-0">
 					<ul className="space-y-2">
 						{settingsCategories.map((category) => (

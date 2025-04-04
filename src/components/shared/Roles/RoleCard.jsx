@@ -38,7 +38,7 @@ const RoleCard = () => {
 					<Tooltip className="whitespace-normal items-center text-xs space-x-2 px-2 flex gap-2 rounded-md w-[200px] dark:bg-dark-surface dark:text-dark-text">
 						<Details className="h-6 w-6 dark:text-dark-subText" />
 						This determines the type of permissions you can set
-						<Close className="h-6 w-6 dark:text-dark-subText" />
+						<Close className="h-6 w-6 dark:text-gray-400 " />
 					</Tooltip>
 				</div>
 			</div>
@@ -48,7 +48,7 @@ const RoleCard = () => {
 					<Tooltip className="whitespace-normal items-center text-xs space-x-2 px-2 flex gap-2 rounded-md w-[200px] dark:bg-dark-surface dark:text-dark-text">
 						<Details className="h-6 w-6 dark:text-dark-subText" />
 						This determines the type of permissions you can set
-						<Close className="h-6 w-6 dark:text-dark-subText" />
+						<Close className="h-6 w-6  dark:text-gray-400" />
 					</Tooltip>
 				</div>
 			</div>

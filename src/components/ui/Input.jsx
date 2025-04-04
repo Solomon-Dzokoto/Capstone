@@ -1,7 +1,10 @@
 import { cn } from "@libs/cn.js";
 import { inputVariants } from "@/libs/tv";
 import { Mark } from "@global/Icons.jsx";
-import { Details } from "../../global/Icons";
+import { Details } from "@global/Icons";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa6";
+import usePassType from "@hooks/usePassType";
 const Input = ({
 	size,
 	variant = "prime",
@@ -24,19 +27,31 @@ const Input = ({
 
 export default Input;
 
-export const InputWithLabel = ({ label, ...props }) => {
+export const InputWithLabel = ({ label, Icon, ...props }) => {
+	const [type, changeType] = usePassType();
 	return (
 		<div className="flex flex-col gap-2">
 			<label className="md:text-[0.875rem] text-[.7rem] font-medium text-gray-700">
 				{label}
 			</label>
-			<input
-				{...props}
-				className={cn(
-					"w-full px-3 py-2 border placeholder:text-[.6rem] md:placeholder:text-[1rem] border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
-					props?.className
+			<div className="relative">
+				<input
+					{...props}
+					type={props?.type === "password" ? type : props?.type}
+					className={cn(
+						"w-full px-3 py-2 border placeholder:text-[.6rem] md:placeholder:text-[1rem] border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
+						props?.className
+					)}
+				/>
+				{Icon && (
+					<div
+						onClick={changeType}
+						className="absolute right-4 cursor-pointer -translate-y-1/2 top-1/2"
+					>
+						{type === "password" ? <FaEye /> : <FaEyeSlash />}
+					</div>
 				)}
-			/>
+			</div>
 		</div>
 	);
 };
@@ -65,7 +80,10 @@ export const CheckboxInput = ({ checked, label, ...props }) => {
 export const TextareaField = ({ label, className, ...prop }) => {
 	return (
 		<div
-			className={`flex dark:bg-dark-surface  flex-col justify-center px-3.5 py-1 w-full bg-white rounded-md border max-w-[20rem] h-[15rem] border-solid border-[#C2C7D0] ${className}`}
+			className={cn(
+				"flex dark:bg-dark-surface  flex-col min-w-[22rem] justify-center px-3.5 py-1 w-full bg-white rounded-md border max-w-[20rem] h-[15rem] border-solid border-[#C2C7D0]",
+				className
+			)}
 		>
 			{label && (
 				<div className="text-xs flex justify-between  font-medium leading-loose text-gray-400">

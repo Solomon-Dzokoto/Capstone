@@ -17,9 +17,10 @@ import Input from "@components/ui/Input";
 import { employees } from "@data/list";
 import Table from "@components/ui/Table";
 import Tooltip from "@components/ui/Tooltip";
-import { useModal } from "../../../store/useModal";
-import { useUserDetail } from "../../../store/useUserDetails";
+import { useModal } from "@store/useModal";
+import { useUserDetail } from "@store/useUserDetails";
 import { useNavigate } from "react-router-dom";
+import { getEmployees } from "@api/employees";
 
 const data = [
 	{ id: "employee", value: "All Employees" },
@@ -73,6 +74,8 @@ const EmployeeUi = () => {
 	const updateModal = useModal((state) => state?.updateModal);
 	const setUser = useUserDetail((state) => state?.setUser);
 	const navigate = useNavigate();
+
+	console.log(getEmployees());
 
 	const actions = [
 		{
@@ -129,7 +132,7 @@ const EmployeeUi = () => {
 
 	return (
 		<main className="p-6">
-			<div className="flex justify-between">
+			<div className="flex flex-col gap-6 sm:flex-row justify-between">
 				<div className="flex items-center gap-2">
 					<h2 className="font-bold font-[Space]  text-[1.5rem] leading-6 ">
 						Employees

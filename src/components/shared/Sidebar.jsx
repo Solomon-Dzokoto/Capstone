@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
 	return (
 		<aside
 			className={`fixed md:relative md:p-6 h-screen bg-white  dark:bg-dark-bg  border-r border-border dark:border-dark-border transition-all duration-300 z-30 md:z-0 ${
-				isOpen ? "w-[15.5rem]" : "w-0 md:w-20"
+				isOpen ? "w-[15.5rem]" : "w-0 hidden md:block md:w-20"
 			}`}
 		>
 			<div className="flex items-center justify-between p-4">

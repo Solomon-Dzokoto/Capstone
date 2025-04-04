@@ -23,16 +23,10 @@ const Layout = () => {
 				{modal?.modalState === "open" &&
 					modal?.modalType === "assign-new-role" && <AssignNewRoleModal />}
 				<PermissionsProvider>
-					<div
-						className={`flex-shrink-0 transition-all duration-300 ${
-							isSidebarOpen ? "w-60" : "w-0 md:w-20"
-						}`}
-					>
-						<Sidebar
-							isOpen={isSidebarOpen}
-							onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
-						/>
-					</div>
+					<Sidebar
+						isOpen={isSidebarOpen}
+						onToggle={() => setIsSidebarOpen(!isSidebarOpen)}
+					/>
 					<main className="flex-1 flex flex-col min-w-0">
 						<Header onMenuClick={() => setIsSidebarOpen(!isSidebarOpen)} />
 						<div className="flex-1 overflow-y-auto px-6 py-6">

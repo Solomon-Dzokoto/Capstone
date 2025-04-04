@@ -4,10 +4,12 @@ import { SelectVariants } from "../../libs/tv";
 import { Search, ArrowDown } from "../../global/Icons";
 
 const represent = [
-	{ label: "", value: "Select" },
-	{ label: "money", value: "Money" },
-	{ label: "god", value: "God" },
-	{ label: "good", value: "Grace" },
+	{ label: "Select", value: "Select" },
+	{ label: "Checking Account", value: "Checking" },
+	{ label: "Savings Account", value: "Savings" },
+	{ label: "Investment", value: "Investment" },
+	{ label: "Loan", value: "Loan" },
+	{ label: "Budget", value: "Budget" },
 ];
 
 const CustomSelect = ({
@@ -80,14 +82,14 @@ const CustomSelect = ({
 					/>
 				)}
 				<p
-					className={`flex-1 text-left px-3 truncate ${
+					className={`flex-1 text-left dark:text-white/40 px-3 truncate ${
 						selectedOption?.label ? "text-black" : "text-[#D0D2D7]"
 					}`}
 				>
 					{selectedOption?.label ?? "Select option"}
 				</p>
 				<ArrowDown
-					className={`transition-transform flex-shrink-0 ${
+					className={`transition-transform dark:text-gray-500 flex-shrink-0 ${
 						isOpen ? "rotate-180" : ""
 					}`}
 				/>

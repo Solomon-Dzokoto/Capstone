@@ -35,9 +35,9 @@ const RoleView = () => {
 	};
 
 	return (
-		<section className="p-4 md:p-6 dark:bg-dark-background">
-			<div className="flex justify-between">
-				<div className="flex items-center gap-2">
+		<section className="p-2 md:p-6 dark:bg-dark-background">
+			<div className="flex flex-col gap-6 md:flex-row justify-between">
+				<div className="flex items-center  gap-2">
 					<h2 className="font-bold font-[Space] text-[1.5rem] leading-6 dark:text-dark-text">
 						Roles
 					</h2>
@@ -90,7 +90,7 @@ const RoleView = () => {
 							active === item.id
 								? "text-primary border-b-2 border-primary"
 								: "text-subText dark:text-dark-subText"
-						} items-center justify-between px-3 transition-all duration-200 cursor-pointer text-sm py-2`}
+						} items-center text-[.6rem] md:text-base justify-between px-3 transition-all duration-200 cursor-pointer text-sm py-2`}
 					>
 						<p>{item.name}</p>
 					</li>

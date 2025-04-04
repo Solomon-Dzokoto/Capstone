@@ -1,12 +1,13 @@
 import usePermissions from "@contexts/PermissionContext";
 import ToggleSwitch from "@components/ui/ToggleSwitch";
 import { Details, ProfileAvatar } from "@global/Icons";
+import { EditPen } from "../../../global/Icons";
 
 const RolePermissionCard = () => {
 	const { permissions, togglePermission } = usePermissions();
 
 	return (
-		<div className="p-4">
+		<div className="p-4 ">
 			<div className="flex items-start gap-3 mb-4">
 				<ProfileAvatar className="w-8 h-8" />
 				<div>
@@ -14,11 +15,15 @@ const RolePermissionCard = () => {
 					<p className="text-sm text-gray-600">Set permissions for managers</p>
 				</div>
 			</div>
-			<div className="h-[714px] max-md:mt-8 max-md:max-w-full">
+			<div className="h-[714px]  dark:bg-dark-surface dark:border-dark-border max-md:mt-8 max-md:max-w-full">
 				<div className="px-9 pt-9 max-w-full rounded-2xl border border-solid border-border w-auto max-md:pl-5">
-					<h2 className="max-w-full text-xl font-black min-h-[34px] text-subText w-[216px]">
-						Role permissions
-					</h2>
+					<div className="flex justify-between items-center">
+						<h2 className="max-w-full text-xl font-black min-h-[34px] text-subText w-[216px]">
+							Role permissions
+						</h2>
+						<EditPen />
+					</div>
+
 					<hr className="mt-6 h-px bg-border max-md:max-w-full" />
 
 					<div className="mt-6 w-full max-md:mr-0.5 max-md:max-w-full">

@@ -4,13 +4,18 @@ import { useState } from "react";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { loginUser } from "@api/auth";
 import { toast } from "sonner";
-import Spinner from "@components/ui/Spinner";
+import { Spinner } from "@global/Icons";
+import useUser from "@store/useUser";
+import axios from "axios";
 
 const Login = () => {
 	const [isChecked, setIsChecked] = useState(false);
+	const setUser = useUser((state) => state.setUser);
+	const location = useLocation();
+	const from = location.state?.from?.pathname || "/";
 
 	const schema = yup.object().shape({
 		username: yup.string().required("Username is required"),
@@ -19,6 +24,8 @@ const Login = () => {
 			.min(6, "Password must be minimum of 6")
 			.required("Password is required"),
 	});
+
+	const navigate = useNavigate();
 
 	const {
 		register,
@@ -32,13 +39,21 @@ const Login = () => {
 	console.log(errors);
 
 	const onSubmit = async (data) => {
-		console.log("FormData", data);
-
-		const data1 = await loginUser(data);
-		console.log("Res fro the backend", data1);
-		reset();
-		toast.success("Login Successfully");
+		try {
+			const response = await loginUser(data);
+			setUser(response);
+			reset();
+			toast.success("Login Successful");
+			navigate(from);
+		} catch (error) {
+			const message =
+				axios.isAxiosError(error) && error?.response?.data
+					? error?.response?.data?.detail
+					: "Something went wrong";
+			toast.error(message);
+		}
 	};
+
 	return (
 		<main className="absolute  md:static md:left-0 md:top-0 md:translate-x-0  z-30 w-full left-1/2 transform top-[45%] -translate-x-1/2  flex items-center justify-center  ">
 			<form
@@ -67,6 +82,7 @@ const Login = () => {
 					{...register("password")}
 					name="password"
 					type="password"
+					Icon
 				/>
 				{errors && (
 					<p className="text-danger text-[.7rem]">

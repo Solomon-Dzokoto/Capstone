@@ -1,8 +1,6 @@
-import { Search, ToggleIcon } from "@global/Icons";
+import { Search, ToggleIcon, Menu, Setting } from "@global/Icons";
 import Input from "../ui/Input";
 import { Link } from "react-router-dom";
-import { Menu, Setting } from "../../global/Icons";
-import { DarkModeToggle } from "../ui/DarkModeToggle";
 
 const Header = ({ onMenuClick }) => {
 	return (
@@ -10,7 +8,13 @@ const Header = ({ onMenuClick }) => {
 			<div className="flex items-center gap-4">
 				<button
 					onClick={onMenuClick}
-					className="p-2 hover:bg-gray-100 dark:hover:bg-dark-hover rounded-lg"
+					className="p-2 hover:bg-gray-100 hidden md:block dark:hover:bg-dark-hover rounded-lg"
+				>
+					<ToggleIcon />
+				</button>
+				<button
+					onClick={onMenuClick}
+					className="p-2 hover:bg-gray-100 md:hidden dark:hover:bg-dark-hover rounded-lg"
 				>
 					<Menu />
 				</button>

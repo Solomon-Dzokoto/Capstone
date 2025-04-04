@@ -81,11 +81,56 @@ const Table = ({
 	return (
 		<div
 			className={cn(
-				"w-full bg-white dark:bg-dark-surface rounded-lg overflow-hidden",
+				"w-full md:bg-white  dark:bg-dark-surface rounded-lg overflow-hidden",
 				className
 			)}
 		>
-			<div className="w-full overflow-x-auto">
+			<div className=" flex rounded-xl transition-all duration-200 ease-in-out flex-col gap-4 md:hidden">
+				{data?.map((item) => (
+					<div
+						key={item.id}
+						className="bg-white dark:bg-dark-surface shadow-lg hover:shadow-none  rounded-lg mb-4"
+					>
+						{columns.map((column) => (
+							<div
+								key={column.field}
+								className="px-4 py-2 border-b border-border flex  justify-between dark:border-dark-border"
+							>
+								<strong>{column.title}:</strong>
+								<div className="">{renderCell(column, item)}</div>
+							</div>
+						))}
+						{actions.length > 0 && (
+							<div className="p-4">
+								<Dropdown className="text-gray-500 cursor-pointer" />
+								{activeSelect === item.id && isOpen && (
+									<div className="absolute top-12 right-0 w-fit rounded-md min-w-[8rem] z-10 bg-white dark:bg-dark-surface shadow-lg p-2">
+										<ul>
+											{actions.map((action) => (
+												<li
+													key={action.id}
+													className="flex py-2 text-[.7rem] cursor-pointer hover:bg-gray-200 dark:hover:bg-dark-hover dark:text-dark-text items-center px-2 rounded"
+													onClick={(e) => {
+														e.stopPropagation();
+														action.onClick(item);
+														setIsOpen(false);
+													}}
+												>
+													{action.icon && (
+														<action.icon className="w-4 h-4 text-subText dark:text-dark-subtext mr-2" />
+													)}
+													{action.name}
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
+							</div>
+						)}
+					</div>
+				))}
+			</div>
+			<div className="w-full hidden md:block overflow-x-auto">
 				<table className="w-full border-collapse">
 					<thead>
 						<tr className="border-b border-border dark:border-dark-border">

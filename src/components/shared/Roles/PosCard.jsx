@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowLeft } from "@global/Icons";
 import Button from "@components/ui/Button";
+import { EditPen } from "@global/Icons";
 
 const teamMembersImages = [
 	"/assets/profile.jpeg",
@@ -14,11 +15,14 @@ const btnType = ["Marketing", "Product", "Engineering", "Design"];
 
 const PosCard = () => {
 	return (
-		<article className="py-4 px-8 space-y-4 w-auto min-w-[29rem] border rounded-xl border-border dark:border-dark-border dark:bg-dark-surface h-fit min-h-[11.4rem]">
+		<article className="py-4 px-8 space-y-4 w-auto md:min-w-[29rem] border rounded-xl border-border dark:border-dark-border dark:bg-dark-surface h-fit min-h-[11.4rem]">
 			<div className="flex justify-between items-center">
-				<h1 className="text-dark dark:text-dark-text">
-					Solution Sales Specialist
-				</h1>
+				<div className="">
+					<h1 className="text-dark flex justify-between items-center dark:text-dark-text">
+						Solution Sales Specialist
+					</h1>
+				</div>
+
 				<div className="flex gap-2">
 					<div className="flex -space-x-4">
 						{teamMembersImages.map((image, index) => (
@@ -42,7 +46,7 @@ const PosCard = () => {
 				needs and provide solutions that meet or exceed their expectations,
 				while also achieving the company's sales goals.
 			</p>
-			<div className="flex gap-2">
+			<div className="flex flex-wrap gap-2">
 				{btnType.map((type) => (
 					<Button
 						key={type}
