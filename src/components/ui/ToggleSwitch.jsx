@@ -1,5 +1,5 @@
-"use client";
 import React from "react";
+import { cn } from "../../libs/cn";
 
 const ToggleSwitch = ({
 	enabled,
@@ -10,7 +10,10 @@ const ToggleSwitch = ({
 }) => {
 	return (
 		<div
-			className={`inline-flex  gap-3 items-center py-4  bg-blue rounded-lg dark:rounded-none dark:border-dark-border border-b border-solid border-b-border  max-w-[483px] min-h-[72px] max-md:max-w-full ${className}`}
+			className={cn(
+				`inline-flex  gap-3 items-center py-4  bg-blue rounded-lg dark:rounded-none dark:border-dark-border border-b border-solid border-b-border  max-w-[483px] max-md:max-w-full`,
+				className
+			)}
 		>
 			<button
 				onClick={onToggle}
@@ -28,7 +31,9 @@ const ToggleSwitch = ({
 
 			<div className="grow shrink  my-auto text-sm leading-none min-w-60 w-[428px] max-md:max-w-full">
 				<h3 className="font-black text-dark">{title}</h3>
-				<p className="text-slate-400 max-md:max-w-full">{description}</p>
+				<p className="text-slate-400 truncate flex flex-wrap line-clamp-2 max-md:max-w-full">
+					{description}
+				</p>
 			</div>
 		</div>
 	);

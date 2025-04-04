@@ -1,24 +1,24 @@
 import React from "react";
-// import InputField from "./InputField";
 import { InputWithLabel } from "../../ui/Input";
 import { TextareaField, InputField } from "../../ui/Input";
 import CustomSelect from "../../ui/CustomSelect";
+
 const BasicDetailsSection = () => {
 	return (
-		<section className="max-w-full w-auto min-w-[60%]:">
-			<div className="flex flex-wrap gap-5 items-start max-md:mr-0.5">
-				<div className="min-w-60 space-y-6  w-[347px]">
-					<InputField label="Title/name" className="max-w-full " />
-					<TextareaField label="Description or Purpose" />
+		<section className="w-full">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div className="space-y-6">
+					<InputField label="Title/name" className="w-full" />
+					<TextareaField label="Description or Purpose" className="w-full" />
 				</div>
 
-				<div className="text-sm space-y-6 leading-6 min-w-60 text-slate-500 w-[347px]">
-					<CustomSelect className="min-w-[22rem] text-gray-700 h-[3.6rem] " />
-					<CustomSelect className="min-w-[22rem] text-gray-700 h-[3.6rem] " />
+				<div className="space-y-6">
+					<CustomSelect className="w-full h-[3.6rem]" />
+					<CustomSelect className="w-full h-[3.6rem]" />
 					<InputField
 						type="tel"
 						label="Salary and Benefits"
-						className="max-w-full "
+						className="w-full"
 					/>
 				</div>
 			</div>

@@ -5,6 +5,7 @@ import { Details } from "@global/Icons";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa6";
 import usePassType from "@hooks/usePassType";
+
 const Input = ({
 	size,
 	variant = "prime",
@@ -14,7 +15,7 @@ const Input = ({
 	...props
 }) => {
 	return (
-		<div className="flex items-center ">
+		<div className="flex items-center w-full">
 			{children}
 			<input
 				{...props}
@@ -30,16 +31,16 @@ export default Input;
 export const InputWithLabel = ({ label, Icon, ...props }) => {
 	const [type, changeType] = usePassType();
 	return (
-		<div className="flex flex-col gap-2">
-			<label className="md:text-[0.875rem] text-[.7rem] font-medium text-gray-700">
+		<div className="flex flex-col gap-2 w-full">
+			<label className="text-xs md:text-sm font-medium text-gray-700 dark:text-dark-text">
 				{label}
 			</label>
-			<div className="relative">
+			<div className="relative w-full">
 				<input
 					{...props}
 					type={props?.type === "password" ? type : props?.type}
 					className={cn(
-						"w-full px-3 py-2 border placeholder:text-[.6rem] md:placeholder:text-[1rem] border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
+						"w-full px-3 py-2 text-sm md:text-base border placeholder:text-xs md:placeholder:text-sm border-gray-300 dark:border-dark-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-dark-surface dark:text-dark-text",
 						props?.className
 					)}
 				/>
@@ -68,11 +69,13 @@ export const CheckboxInput = ({ checked, label, ...props }) => {
 				{checked && (
 					<Mark
 						color="#792daf"
-						className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-3 w-2.5 text-primary pointer-events-none"
+						className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-3 w-2.5 text-primary pointer-events-none"
 					/>
 				)}
 			</div>
-			<p className="text-[.7rem] md:text-[.85rem] ">{label}</p>
+			<p className="text-xs md:text-sm text-gray-700 dark:text-dark-text">
+				{label}
+			</p>
 		</div>
 	);
 };
@@ -81,38 +84,46 @@ export const TextareaField = ({ label, className, ...prop }) => {
 	return (
 		<div
 			className={cn(
-				"flex dark:bg-dark-surface  flex-col min-w-[22rem] justify-center px-3.5 py-1 w-full bg-white rounded-md border max-w-[20rem] h-[15rem] border-solid border-[#C2C7D0]",
+				"flex flex-col w-full min-h-[12rem] bg-white dark:bg-dark-surface rounded-lg border border-gray-300 dark:border-dark-border p-4",
 				className
 			)}
 		>
 			{label && (
-				<div className="text-xs flex justify-between  font-medium leading-loose text-gray-400">
-					{label}
-					<Details />
+				<div className="flex items-center justify-between mb-2">
+					<span className="text-xs md:text-sm font-medium text-gray-700 dark:text-dark-text">
+						{label}
+					</span>
+					<Details className="text-gray-400 dark:text-dark-subText" />
 				</div>
 			)}
 			<textarea
 				{...prop}
-				type="text"
-				className="flex-1  focus:outline-none h-full shrink self-stretch text-sm leading-6 text-gray-500 basis-0"
+				className="flex-1 w-full bg-transparent resize-none text-sm md:text-base text-gray-700 dark:text-dark-text focus:outline-none"
 			/>
 		</div>
 	);
 };
+
 export const InputField = ({ label, className, ...prop }) => {
 	return (
 		<div
-			className={`flex  flex-col dark:bg-dark-surface justify-center px-3 py-2 w-auto max-w-[20rem] dark:text-gray-400  bg-white rounded-md border border-solid border-[#C2C7D0] ${className}`}
+			className={cn(
+				"flex flex-col w-full bg-white dark:bg-dark-surface rounded-lg border border-gray-300 dark:border-dark-border p-4",
+				className
+			)}
 		>
 			{label && (
-				<div className="text-xs flex justify-between  font-medium leading-loose text-gray-400">
-					{label}
+				<div className="flex items-center justify-between mb-2">
+					<span className="text-xs md:text-sm font-medium text-gray-700 dark:text-dark-text">
+						{label}
+					</span>
+					<Details className="text-gray-400 dark:text-dark-subText" />
 				</div>
 			)}
 			<input
 				{...prop}
 				type="text"
-				className="flex-1 focus:outline-none h-full shrink self-stretch text-sm leading-6 text-gray-500 basis-0"
+				className="w-full bg-transparent text-sm md:text-base text-gray-700 dark:text-dark-text focus:outline-none"
 			/>
 		</div>
 	);
