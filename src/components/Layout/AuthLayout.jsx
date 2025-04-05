@@ -20,7 +20,7 @@ const AuthLayout = () => {
           </h2>
           <div className="flex items-center">
             <img
-              className="w-[25rem] "
+              className="w-[25rem]  h-[6rem] "
               loading="lazy"
               src="/assets/Logo (1).png"
               alt="logo"

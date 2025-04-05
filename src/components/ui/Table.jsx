@@ -93,15 +93,20 @@ const Table = ({
     if (column.type === "tags") {
       return (
         <div className="flex flex-wrap gap-2">
-          {(value || []).map((tag) => (
-            <Button
-              key={tag}
-              variant={tag === "Design" ? "design" : "outline"}
-              className="text-xs whitespace-nowrap py-1"
-            >
-              {tag}
-            </Button>
-          ))}
+          {(value || [])?.map((tag) => {
+            console.log("Tags Name:", tag?.name);
+            return (
+              tag && (
+                <Button
+                  key={tag.id}
+                  variant={tag?.name.includes("Design") ? "design" : "outline"}
+                  className="text-xs whitespace-nowrap py-1"
+                >
+                  {(tag && tag?.name) || "Product"}
+                </Button>
+              )
+            );
+          })}
         </div>
       );
     }

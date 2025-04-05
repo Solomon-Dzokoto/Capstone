@@ -55,7 +55,7 @@ export const buttonVariant = tv({
 			pending:
 				"bg-secondary/10 rounded-2xl text-secondary dark:bg-dark-secondary/10 dark:text-dark-secondary",
 			design:
-				"bg-tertiary/10 rounded-2xl text-tertiary dark:bg-dark-accent/10 dark:text-dark-accent",
+				"bg-tertiary/10 rounded-2xl text-secondary dark:bg-dark-accent/10 dark:text-dark-accent",
 		},
 		size: {
 			default: "w-auto ",
