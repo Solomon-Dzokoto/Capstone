@@ -15,13 +15,14 @@ import { employees as dummyData } from "@data/list";
 import Button from "@components/ui/Button";
 import { useState } from "react";
 import Input from "@components/ui/Input";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import Table from "@components/ui/Table";
 import Tooltip from "@components/ui/Tooltip";
 import { useModal } from "@store/useModal";
 import { useUserDetail } from "@store/useUserDetails";
 import { useNavigate } from "react-router-dom";
-import { getEmployees } from "@api/employees";
+// import { getEmployees } from "@api/employees";
+import { useEmployee } from "@hooks/useEmployee";
 import { getUserShortName } from "@hooks/usePassType";
 
 const data = [
@@ -106,16 +107,17 @@ const EmployeeUi = () => {
   const updateModal = useModal((state) => state?.updateModal);
   const setUser = useUserDetail((state) => state?.setUser);
   const navigate = useNavigate();
-  const { data: employees, isLoading } = useQuery({
-    queryKey: ["employees"],
-    queryFn: async () => {
-      const data = await getEmployees();
-      console.log("Fetch Data", data);
-      return data;
-    },
-    staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 10,
-  });
+  const { employees, isLoading } = useEmployee();
+  //   const { data: employees, isLoading } = useQuery({
+  //     queryKey: ["employees"],
+  //     queryFn: async () => {
+  //       const data = await getEmployees();
+  //       console.log("Fetch Data", data);
+  //       return data;
+  //     },
+  //     staleTime: 1000 * 60 * 5,
+  //     cacheTime: 1000 * 60 * 10,
+  //   });
 
   console.log("Employees data:", employees);
   const user = (employees || []).map((item) => item.user);

@@ -3,8 +3,7 @@ import Button from "@components/ui/Button";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 // import { employees } from "@data/list";
-import { useQuery } from "@tanstack/react-query";
-import { getAnEmployee } from "@/api";
+import { useEmployee } from "@hooks/useEmployee";
 
 const category = [
   { id: "general", name: "General Info" },
@@ -38,17 +37,21 @@ const teamMembers = [
 const EmployeeDetailsPage = () => {
   const [active, setActive] = useState("general");
   const { id } = useParams();
-  const { data: employee } = useQuery({
-    queryKey: ["employee", id],
-    queryFn: async () => {
-      const data = await getAnEmployee();
-      return data;
-    },
-    staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 10,
-  });
+  const { employees } = useEmployee();
+
+  //   const { data: employee } = useQuery({
+  //     queryKey: ["employee", id],
+  //     queryFn: async () => {
+  //       const data = await getAnEmployee();
+  //       return data;
+  //     },
+  //     staleTime: 1000 * 60 * 5,
+  //     cacheTime: 1000 * 60 * 10,
+  //   });
+  const employee = employees.find((employee) => employee?.id === id);
 
   console.log("Employee data:", employee);
+  console.log("Param id", id);
 
   return (
     <section className="p-4 md:p-6 bg-white dark:bg-dark-bg ">
@@ -174,12 +177,29 @@ const EmployeeDetailsPage = () => {
                     label: "Email",
                     value: employee?.email || "invision@invisionapp.com",
                   },
-                  { label: "Role", value: "Senior Backend, Full time" },
-                  { label: "Phone", value: "+144–3412–4422" },
-                  { label: "Social handle", value: "@invisionapp" },
+                  {
+                    label: "Role",
+                    value:
+                      employee?.role?.employment?.type ||
+                      "Senior Backend, Full time",
+                  },
+                  {
+                    label: "Phone",
+                    value: employee?.phone || "+144–3412–4422",
+                  },
+                  {
+                    label: "Social handle",
+                    value: employee?.social_handle || "@invisionapp",
+                  },
                   { label: "Work Location", value: "New York, NY" },
-                  { label: "Join Date", value: "12 April, 2022" },
-                  { label: "Date of Birth", value: "12 April" },
+                  {
+                    label: "Join Date",
+                    value: employee?.join_date || "12 April, 2022",
+                  },
+                  {
+                    label: "Date of Birth",
+                    value: employee?.birth_date || "12 April",
+                  },
                 ].map((field, index) => (
                   <div
                     key={index}

@@ -1,8 +1,8 @@
 import {create} from "zustand"
 
-export const useUserDetail = create((set)=>({
+export const useAssignEmployee = create((set)=>({
     user: {},
-    setUser: (user) => set({user}),
+    setEmployeeToAssignRole: (user) => set({user}),
 }))
 
 export const getFirstLetters = (name) => {

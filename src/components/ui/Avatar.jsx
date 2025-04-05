@@ -15,7 +15,7 @@ const Avatar = ({
     lg: "w-12 h-12",
   };
 
-  const getFallbackInitials = () => {
+  const getUserName = () => {
     if (!fallback) return "U";
     return fallback
       .split(" ")
@@ -31,7 +31,7 @@ const Avatar = ({
         className={`${sizeClasses[size]} ${className} flex items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 font-medium ring-2 ring-white dark:ring-gray-800`}
         title={alt}
       >
-        {getFallbackInitials()}
+        {getUserName()}
       </div>
     );
   }
