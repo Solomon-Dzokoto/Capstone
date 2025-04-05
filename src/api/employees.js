@@ -1,21 +1,22 @@
 import { axiosInstance } from "../service/instance";
 
-
-export const getEmployees = async () => {
+export const getEmployees = async (searchQuery = "") => {
 	try {
-		const { data } = await axiosInstance.get("/api/v1/employees/", {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-			},
-		});
+		const { data } = await axiosInstance.get(
+			`/api/v1/employees/?search=${searchQuery}`,
+			{
+				headers: {
+					Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+				},
+			}
+		);
 		console.log("Employees data:", data?.results);
-		return data?.results
+		return data?.results;
 	} catch (error) {
 		console.error("Error fetching employees:", error);
 		throw error;
 	}
 };
-
 
 export const getAnEmployee = async () => {
 	try {
@@ -25,13 +26,12 @@ export const getAnEmployee = async () => {
 			},
 		});
 		console.log("Employees data:", data);
-		return data
+		return data;
 	} catch (error) {
 		console.error("Error fetching employees:", error);
 		throw error;
 	}
 };
-
 
 export const getAllUsers = async () => {
 	try {
@@ -41,9 +41,9 @@ export const getAllUsers = async () => {
 			},
 		});
 		console.log("Users data:", data);
-		return data
+		return data;
 	} catch (error) {
 		console.error("Error fetching users:", error);
 		throw error;
 	}
-}
+};
