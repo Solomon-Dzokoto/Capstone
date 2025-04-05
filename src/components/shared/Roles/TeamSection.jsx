@@ -1,11 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Badge from "./Badge";
 import { Details, Search } from "../../../global/Icons";
 import Input from "../../ui/Input";
+import Skeleton from "../../ui/Skeleton";
 
 const TeamSection = () => {
 	const [isTyping, setIsTyping] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		// Simulate loading delay
+		const timer = setTimeout(() => {
+			setIsLoading(false);
+		}, 1500);
+
+		return () => clearTimeout(timer);
+	}, []);
 
 	const teamMembers = [
 		{
@@ -40,6 +51,31 @@ const TeamSection = () => {
 			setIsTyping(true);
 		}
 	};
+
+	const SkeletonBadge = () => (
+		<div className="h-8 w-32 bg-gray-200 dark:bg-dark-surface rounded-full animate-pulse" />
+	);
+
+	if (isLoading) {
+		return (
+			<section className="w-full bg-white dark:bg-dark-surface text-dark dark:text-light rounded-xl border border-solid border-[#C2C7D0] dark:border-dark-border p-4 md:p-6">
+				<header className="flex items-center justify-between w-full">
+					<div className="h-6 w-24 bg-gray-200 dark:bg-dark-surface rounded animate-pulse" />
+					<div className="h-6 w-6 bg-gray-200 dark:bg-dark-surface rounded animate-pulse" />
+				</header>
+
+				<div className="mt-4 p-3 w-full bg-gray-100 dark:bg-dark-surface rounded border border-solid border-[#E6E7EC] dark:border-dark-border">
+					<div className="h-10 bg-gray-200 dark:bg-dark-surface rounded animate-pulse" />
+				</div>
+
+				<div className="flex flex-wrap gap-2 mt-4">
+					{[1, 2, 3, 4, 5].map((index) => (
+						<SkeletonBadge key={index} />
+					))}
+				</div>
+			</section>
+		);
+	}
 
 	return (
 		<section className="w-full bg-white dark:bg-dark-surface text-dark dark:text-light rounded-xl border border-solid border-[#C2C7D0] dark:border-dark-border p-4 md:p-6">

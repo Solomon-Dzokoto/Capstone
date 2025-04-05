@@ -1,6 +1,6 @@
 import React from "react";
-import { Close } from "@global/Icons";
-
+import { Close, LogoutIcon } from "@global/Icons";
+import Button from "../ui/Button";
 import { sidebarLists, employeeRender } from "@data/list";
 import { useList } from "@store/useListStore";
 import { useNavigate } from "react-router-dom";
@@ -27,8 +27,8 @@ const Sidebar = ({ isOpen, onToggle }) => {
 
 	return (
 		<aside
-			className={`fixed md:relative md:p-6 h-screen bg-white  dark:bg-dark-bg  border-r border-border dark:border-dark-border transition-all duration-300 z-30 md:z-0 ${
-				isOpen ? "w-[15.5rem]" : "w-0 hidden md:block md:w-20"
+			className={`fixed md:relative  md:p-6 h-screen bg-white  dark:bg-dark-bg  border-r border-border dark:border-dark-border transition-all duration-300 z-30 md:z-0 ${
+				isOpen ? "w-[15.5rem]" : "w-0 hidden md:flex md:flex-col md:w-20"
 			}`}
 		>
 			<div className="flex items-center justify-between p-4">
@@ -57,7 +57,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
 					<Close className="w-6 h-6" />
 				</button>
 			</div>
-			<ul className="space-y-3">
+			<ul className="space-y-3  flex-1">
 				{sidebarLists.map((list) => (
 					<li onClick={(e) => handleItemClick(list.id, e)} key={list.id}>
 						<div
@@ -138,6 +138,23 @@ const Sidebar = ({ isOpen, onToggle }) => {
 					</li>
 				))}
 			</ul>
+			<div className="flex-1" />
+
+			<div
+				className={` absolute bottom-2 flex py-2 px-4 bg-white dark:text-white hover:bg-gray-100 transition-all duration-200 dark:hover:bg-gray-800 dark:bg-dark-hover ${
+					!isOpen ? "px-5" : ""
+				}   rounded-[2rem] cursor-pointer items-center gap-3 text-text`}
+			>
+				{" "}
+				<LogoutIcon className="  gap-3 w-6 h-6 text-subText" />
+				<p
+					className={`transition-opacity duration-200 flex-1 ${
+						!isOpen ? "opacity-0 w-0" : "opacity-100"
+					}`}
+				>
+					Logout
+				</p>
+			</div>
 		</aside>
 	);
 };

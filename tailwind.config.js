@@ -6,8 +6,8 @@ export default {
 		extend: {
 			colors: {
 				// Light Mode Colors
-				primary: "#B665BC",
-				secondary: "#792daf",
+				primary: "#9A4C1E",
+				secondary: "#6A1039",
 				success: "#027A48",
 				danger: "#F15046",
 				tertiary: "#F195C3",

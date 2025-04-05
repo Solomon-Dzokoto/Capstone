@@ -28,6 +28,11 @@ const Header = ({ onMenuClick }) => {
 				</div>
 			</div>
 			<div className="flex items-center gap-2">
+				<button className="p-2 hover:bg-gray-100 dark:hover:bg-dark-hover rounded-lg">
+					<Link to="/setting">
+						<Setting />
+					</Link>
+				</button>
 				<div className="flex items-center gap-3">
 					<div className="flex flex-col items-end">
 						<p className="text-dark font-medium text-sm">James Campion</p>
