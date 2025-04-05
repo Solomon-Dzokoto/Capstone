@@ -11,7 +11,7 @@ const RolePage = () => {
   const { id } = useParams();
 
   console.log("Params", id);
-  const { data: role, isLoading } = useQuery({
+  const { data: role } = useQuery({
     queryKey: ["roles", id],
     queryFn: async () => {
       const data = await getARole(id);
