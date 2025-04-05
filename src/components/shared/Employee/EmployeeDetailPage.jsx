@@ -110,17 +110,15 @@ const EmployeeDetailsPage = () => {
 
       <section className="px-9 pt-8 pb-14 rounded-xl border  border-border max-md:px-5">
         <div className="flex gap-8 items-start w-full min-h-[677px] max-md:max-w-full">
-          {/* User Profile Section */}
-          <aside className="flex flex-col justify-center items-center pt-4 rounded-xl border  border-border min-h-[677px] min-w-60 w-auto">
-            {/* Profile Header */}
-            <header className="flex gap-5 items-center">
+          <div className="flex flex-col justify-center gap-y-1 items-center pt-4 rounded-xl border  border-border min-h-fit min-w-60 w-auto">
+            <div className="flex gap-5 items-center">
               <img
-                src="/assets/profile.jpeg"
+                src={employee?.image || "/assets/profile.jpeg"}
                 className="object-cover  my-auto aspect-square  rounded-[400px] size-8"
                 alt="Profile"
               />
 
-              <div className=" my-auto w-auto">
+              <div className=" my-auto space-y-1 w-auto">
                 <h1 className="text-base font-semibold leading-none text-gray-900">
                   {employee?.user.first_name +
                     " " +
@@ -129,15 +127,15 @@ const EmployeeDetailsPage = () => {
                 <p className="text-sm leading-none text-slate-500">
                   @{employee?.email || "dzakpatabedevimenykua@gmail.com"}
                 </p>
-                <div className="flex items-center py-1 w-full text-[.6rem]  text-center text-red-500 whitespace-nowrap min-h-[27px]">
-                  <div className="flex items-start  my-auto bg-blend-multiply">
-                    <div className="flex gap-1.5 justify-center items-center py-0.5 pr-2 pl-1.5 bg-orange-50 rounded-2xl">
-                      <Button></Button>
-                    </div>
-                  </div>
-                </div>
+
+                <Button
+                  className="h-5 px-4"
+                  variant={employee?.employment_status.toLowerCase()}
+                >
+                  {employee?.employment_status || "Inactive"}
+                </Button>
               </div>
-            </header>
+            </div>
 
             <section className="flex gap-4 items-start mt-7 max-w-full text-center w-auto">
               <article className="flex flex-col flex-1 shrink items-center whitespace-nowrap basis-0">
@@ -195,7 +193,7 @@ const EmployeeDetailsPage = () => {
                 ))}
               </div>
             </section>
-          </aside>
+          </div>
 
           {/* Role Details Section */}
           <section className="px-1.5 pb-2.5 rounded-xl min-w-60 w-auto max-md:pr-5 max-md:max-w-full">
@@ -226,12 +224,17 @@ const EmployeeDetailsPage = () => {
 
                     {/* Team Tags */}
                     <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="inline-flex items-center px-3 py-1 text-xs rounded-full bg-neutral-100 text-sky-950">
-                        Marketing team
-                      </span>
-                      <span className="inline-flex items-center px-3 py-1 text-xs rounded-full bg-pink-100 text-pink-900">
-                        Design and product team
-                      </span>
+                      {employee?.team.map((tag) => (
+                        <Button
+                          key={tag.id}
+                          variant={
+                            tag?.name.includes("Design") ? "design" : "outline"
+                          }
+                          className="text-xs whitespace-nowrap py-1"
+                        >
+                          {(tag && tag?.name) || "Product"}
+                        </Button>
+                      ))}
                     </div>
 
                     <div className="flex justify-between items-center mt-6">
