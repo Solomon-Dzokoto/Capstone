@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchFilterAndCo from "./SearchFilterAndCo";
 import PosCard from "./PosCard";
 import { useQuery } from "@tanstack/react-query";
 import { getAllRoles } from "@api/roles";
-import Spinner from "../../ui/Spinner";
+import RoleSkeleton from "./RoleSkeleton";
 
 const rolePosition = [
   { id: "all", name: "All" },
@@ -15,23 +15,44 @@ const rolePosition = [
 ];
 
 const AllRoles = () => {
-  const [activePosition, setActivePosition] = useState("general");
+  const [activePosition, setActivePosition] = useState("all");
+  const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedSearch(search);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, [search]);
 
   const { data: roles, isLoading } = useQuery({
-    queryKey: ["roles"],
+    queryKey: ["roles", debouncedSearch],
     queryFn: async () => {
-      const data = await getAllRoles();
+      const data = await getAllRoles(debouncedSearch);
       return data;
     },
-    staleTime: 1000 * 60 * 5,
-    cacheTime: 1000 * 60 * 10,
   });
-  console.log("Roles :", roles);
+
+  const filteredRoles = React.useMemo(() => {
+    if (!roles) return [];
+
+    return roles.filter((role) => {
+      if (activePosition === "all") return true;
+
+      return role?.title?.toLowerCase().includes(activePosition.toLowerCase());
+    });
+  }, [roles, activePosition]);
+
   return (
     <div className="space-y-6">
       <SearchFilterAndCo
         inputProps={{
           placeholder: "Search Roles by Title, Teams or any related keywords",
+          value: search,
+          onChange: (e) => setSearch(e.target.value),
+          onBlur: (e) => setSearch(e.target.value),
         }}
       />
       <div className="border-b border-border dark:border-dark-border overflow-x-auto">
@@ -53,16 +74,16 @@ const AllRoles = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {roles &&
-          roles?.map((role) => (
-            <PosCard
-              key={role?.id}
-              id={role?.id}
-              title={role?.title}
-              description={role?.description}
-            />
-          ))}
-        {isLoading && <Spinner className="w-10 h-10 mx-auto" />}
+        {isLoading
+          ? [...Array(8)].map((_, index) => <RoleSkeleton key={index} />)
+          : filteredRoles?.map((role) => (
+              <PosCard
+                key={role?.id}
+                id={role?.id}
+                title={role?.title}
+                description={role?.description}
+              />
+            ))}
       </div>
     </div>
   );

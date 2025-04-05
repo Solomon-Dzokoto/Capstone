@@ -2,37 +2,7 @@ import React, { useState } from "react";
 import Button from "@components/ui/Button";
 import { Dropdown } from "@/global/Icons";
 import { cn } from "@libs/cn";
-
-const TableSkeleton = () => {
-  return (
-    <div className="w-full animate-pulse">
-      {/* Header skeleton */}
-      <div className="flex border-b border-gray-200 dark:border-dark-border p-4">
-        {[1, 2, 3, 4].map((i) => (
-          <div
-            key={i}
-            className="flex-1 h-6 bg-gray-200 dark:bg-dark-surface rounded mr-4"
-          />
-        ))}
-      </div>
-
-      {/* Rows skeleton */}
-      {[1, 2, 3, 4, 5].map((row) => (
-        <div
-          key={row}
-          className="flex border-b border-gray-200 dark:border-dark-border p-4"
-        >
-          {[1, 2, 3, 4].map((cell) => (
-            <div
-              key={cell}
-              className="flex-1 h-4 bg-gray-100 dark:bg-dark-surface rounded mr-4"
-            />
-          ))}
-        </div>
-      ))}
-    </div>
-  );
-};
+import TableSkeleton from "./TableSkeleton";
 
 const Table = ({
   columns,
@@ -99,7 +69,11 @@ const Table = ({
               tag && (
                 <Button
                   key={tag.id}
-                  variant={tag?.name.includes("Design") ? "design" : "outline"}
+                  variant={
+                    tag?.name && tag?.name.includes("Design")
+                      ? "design"
+                      : "outline"
+                  }
                   className="text-xs whitespace-nowrap py-1"
                 >
                   {(tag && tag?.name) || "Product"}
@@ -115,7 +89,9 @@ const Table = ({
   };
 
   if (isLoading) {
-    return <TableSkeleton />;
+    return (
+      <TableSkeleton columns={columns.length + (isCheck ? 1 : 0)} rows={5} />
+    );
   }
 
   return (
