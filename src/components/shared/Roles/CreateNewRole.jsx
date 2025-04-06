@@ -49,7 +49,7 @@ const CreateNewRole = () => {
 			</button>
 			<div className="flex flex-wrap gap-3 sm:gap-5 lg:gap-6 justify-between mt-4 sm:mt-6 lg:mt-8 w-full">
 				<div className="flex flex-col justify-center w-full sm:w-auto">
-					<h1 className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-none text-gray-900">
+					<h1 className="text-xl dark:text-gray-300 sm:text-2xl lg:text-3xl font-semibold leading-none text-gray-900">
 						Create New Role
 					</h1>
 					<nav className="flex flex-wrap gap-4 sm:gap-10 lg:gap-12 items-start self-start mt-4 sm:mt-7 lg:mt-9">
