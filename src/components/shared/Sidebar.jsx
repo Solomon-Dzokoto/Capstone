@@ -1,6 +1,5 @@
 import React from "react";
 import { Close, LogoutIcon } from "@global/Icons";
-import Button from "../ui/Button";
 import { sidebarLists, employeeRender } from "@data/list";
 import { useList } from "@store/useListStore";
 import { useNavigate } from "react-router-dom";
@@ -147,15 +146,25 @@ const Sidebar = ({ isOpen, onToggle }) => {
           window.reload();
           navigate("/auth/login");
         }}
-        className={` absolute bottom-2 flex py-2 px-4 bg-white dark:text-white hover:bg-gray-100 transition-all duration-200 dark:hover:bg-gray-800 dark:bg-dark-hover ${
+        className={` ${
+          active === "logout"
+            ? "bg-primary text-white"
+            : "bg-white  dark:text-white hover:bg-gray-100 transition-all duration-200 dark:hover:bg-gray-800 dark:bg-dark-hover"
+        } flex py-2 px-4 ${
           !isOpen ? "px-5" : ""
-        }   rounded-[2rem] cursor-pointer items-center gap-3 text-text`}
+        } rounded-[2rem] absolute bottom-4  cursor-pointer items-center gap-3 text-text mb-4 mx-2`}
       >
-        {" "}
-        <LogoutIcon className="gap-3 w-6 h-6 text-subText" />
+        <span
+          className={`${!isOpen ? "relative -left-2" : ""} flex items-center`}
+        >
+          <LogoutIcon
+            color={active === "logout" ? "white" : "#091E42"}
+            className="w-6 h-6"
+          />
+        </span>
         <p
-          className={`transition-opacity duration-200 flex-1 ${
-            !isOpen ? "opacity-0" : "opacity-100 "
+          className={`transition-opacity duration-200 ${
+            !isOpen ? "opacity-0 w-0" : "opacity-100"
           }`}
         >
           Logout

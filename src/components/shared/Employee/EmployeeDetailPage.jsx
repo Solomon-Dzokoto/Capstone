@@ -63,7 +63,7 @@ const EmployeeDetailsPage = () => {
         Employees
       </button>
 
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div className="flex  flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
         <div className="flex items-center gap-2">
           <h2 className="text-xl md:text-2xl font-semibold text-dark dark:text-dark-text">
             {employee?.user.first_name + " " + employee?.user?.last_name ||
@@ -101,7 +101,7 @@ const EmployeeDetailsPage = () => {
               onClick={() => setActive(item.id)}
               className={`cursor-pointer px-3 py-2 text-sm transition-colors ${
                 active === item.id
-                  ? "border-b-2 border-primary text-primary dark:text-dark-primary"
+                  ? "border-b-2 border-primary dark:bg-dark-bg-surface text-primary dark:text-dark-primary"
                   : "text-subText dark:text-dark-subText hover:text-dark dark:hover:text-dark-text"
               }`}
             >
@@ -111,9 +111,9 @@ const EmployeeDetailsPage = () => {
         </ul>
       </div>
 
-      <section className="px-9 pt-8 pb-14 rounded-xl border  border-border max-md:px-5">
+      <section className="px-9 pt-8 pb-14 rounded-xl border dark:border-dark-border  border-border max-md:px-5">
         <div className="flex gap-8 items-start w-full min-h-[677px] max-md:max-w-full">
-          <div className="flex flex-col justify-center gap-y-1 items-center pt-4 rounded-xl border  border-border min-h-fit min-w-60 w-auto">
+          <div className="flex flex-col justify-center gap-y-1 items-center pt-4 rounded-xl border dark:border-dark-border dark:bg-dark-surface border-border min-h-fit min-w-60 w-auto">
             <div className="flex gap-5 items-center">
               <img
                 src={employee?.image || "/assets/profile.jpeg"}
@@ -122,7 +122,7 @@ const EmployeeDetailsPage = () => {
               />
 
               <div className=" my-auto space-y-1 w-auto">
-                <h1 className="text-base font-semibold leading-none text-gray-900">
+                <h1 className="text-base dark:text-gray-300 font-semibold leading-none text-gray-900">
                   {employee?.user.first_name +
                     " " +
                     employee?.user?.last_name || "Tanner Finsha"}
@@ -142,34 +142,33 @@ const EmployeeDetailsPage = () => {
 
             <section className="flex gap-4 items-start mt-7 max-w-full text-center w-auto">
               <article className="flex flex-col flex-1 shrink items-center whitespace-nowrap basis-0">
-                <h2 className="text-lg font-bold tracking-normal leading-none text-sky-950">
+                <h2 className="text-lg dark:text-gray-400 font-bold tracking-normal leading-none text-sky-950">
                   15
                 </h2>
-                <p className="text-[.6rem]  tracking-wide leading-tight text-gray-400">
+                <p className="text-[.6rem] dark:text-gray-400  tracking-wide leading-tight text-gray-400">
                   Projects
                 </p>
               </article>
-              <article className="flex flex-col flex-1 shrink items-center basis-0">
-                <h2 className="text-lg font-bold tracking-normal whitespace-nowrap leading-none text-sky-950">
+              <article className="flex  flex-col flex-1 shrink items-center basis-0">
+                <h2 className="text-lg dark:text-gray-400  font-bold tracking-normal whitespace-nowrap leading-none text-sky-950">
                   124
                 </h2>
-                <p className="text-[.6rem] whitespace-nowrap   tracking-wide leading-tight text-gray-400">
+                <p className="text-[.6rem]  dark:text-gray-400  whitespace-nowrap   tracking-wide leading-tight text-gray-400">
                   Tasks completed
                 </p>
               </article>
               <article className="flex flex-col flex-1 shrink items-center basis-0">
-                <h2 className="text-lg font-bold  tracking-normal leading-none text-sky-950">
+                <h2 className="text-lg font-bold dark:text-gray-400   tracking-normal leading-none text-sky-950">
                   12
                 </h2>
-                <p className="text-[.6rem] whitespace-nowrap   tracking-wide leading-tight text-gray-400">
+                <p className="text-[.6rem] whitespace-nowrap dark:text-gray-400    tracking-wide leading-tight text-gray-400">
                   Tasks pending
                 </p>
               </article>
             </section>
 
-            <hr />
+            <hr className="border h-px border-border dark:border-dark-border dark:bg-dark-hover rounded-2xl mt-6" />
 
-            {/* User Info */}
             <section className="overflow-hidden px-5 pb-6 mt-7 max-w-full w-auto max-md:pl-5">
               <div className="h-[430px]">
                 {[
@@ -205,8 +204,10 @@ const EmployeeDetailsPage = () => {
                     key={index}
                     className="flex overflow-hidden flex-col items-start pr-14 mt-6 w-full whitespace-nowrap max-md:pr-5"
                   >
-                    <h3 className="text-sm  text-slate-600">{field.label}:</h3>
-                    <p className="text-base leading-none text-sky-950">
+                    <h3 className="text-sm  dark:text-gray-300 text-slate-600">
+                      {field.label}:
+                    </h3>
+                    <p className="text-base dark:text-gray-400 leading-none text-sky-950">
                       {field.value}
                     </p>
                   </div>
@@ -215,34 +216,34 @@ const EmployeeDetailsPage = () => {
             </section>
           </div>
 
-          {/* Role Details Section */}
-          <section className="px-1.5 pb-2.5 rounded-xl min-w-60 w-auto max-md:pr-5 max-md:max-w-full">
+          <section className="px-1.5 dark:text-gray-400  pb-2.5 rounded-xl min-w-60 w-auto max-md:pr-5 max-md:max-w-full">
             <div className="flex gap-5 max-md:flex-col">
               <div className="w-6/12 max-md:ml-0 max-md:w-full">
                 <div className="grow max-md:mt-7">
-                  {/* Other Details Section */}
-                  <section className="flex flex-col items-start py-6 pr-16 pl-8 text-sm  rounded-xl border  border-border max-md:px-5">
-                    <h2 className="text-lg font-black text-slate-700">
+                  <section className="flex flex-col items-start py-6 pr-16 pl-8 text-sm  rounded-xl border dark:bg-dark-surface dark:border-dark-border border-border max-md:px-5">
+                    <h2 className="dark:text-gray-200 font-black text-slate-700">
                       Other details
                     </h2>
-                    <p className="mt-5 text-slate-600">2016 - 2021, BSC</p>
-                    <p className="text-xs  whitespace-nowrap text-sky-950">
+                    <p className="mt-5 text-slate-600 dark:text-gray-400 ">
+                      2016 - 2021, BSC
+                    </p>
+                    <p className="text-xs dark:text-gray-400  whitespace-nowrap text-sky-950">
                       Design Communication visuals
                     </p>
                     <p className="mt-1 text-gray-400">Jember University</p>
-                    <p className="mt-7 text-slate-600">Gender</p>
-                    <p className="text-base leading-none text-sky-950">
+                    <p className="mt-7  dark:text-gray-400 text-slate-600">
+                      Gender
+                    </p>
+                    <p className="text-base dark:text-gray-400   leading-none text-sky-950">
                       Female
                     </p>
                   </section>
 
-                  {/* Team Section */}
-                  <section className="flex flex-col p-4 mt-4 w-full rounded-xl border border-border">
-                    <h2 className="text-sm font-medium text-slate-600">
+                  <section className="flex flex-col p-4 mt-4 w-full rounded-xl borderdark:border-dark-border border-border">
+                    <h2 className="text-sm dark:text-gray-400 font-medium text-slate-600">
                       Teams
                     </h2>
 
-                    {/* Team Tags */}
                     <div className="flex flex-wrap gap-2 mt-4">
                       {employee?.team.map((tag) => (
                         <Button
@@ -310,7 +311,7 @@ const EmployeeDetailsPage = () => {
                             key={i}
                             src={image}
                             alt="Team member"
-                            className="w-8 h-8 rounded-full border-2 border-white"
+                            className="w-8 h-8 rounded-full border-2 dark:border-dark-dark-border border-white"
                           />
                         ))}
                       </div>
@@ -324,28 +325,26 @@ const EmployeeDetailsPage = () => {
 
               <div className="ml-5 w-6/12 max-md:ml-0 max-md:w-full">
                 <div className="max-md:mt-7">
-                  {/* Reports To Section */}
-                  <section className="px-5 py-6 rounded-xl border  border-border">
+                  <section className="px-5 py-6 rounded-xl border dark:border-dark-border border-border">
                     <h2 className="text-sm  text-slate-600">Reports to:</h2>
-                    <div className="flex gap-1.5 items-center p-2 mt-3.5 w-full rounded-md border  border-border ">
+                    <div className="flex gap-1.5 items-center p-2 mt-3.5 w-full rounded-md border dark:border-dark-border border-border ">
                       <img
-                        src="https://cdn.builder.io/api/v1/image/assets/0849aea94f584c11b85ca93b61d87c2a/e1c6383775b2235ce245495039eb80e538d6c401?placeholderIfAbsent=true"
+                        src="/assets/profile.png"
                         className="object-contain  my-auto aspect-square min-h-[34px] w-[34px]"
                         alt="James campion"
                       />
-                      <div className="flex flex-col justify-center  my-auto w-[126px]">
+                      <div className="flex flex-col dark:text-gray-300 justify-center  my-auto w-[126px]">
                         <h3 className="text-sm leading-none text-blue-950">
                           James campion
                         </h3>
-                        <p className="text-xs leading-none text-slate-400">
+                        <p className="text-xs leading-none dark:text-gray-400 text-slate-400">
                           Engineering lead
                         </p>
                       </div>
                       <ArrowLeft className="rotate-180" />
                     </div>
 
-                    {/* Access Role Section */}
-                    <div className="mt-5 w-full text-sm leading-none text-sky-950">
+                    <div className="mt-5 w-full dark:text-gray-400 text-sm leading-none  text-sky-950">
                       {[
                         { label: "Access Role:", value: "Admin Access" },
                         { label: "Work hours:", value: "8am - 5pm WAT" },
@@ -354,14 +353,14 @@ const EmployeeDetailsPage = () => {
                       ].map((role, index) => (
                         <div
                           key={index}
-                          className="flex gap-px items-center mt-3 w-full "
+                          className="flex gap-px dark:bg-dark-surface dark:text-gray-400 items-center mt-3 w-full "
                         >
-                          <div className="flex gap-1.5 items-center  py-0.5 pr-2 my-auto rounded-md border  border-border w-auto">
+                          <div className="flex gap-1.5 items-center  py-0.5 pr-2 my-auto rounded-md border dark:border-dark-border border-border w-auto">
                             <div className="gap-2 justify-center items-center  px-4 py-3 my-auto min-h-11 rounded-[29px]">
-                              <span className="text-sm  text-sky-950">
+                              <span className="text-sm dark:text-gray-400  text-sky-950">
                                 {role.label}
                               </span>{" "}
-                              <span className="text-sm  text-sky-950">
+                              <span className="text-sm  dark:text-gray-400 text-sky-950">
                                 {role.value}
                               </span>
                             </div>
@@ -371,11 +370,11 @@ const EmployeeDetailsPage = () => {
                     </div>
                   </section>
 
-                  <section className="flex flex-col px-6 pt-6  mt-5 rounded-xl border  border-border max-md:pb-24 max-md:pl-5">
-                    <h2 className=" text-sm font-black text-slate-700">
+                  <section className="flex dark:bg-dark-surface flex-col px-6 pt-6  mt-5 rounded-xl border dark:border-dark-border border-border max-md:pb-24 max-md:pl-5">
+                    <h2 className=" text-sm dark:text-gray-300  font-black text-slate-700">
                       Role and Responsibilities
                     </h2>
-                    <p className="mt-6  text-sm leading-6 text-slate-600 max-md:mb-2.5">
+                    <p className="mt-6  text-sm leading-6 text-slate-600 dark:text-gray-400  max-md:mb-2.5">
                       Designing products, organizing team meeting, screening and
                       hiring product designers of all levels
                     </p>
