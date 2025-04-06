@@ -10,7 +10,6 @@ const Sidebar = ({ isOpen, onToggle }) => {
 	const navigate = useNavigate();
 
 	const handleItemClick = (id, e) => {
-		onToggle();
 		if (!e.target.closest("button")) {
 			const element = sidebarLists.find((list) => list.id === id);
 			if (element.path) {
@@ -27,8 +26,8 @@ const Sidebar = ({ isOpen, onToggle }) => {
 
 	return (
 		<aside
-			className={`fixed md:relative  md:p-6 h-screen bg-white  dark:bg-dark-bg  border-r border-border dark:border-dark-border transition-all duration-300 z-30 md:z-0 ${
-				isOpen ? "w-[15.5rem]" : "w-0 hidden md:flex md:flex-col md:w-20"
+			className={`fixed md:relative  md:p-6 h-screen bg-white px-4  dark:bg-dark-bg  border-r border-border dark:border-dark-border transition-all duration-300 z-30 md:z-0 ${
+				isOpen ? "w-[15.5rem]" : "w-0 px-2 hidden md:flex md:flex-col md:w-20"
 			}`}
 		>
 			<div className="flex items-center justify-between p-4">
@@ -51,7 +50,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
 					</h1>
 				</div>
 				<button
-					onClick={onToggle}
+					onClick={() => onToggle((prev) => !prev)}
 					className="p-2 hover:bg-gray-100 dark:bg-white/40 rounded-lg md:hidden"
 				>
 					<Close className="w-6 h-6" />
@@ -59,7 +58,13 @@ const Sidebar = ({ isOpen, onToggle }) => {
 			</div>
 			<ul className="space-y-3  flex-1">
 				{sidebarLists.map((list) => (
-					<li onClick={(e) => handleItemClick(list.id, e)} key={list.id}>
+					<li
+						onClick={(e) => {
+							handleItemClick(list.id, e);
+							onToggle(false);
+						}}
+						key={list.id}
+					>
 						<div
 							className={` ${
 								active === list.id

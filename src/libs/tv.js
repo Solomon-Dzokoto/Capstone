@@ -37,7 +37,7 @@ export const inputVariants = tv({
 });
 
 export const buttonVariant = tv({
-	base: "flex transform py-[0.2rem] gap-2 items-center px-2 item-center cursor-pointer justify-center rounded-lg translate-x-auto",
+	base: "flex transform py-[0.2rem] gap-2 items-center px-2 text-xs sm:text-sm md:text-lg item-center cursor-pointer justify-center rounded-lg translate-x-auto",
 	variants: {
 		variant: {
 			primary:
