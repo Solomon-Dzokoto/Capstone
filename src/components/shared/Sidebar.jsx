@@ -51,7 +51,7 @@ const Sidebar = ({ isOpen, onToggle }) => {
         </div>
         <button
           onClick={onToggle}
-          className="p-2 hover:bg-gray-100 rounded-lg md:hidden"
+          className="p-2 hover:bg-gray-100 dark:bg-white/40 rounded-lg md:hidden"
         >
           <Close className="w-6 h-6" />
         </button>
