@@ -141,9 +141,9 @@ const Sidebar = ({ isOpen, onToggle }) => {
 
       <div
         onClick={() => {
+          window.location.reload();
           localStorage.removeItem("access_token");
           localStorage.removeItem("stored-user");
-          window.reload();
           navigate("/auth/login");
         }}
         className={` ${

@@ -37,10 +37,8 @@ const Signup = () => {
     resolver: yupResolver(schema),
     mode: "onChange",
   });
-  console.log(errors);
 
   const signupUser = async (data) => {
-    console.log("FormData", data);
     const { fullName, password, username, email } = data;
     const capitalize = fullName
       .split(" ")
@@ -63,7 +61,9 @@ const Signup = () => {
       toast.success("User Registered Successfully");
       navigate("/auth/login");
     } catch (error) {
-      console.log(error, "Opps something went wrong");
+      console.log(error);
+      toast.error("User Registration Failed");
+      return null;
     }
   };
   return (
@@ -125,7 +125,7 @@ const Signup = () => {
           {...register("password")}
           className={`${
             errors?.password ? "border-danger" : "border-primary"
-          }  ${isValid ? "bg-[#FFF2EA]" : ""}`}
+          }  $isValid ? "bg-[#FFF2EA]" : ""}`}
           name="password"
           type="password"
           Icon
@@ -141,7 +141,7 @@ const Signup = () => {
           {...register("confirmPassword")}
           className={`${
             errors?.confirmPassword ? "border-danger" : "border-primary"
-          }  ${isValid ? "bg-[#FFF2EA]" : ""}`}
+          }  $isValid ? "bg-[#FFF2EA]" : ""}`}
           name="confirmPassword"
           Icon
           type="password"

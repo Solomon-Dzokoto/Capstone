@@ -18,9 +18,9 @@ const AuthLayout = () => {
           <h2 className="text-[1.8rem]  font-semibold text-white ">
             Welcome to{" "}
           </h2>
-          <div className="flex items-center">
+          <div className="flex  items-center">
             <img
-              className="w-[25rem]  h-[6rem] "
+              className="w-[25rem] mx-auto h-[6rem] "
               loading="lazy"
               src="/assets/Logo (1).png"
               alt="logo"

@@ -50,9 +50,6 @@ const EmployeeDetailsPage = () => {
   //   });
   const employee = employees.find((employee) => employee?.id === id);
 
-  console.log("Employee data:", employee);
-  console.log("Param id", id);
-
   return (
     <section className="p-4 md:p-6 bg-white dark:bg-dark-bg ">
       <button
