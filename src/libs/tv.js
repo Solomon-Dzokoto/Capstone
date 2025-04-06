@@ -37,11 +37,11 @@ export const inputVariants = tv({
 });
 
 export const buttonVariant = tv({
-	base: "flex transform py-[0.2rem] gap-2 items-center px-2 text-xs sm:text-sm md:text-lg item-center cursor-pointer justify-center rounded-lg translate-x-auto",
+	base: "flex transform py-[0.2rem] gap-2 items-center px-2  item-center cursor-pointer justify-center rounded-lg translate-x-auto",
 	variants: {
 		variant: {
 			primary:
-				"bg-primary text-white dark:bg-dark-primary dark:text-dark-text hover:bg-primary/90 dark:hover:bg-dark-primary/90",
+				"bg-primary text-white dark:bg-dark-primary text-xs sm:text-sm md:text-lg dark:text-dark-text hover:bg-primary/90 dark:hover:bg-dark-primary/90",
 			secondary:
 				"bg-secondary text-white dark:bg-dark-secondary dark:text-dark-text hover:bg-secondary/90 dark:hover:bg-dark-secondary/90",
 			outline:
