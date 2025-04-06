@@ -33,9 +33,9 @@ const RolePage = () => {
 				<ArrowLeft className="w-4 h-4" />
 				Roles
 			</button>
-			<div className="flex p-6 sm:p-8 lg:p-10 border-b items-center border-b-border dark:border-dark-border justify-between">
+			<div className="flex flex-col md:flex-row p-6 sm:p-8 lg:p-10 border-b gap-y-6 md:items-center border-b-border dark:border-dark-border justify-between">
 				<div className="">
-					<h2 className="text-lg sm:text-xl lg:text-2xl mb-1 font-semibold text-dark dark:text-dark-text">
+					<h2 className="sm:text-xl text-sm lg:text-2xl mb-1 font-semibold text-dark dark:text-dark-text">
 						Review Role Information
 					</h2>
 					<p className="text-subText dark:text-dark-subText text-sm sm:text-base lg:text-lg">
